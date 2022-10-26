@@ -3,7 +3,7 @@
 <head>
     <title>Redefinição</title>
     <?php $this->load->view('comp/css');?>
-</head>
+</head>    
 <body class="bg-dark">
     <!-- Navbar -->
     <?php $this->load->view('comp/navbar');?>
@@ -11,33 +11,55 @@
     <?php $this->load->view('comp/sidebar');?>
 
     
+   
+
     <section>
-        <div class="grid place-items-center xl:mr-36 xl:ml-36 recuperacao xl:m-0 m-8">
-            
-            <form action="" id="form-recovery" class="mb-28 recuperacao-form">
-                <div>
-                    <h1 class="text-white font-bold">Nova Senha</h1>
-                    <!-- <p class="text-white text-xl mt-5 mb-8 ">Insira seu e-mail para recuperar.</span></a></p> -->
-                </div>
-                <input type="hidden" name="user_token" value="<?=$user_token?>">
-                <label class="text-white" for="">Senha</label>
-                <input type="password" name="user_password" minlength="6"  placeholder="******" id="user_password" required class="p-2" >
-                <br><br>
-                <label class="text-white pt-2" for="">Confirm. da Senha</label>
+        <div class="grid xl:grid-cols-2 grid-cols-1">
+            <div style="height:100vh" class="xl:col-span-1  col-span-1">
+
+
+                <div class="  login ">
+                    <div class="m-3"> 
+                        <img style="width:150px;height:50px;object-fit:cover" src="<?=base_url()?>assets/img/logo_green.png" alt="">
+                    </div>
+                    <div class="grid place-items-center">
+                        <div class=" ">
+                            <form action="" autocomplete="off" class="mt-20" id="form-recovery" >
+                                <div>
+                                    <h2 style="font-size:30px" class="text-black text-xl font-semibold">Redefina sua senha</h2>
+                                    <p class="text-black text-md mt-2 mb-2 font-norma">Escolha sempre uma senha segura para sua proteção.</p>
+                                </div>
+                                <input type="hidden" value="<?=$user_token?>" name="user_token">
+
+                                <input style="border:1px solid #DFDFDF" minlength="6" type="password" name="user_password" id="user_password" class="p-2" required placeholder="NOVA SENHA">
+                                <input style="border:1px solid #DFDFDF" minlength="6" type="password" name="user_password_confirm" id="user_password_confirm" class="p-2"  required placeholder="CONFIRMAÇÃO DA SENHA">
+                                <div class="flex justify-items-end">
+                                    <div>
+                                    <!-- <p class="text-greenDefault text-left mt-5 mb-2"><a href="<?=base_url()?>recuperacao"><span class=" font-normal">Esqueci minha senha </span></a></p> -->
+        
+                                    </div>
+                                </div>
+                                <button class="bg-greenDefault text-white font-semibold">ATUALIZAR</button>
+        
+                          
+                            </form>
+                        </div>
+                    </div>
                 
-                <input type="password" name="user_password_confirm" minlength="6"  placeholder="******" id="user_password_confirm" required class="p-2" >
-                <br><br>
+                </div> 
 
-                <button class="bg-orange text-white  font-semibold  font-semibold">ATUALIZAR</button>
+            </div>
+            <div style="height:100vh" class="xl:col-span-1 hidden xl:block col-span-1 bg-greenDefault">
 
-            
-            </form>
+            </div>
         </div>
+       
     </section>
 
+
     <!-- Footer -->
-        <?php $this->load->view('comp/Footer');?>
-        <?php $this->load->view('comp/js');?>
+    <?php $this->load->view('comp/js');?>
+
         <script>
 
     $('#form-recovery').submit(function(e) {
@@ -62,7 +84,22 @@
                      var resp = JSON.parse(data)
     
                      if (resp.status == "true") {
-                        window.location.href = "<?=base_url() ?>login"
+
+
+                        swal({
+                            title: "Tudo certo!",
+                            text: resp.message,
+                            icon: "success",
+                         
+                        }).then(function(isConfirm) {
+
+                            window.location.href = "<?=base_url() ?>login"
+
+
+                        });
+
+                        // swal(resp.message)
+
                      } else {
                        swal(resp.message)
                      }
@@ -72,6 +109,8 @@
                      console.log(data);
                  },
             });
+
+
         }
     
 

@@ -30,6 +30,37 @@ class user_model extends CI_Model
         return $this->db->update('users', $data);
     }
 
+    public function updateImage($user_id, $user_image) {
+
+        $this->db->where('id', $user_id);
+
+        $data = array(
+            'user_image' => $user_image,
+        );
+
+        return $this->db->update('users', $data);
+    }
+
+    public function updatePerfil($user_id, $user_name, $user_surname, $user_email, $user_street, $user_city, $user_district, $user_state, $user_cep ) {
+
+        $this->db->where('id', $user_id);
+
+        $data = array(
+            'user_name' => $user_name,
+            'user_surname' => $user_surname,
+            'user_surname' => $user_surname,
+            'user_email' => $user_email,
+            'user_street' => $user_street,
+            'user_city' => $user_city,
+            'user_district' => $user_district,
+            'user_state' => $user_state,
+            'user_cep' => $user_cep,
+        );
+
+        return $this->db->update('users', $data);
+    }
+
+
     public function updatePassword($user_id, $password) {
         $this->db->where('id', $user_id);
 

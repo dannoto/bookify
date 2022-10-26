@@ -22,6 +22,7 @@ class Recuperacao extends CI_Controller {
 
 	public function sendRecoveryEmail() {
 		
+		
 		if ($this->input->post() ) {
 
 			$response = array();
@@ -30,7 +31,7 @@ class Recuperacao extends CI_Controller {
 
 			// Check Email
 			if ($this->user_model->getUserByEmail($user_email)) {
-
+  
 				$user_data = $this->user_model->getUserByEmail($user_email);
 
 				if ($this->email_model->sendRecovery($user_data['user_email'], $user_data['user_token'])) {

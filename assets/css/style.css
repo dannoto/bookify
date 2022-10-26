@@ -19,6 +19,381 @@
 }
 
 
+
+/* Ebook */
+
+    .ebook-image {
+        width: 300px;
+        max-width: 300px;
+    }
+
+    .ebook-icon {
+        max-width: 35px;
+        width:35px;
+        height:35px;
+        object-fit: cover;
+    }
+
+    .ebook-title {
+        font-size: 30px;
+        font-weight: 600;
+        
+    }
+
+   .ebook-info {
+    width: 100%;
+   }
+
+   .ebook-add-biblioteca {
+    border:2px solid #00B467
+   }
+
+    nav img {
+        width: 45px;
+    }
+
+ 
+    nav input {
+        width: 80%;
+        margin-left:10%;
+        margin-right: 10%;
+        height: 40px;
+    }
+    nav span {
+        font-size: 18px;
+        line-height: 35px !important;
+    }
+
+    .ebook-btn {
+        width: 300px;
+    }
+
+
+    @media(max-width:900px) {
+        .ebook-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+    }
+
+/* Ebook */
+
+
+/* Biblioteca */
+.biblioteca img {
+    max-width: 200px;
+}
+.biblioteca h1 {
+    font-size:25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.biblioteca {
+    border-bottom: 1px solid #DFDFDF;
+    
+}
+
+.biblioteca-icon-img {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+/* Conta */
+.conta-perfil input {
+    width: 100%;
+    height: 40px;
+    border:1px solid #DFDFDF;
+    margin-bottom: 15px;
+    padding:12px
+}
+
+.conta-perfil button {
+    width: 100%;
+    height: 40px;
+}
+
+.conta-perfil-imagem img {
+    width: 150px;
+    object-fit: cover;
+}
+
+.conta-perfil-imagem p {
+    font-size: 18px;
+}
+/* Conta */
+
+
+@media(max-width:1000px) {
+    
+  
+    .biblioteca img {
+        width: 100px;
+    }
+    .biblioteca button {
+        padding-top: 5px !important;
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    .biblioteca-icon-img {
+        width: 30px !important;
+        height: 30px;
+    }
+    .biblioteca h1 {
+        font-size:15px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+}
+/* Biblioteca */
+
+/* Home */
+
+@media(max-width:1000px) {
+    .submenu_mobile {
+        width: 100%;
+
+    }
+    .submenu_mobile_item {
+        width: 100% !important;
+        height: 50px !important;
+        border:1px solid #DFDFDF;
+        /* border-radius: 12px 12px 0px 0px !important;   */
+        padding: 12px;
+
+    }
+    .catalogo-active {
+        background-color: #00B467;
+        color:#FFF;
+
+        font-weight: bold;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+
+        width: 100% !important;
+        height: 50px ;
+        padding-top: 12px !important;
+        border-radius: 0px !important;  
+        /* padding: 12px; */
+
+
+    }
+}
+
+
+
+.menu_li:hover {
+    border-bottom:5px solid #00B467 ;
+}
+.menu_li {
+    margin-left: 20px;
+}
+
+.nav_home button {
+    border:1px solid #00B467;
+    height: 40px;
+    color: #00B467
+}
+
+.menu_li_active {
+    border-bottom:5px solid #00B467 ;
+}
+
+.home-plano-assinar-btn button {
+    width: 100%;
+    height: 50px;
+    color:#FFF;
+    font-weight:600;
+    
+}
+
+.home-plano-description {
+    padding-top: 70px;
+    margin:8px;
+    font-size: 13px;
+}
+
+.home-plano-currency {
+    font-size: 15px;
+}
+
+.home-plano-preco {
+    font-size: 35px;
+}
+.home-plano {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.home-plano-best {
+    margin-top:-50px;
+}
+
+
+
+.home-plano-div {
+    border:1px solid #00B467;
+    width: 65%;
+
+
+}
+
+.home-plano-breadcumb p {
+    font-size: 20px;
+    color:#000;
+    font-weight: 600;
+}
+.home-plano-breadcumb {
+    position: absolute;
+    width: 22%;
+    height: 50px;
+    margin-top: 5px;
+    margin-left:-2%;
+}
+
+@media(max-width:1000px) {
+    
+    .home-plano-best {
+        margin-top:15px;
+    }
+
+    .home-plano-breadcumb {
+        position: absolute;
+        width: 50%;
+        height: 50px;
+        margin-top: 5px;
+        margin-left:-15%;
+    }
+    
+    
+}
+
+@media(max-width:1250px) {
+    
+    .home-plano-best {
+        margin-top:15px;
+    }
+
+    .home-plano-breadcumb {
+        position: absolute;
+        width: 63%;
+        height: 50px;
+        margin-top: 5px;
+        margin-left:-5%;
+    }
+    
+    
+}
+/* Home */
+
+/* Pagination */
+.pagination-item {
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+    color:#00B467;
+    border:1px solid #DDD;
+    line-height: 38px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.pagination-item-active {
+    background-color: #00B467;
+    color:#fff;
+    border:1px solid #00B467;
+}
+/* Pagination */
+
+/* Catalogo */
+.catalogo-active {
+    background-color: #00B467;
+    color:#FFF;
+    font-weight: bold;
+    padding-left: 18px;
+    padding-right: 18px;
+    /* padding-right: 18px;
+    padding-bottom: 12px;
+    padding-top: 12px; */
+    width: auto;
+    height: 40px;
+    margin-top: -8px;
+    padding-top: 7px;
+    border-radius: 12px;
+}
+.catalogo-left  h1 {
+ font-size: 30px;
+}
+
+/* Catalogo */
+
+/* Header */
+.header-left img {
+    object-fit:cover ;
+    margin-left:-50px;
+    margin-top:15%;
+    height:65%;
+    width:100%;
+}
+
+.header-left {
+    height: 100vh;
+}
+
+.header input {
+    border:2px solid #00B467;
+    height: 50px;
+    width: 70%;
+    padding:12px
+}
+.header button {
+    height: 50px;
+    background-color: #00B467;
+    color:#FFF;
+    width: 15%;
+}
+.header-lojas img {
+    width: 160px;
+    height: 50px;
+    object-fit: contain;
+
+}
+
+.header-right {
+    height: 100vh;
+}
+@media(max-width:900px) {
+    .header-right {
+        height: auto;
+    }
+}
+/* Header */
+
+
+
+/* Faq */
+.faq-container {
+    width: 100%;
+    /* height: 50px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/* Faq */
+
+.faq-one {
+    background-color: #00B467;
+    /* height: 50px; */
+    margin-bottom: 8px;
+}
+
+
+
+
 /* Inicio Perfil-Sorteios */
 .perfil-sorteios-breadcumb h1 {
     font-size: 50px;
@@ -44,10 +419,7 @@
         font-size: 35px;
         margin-bottom: 15px;
     }
-    .perfil-sorteios-breadcumb p {
-        /* font-size: 35px;
-        margin-bottom: 15px; */
-    }
+
     .perfil-sorteios-list li {
         margin-top: 20px;
     }
@@ -276,17 +648,17 @@ flex-direction: column;
 
 }
 .hr-line{
-  width: 60%;
+  width: 100%;
   margin: auto;
   
 }
 /* Style the buttons that are used to open and close the faq-page body */
 .faq-page {
     /* background-color: #eee; */
-    color: #444;
+    color: #fff;
     cursor: pointer;
-    padding: 30px 20px;
-    width: 60%;
+    padding: 10px 20px;
+    width: 100%;
     border: none;
     outline: none;
     transition: 0.4s;
@@ -296,7 +668,7 @@ flex-direction: column;
 .faq-body{
     margin: auto;
     /* text-align: center; */
-   width: 60%; 
+   width: 100%; 
    padding: auto;
    
 }
@@ -306,7 +678,7 @@ flex-direction: column;
         /* background-color: #eee; */
         color: #444;
         cursor: pointer;
-        padding: 30px 20px;
+        padding: 10px 20px;
         width: 90%;
         border: none;
         outline: none;
@@ -329,6 +701,13 @@ flex-direction: column;
 }
 
 
+
+.faq-title {
+    font-size: 25px;
+    font-weight: 400;
+    
+}
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .faq-page:hover {
@@ -347,17 +726,20 @@ flex-direction: column;
 }
 
 .faq-page:after {
-    content: '\02795';
+    content:url('../img/icons/plus.png');
     /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: #777;
+
     float: right;
     margin-left: 5px;
+    margin-right: 5px;
+    width: 10px; 
+    height: 20px;
 }
 
 .active:after {
-    content: "\2796";
+    content:url('../img/icons/less-icon.png');
+
     /* Unicode character for "minus" sign (-) */
 }
 
-/* Faq */

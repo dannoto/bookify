@@ -4,6 +4,8 @@
     <script src="https://kit.fontawesome.com/5b64b15bc3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="<?=base_url()?>assets/js/tailwind.js"></script>
+    <link rel="stylesheet" href="<?=base_url()?>assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/css/owlcarousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <style>
@@ -134,21 +136,21 @@
         .swal-button {
             padding: 7px 19px;
             border-radius: 2px;
-            background-color: #ffbd0a;
+            background-color: #00B467;
             font-size: 12px;
-            border: 1px solid #ffbd0a;
+            border: 1px solid #00B467;
             text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
         }
 
         .swal-button:not([disabled]):hover {
 
-            background-color: #ffbd0a;
-            border: 1px solid #ffbd0a;
+            background-color: #00B467;
+            border: 1px solid #00B467;
         }
         .swal-button::hover {
 
-            background-color: #ffbd0a;
-            border: 1px solid #ffbd0a;
+            background-color: #00B467;
+            border: 1px solid #00B467;
         }
 
         #sideNav::-webkit-scrollbar {

@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('session_user')){
-			redirect(base_url());
+			redirect(base_url('catalogo'));
 		}
 
 		$this->load->view('user/login');

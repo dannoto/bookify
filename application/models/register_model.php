@@ -1,24 +1,22 @@
 <?php
 class register_model extends CI_Model
+
 {
 
-    public function addUser($user_name, $user_surname, $user_email, $user_cpf, $user_ddd, $user_phone, $user_password, $user_ref, $user_ip) {
+    public function addUser($user_name, $user_surname, $user_email, $user_password, $user_origin) {
 
         $data = array(
             'user_name' => $user_name,
             'user_surname' => $user_surname,
             'user_email' => $user_email,
-            'user_cpf' => $user_cpf,
-            'user_ddd' => $user_ddd,
-            'user_phone' => $user_phone,
             'user_password' => md5($user_password),
-            'user_ref' => $user_ref,
-            'user_ip' => $user_ip,
-            'user_status' => 1,
             'user_date' => date('d-m-Y'),
             'user_time' => date('H:i:s'),
-            'user_level' => 1,
-            'user_token' => mt_rand(),
+            'user_refer' => mt_rand(),
+            'user_origin' => $user_origin,
+            'user_plan' => 1,
+            'user_status' => 1,
+            'user_token' => mt_rand()
         ); 
 
 
@@ -81,7 +79,7 @@ class register_model extends CI_Model
         }
     }
 
-    public function validate_email ($user_email) {
+    public function validate_email($user_email) {
 
         $this->db->where('user_email', $user_email);
         $data = $this->db->get('users')->row_array();

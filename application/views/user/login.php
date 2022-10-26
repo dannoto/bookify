@@ -5,34 +5,55 @@
     <?php $this->load->view('comp/css');?>
 </head>
 <body class="bg-dark">
-    <!-- Navbar -->
-    <?php $this->load->view('comp/navbar');?>
-    <!-- Navbar -->
-    <?php $this->load->view('comp/sidebar');?>
+
 
     <section>
-        <div class="grid place-items-center xl:mr-44 xl:ml-44  login xl:m-0 m-8">
-            
-            <form action="" class="" id="form-login">
-                <div>
-                    <h1 class="text-white font-bold">Login</h1>
-                    <p class="text-white text-xl mt-10 mb-2 font-semibold">Não tem uma conta? <a href="<?=base_url()?>registro"><span class="text-orange font-semibold">Registrar-se</span></a></p>
-                </div>
+        <div class="grid xl:grid-cols-2 grid-cols-1">
+            <div style="height:100vh" class="xl:col-span-1  col-span-1">
+
+
+                <div class="  login ">
+                    <div class="m-3"> 
+                        <img style="width:150px;height:50px;object-fit:cover" src="<?=base_url()?>assets/img/logo_green.png" alt="">
+                    </div>
+                    <div class="grid place-items-center">
+                        <div class=" ">
+                            <form action="" class="mt-20" id="form-login">
+                                <div>
+                                    <h2 style="font-size:30px" class="text-black text-xl font-semibold">Login</h2>
+                                    <p class="text-black text-md mt-2 mb-2 font-norma">Faça login e explore esse mundo de conhecimento.</p>
+                                </div>
+                                
+                                <input style="border:1px solid #DFDFDF" maxlength="200" type="email" name="user_email" class="p-2" required placeholder="SEU E-MAIL">
+                                <input style="border:1px solid #DFDFDF" maxlength="200" type="password" name="user_password" class="p-2"  required placeholder="SUA SENHA">
+                                <div class="flex justify-items-end">
+                                    <div>
+                                    <p class="text-greenDefault text-left mt-5 mb-2"><a href="<?=base_url()?>recuperacao"><span class=" font-normal">Esqueci minha senha </span></a></p>
+        
+                                    </div>
+                                </div>
+                                <button class="bg-greenDefault text-white font-semibold">ENTRAR</button>
+        
+                                <div class=" ">
+                                    <p style="font-size:17px"  class="text-black text-md  mt-5 text-base mb-5">Não tem uma conta?<a href="<?=base_url()?>registro"><span class="text-greenDefault font-semibold"> Registrar </span></a></p>
+                                </div>
+        
+                                
+                            </form>
+                        </div>
+                    </div>
                 
-                <input type="email" name="user_email" class="p-2" required placeholder="E-mail">
-                <input type="password" name="user_password" class="p-2"  required placeholder="Senha">
+                </div> 
 
-                <button class="bg-orange text-white font-semibold">ENTRAR</button>
+            </div>
+            <div style="height:100vh" class="xl:col-span-1 hidden xl:block col-span-1 bg-greenDefault">
 
-                <div>
-                    <p class="text-white text-xl mt-5 mb-28">Esqueceu sua senha? <a href="<?=base_url()?>recuperacao"><span class="text-orange font-semibold">Recuperar</span></a></p>
-                </div>
-            </form>
+            </div>
         </div>
+       
     </section>
 
-    <!-- Footer -->
-        <?php $this->load->view('comp/Footer');?>
+
     <!-- Footer -->
         <?php $this->load->view('comp/js');?>
 
@@ -49,7 +70,7 @@
                         var resp = JSON.parse(data)
 
                         if (resp.status == "true") {
-                            window.location.href = '<?=base_url()?>'
+                            window.location.href = '<?=base_url()?>catalogo'
                         } else {
                             swal(resp.message)
                         }

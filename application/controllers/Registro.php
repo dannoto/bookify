@@ -17,92 +17,67 @@ class Registro extends CI_Controller {
 	{
 
 		
-
+		
 		$this->load->view('user/registro');
 	}
-
+	
 	public function add_user() {
+
+		$response = array();
 		
 		if ($this->input->post() ) {
 
 			$user_name = htmlspecialchars($this->input->post('user_name'));
 			$user_surname = htmlspecialchars($this->input->post('user_surname'));
 			$user_email = htmlspecialchars($this->input->post('user_email'));
-			$user_cpf = htmlspecialchars($this->input->post('user_document'));
-			$user_ddd = htmlspecialchars($this->input->post('user_ddd'));
-			$user_phone = htmlspecialchars($this->input->post('user_phone'));
 			$user_password = htmlspecialchars($this->input->post('user_password'));
-			$user_ref = htmlspecialchars($this->input->post('user_ref'));
-			$user_ip = $this->register_model->getUserIP();
+			$user_origin = htmlspecialchars($this->input->post('user_origin'));
+
+		
 
 
 			// Validations
-			$validate_document = $this->register_model->validate_document($user_cpf);
-			$validate_cpf = $this->register_model->validate_cpf($user_cpf);
-			$validate_banned_document = $this->register_model->validate_banned_document($user_cpf);
 			$validate_email = $this->register_model->validate_email($user_email);
-			$validate_phone = $this->register_model->validate_phone($user_phone);
-
 			
 
-			$response = array();
+			if ($validate_email) {
+
+				if ($this->register_model->addUser($user_name, $user_surname, $user_email, $user_password, $user_origin)) {
 
 
-			if ($validate_document && $validate_banned_document) {
+					$auth = $this->login_model->Auth($user_email, $user_password);
 
-				if ($validate_cpf) {
+					if ($auth) {
 
-					if ($validate_email) {
+						$this->session->set_userdata('session_user', $auth);
 
-						if ($validate_phone) {
-
-							//Creating user
-							if ($this->register_model->addUser($user_name, $user_surname, $user_email, $user_cpf, $user_ddd, $user_phone, $user_password, $user_ref, $user_ip)) {
-
-								// Creating session
-								$auth = $this->login_model->Auth($user_email, $user_password);
-
-								if ($auth) {
-									
-									$this->session->set_userdata('session_user', $auth);
-
-									$response =  array('status' => 'true', 'message' => 'Cadastrado com sucesso!');
-
-								} else {
-
-									$response =  array('status' => 'false', 'message' => 'Ocorreu um erro ineperado.');
-
-								}
-
-							} else {
-
-								$response =  array('status' => 'false', 'message' => 'Ocorreu um erro. Tente mais tarde.');
-
-							}
-
-						} else {
-
-							$response =  array('status' => 'false', 'message' => 'Este telefone já está sendo usado.');
-
-						}
+						// $response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
 
 					} else {
-							
-						$response =  array('status' => 'false', 'message' => 'Este e-mail já está sendo usado.');
+
+						// $response =  array('status' => 'false', 'message' => 'Suas credenciais estão incorretas.');
 
 					}
 
+					$response =  array('status' => 'true', 'message' => 'Cadastrado com sucesso.');
+
+
 				} else {
-							
-					$response =  array('status' => 'false', 'message' => 'Este CPF é inválido.');
+
+					$response =  array('status' => 'false', 'message' => 'Ocorreu um erro temporário.');
 
 				}
+
 			} else {
 
-				$response = array('status' => 'false', 'message' => 'Este CPF já está sendo usado. Ou foi banido.');
-						
+				$response =  array('status' => 'false', 'message' => 'Este e-mail já está sendo usado.');
+				
 			}
 
+
+
+			
+			
 
 			print_r(json_encode($response));
 
