@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Publique uma Categoria</title>
+    <title>Publique um destauqe</title>
     <?php $this->load->view('comp/admin/header') ?>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></script> -->
@@ -37,15 +37,15 @@
                             <div class="card">
                                 <div class="card-body d-flex flex-column">
                                     <div class="wrapper">
-                                        <h5 style="font-weight: 600;" class="text-semibold mb-0">ADICIONAR NOVA CATEGORIA</h5>
+                                        <h5 style="font-weight: 600;" class="text-semibold mb-0">ADICIONAR NOVO DESTAQUE</h5>
 
 
-                                        <form action="" id="form-add-category" class="mt-5">
-                                            <label for="">NOME DA CATEGORIA <small class="text-danger">*</small></label>
-                                            <input type="text" required class="form-control" name="category_name">
+                                        <form action="" id="form-add-features" class="mt-5">
+                                            <label for="">NOME DO DESTAQUE <small class="text-danger">*</small></label>
+                                            <input type="text" required class="form-control" name="featured_name">
                                             <br><br>
-                                            <label for="">DESCRIÇÃO DA CATEGORIA</label>
-                                            <textarea name="category_description" maxlength="200" class="form-control"></textarea>
+                                            <label for="">DESCRIÇÃO DO DESTAQUE</label>
+                                            <textarea name="featured_description" maxlength="200" class="form-control"></textarea>
 
                                             <br><br>
                                             <button class="btn py-3 btn-block btn-primary">ADICIONAR</button>
@@ -58,10 +58,10 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <h5 style="font-weight: 600;" class="text-semibold mb-0">LISTA DE CATEGORIAS</h5>
+                                    <h5 style="font-weight: 600;" class="text-semibold mb-0">LISTA DE DESTAQUES</h5>
                                     <br><br>
                                     
-                                    <?php if (count($categorias) > 0) { ?>
+                                    <?php if (count($features) > 0) { ?>
                                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
@@ -73,28 +73,28 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <button data-toggle="modal" style="display:none" id="btn-modal-open" data-target="#modal-open-category"></button>
+                                        <button data-toggle="modal" style="display:none" id="btn-modal-open" data-target="#modal-open-features"></button>
 
 
 
-                                                <?php foreach ($categorias as $c) { ?>
+                                                <?php foreach ($features as $c) { ?>
 
                                                     <tr>
                                                         <td><?= $c->id ?></td>
-                                                        <td><?php if (strlen($c->category_name) > 10) {
-                                                                echo substr($c->category_name, 0, 10) . "...";
+                                                        <td><?php if (strlen($c->featured_name) > 10) {
+                                                                echo substr($c->featured_name, 0, 10) . "...";
                                                             } else {
-                                                                echo $c->category_name;
+                                                                echo $c->featured_name;
                                                             } ?></td>
-                                                        <td><?php if (strlen($c->category_description) > 35) {
-                                                                echo substr($c->category_description, 0, 35) . "...";
+                                                        <td><?php if (strlen($c->featured_description) > 35) {
+                                                                echo substr($c->featured_description, 0, 35) . "...";
                                                             } else {
-                                                                echo $c->category_description;
+                                                                echo $c->featured_description;
                                                             } ?></td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                <i style="font-size:25px;cursor:pointer" data-name="<?=$c->category_name?>" data-id="<?=$c->id?>" data-description="<?=$c->category_description?>"  class="btn-modal-add mdi mdi-pencil"></i>
-                                                                <i style="font-size:25px;cursor:pointer" onclick="deleteCategory(this.id)" id="<?= $c->id ?>" class="btn-category-delete mdi  ml-3 text-danger mdi-delete"></i>
+                                                                <i style="font-size:25px;cursor:pointer" data-name="<?=$c->featured_name?>" data-id="<?=$c->id?>" data-description="<?=$c->featured_description?>"  class="btn-modal-add mdi mdi-pencil"></i>
+                                                                <i style="font-size:25px;cursor:pointer" onclick="deleteFeatured(this.id)" id="<?= $c->id ?>" class="btn-category-delete mdi  ml-3 text-danger mdi-delete"></i>
                                                             </div>
 
                                                         </td>
@@ -139,7 +139,7 @@
 
 
     <!-- Modal Add Capitulo -->
-    <div class="modal fade" id="modal-open-category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-open-features" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -149,14 +149,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-update-categoria">
+                    <form action="" id="form-update-features">
                         <label for="">NOME DA CATEGORIA <span class="text-danger">*</span></label><br>
-                        <input type="hidden" name="category_id" id="update_category_id" required class="mb-2 form-control">
+                        <input type="hidden" name="featured_id" id="update_featured_id" required class="mb-2 form-control">
 
-                        <input type="text" name="category_name" id="update_category_name" required class="mb-2 form-control">
+                        <input type="text" name="featured_name" id="update_featured_name" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="category_description" id="update_category_description" maxlength="200" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="featured_description" id="update_featured_description" maxlength="200" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -181,16 +181,16 @@
         $('.btn-modal-add').on('click', function(e){
 
 
-            var category_id =  $(this).data('id');
-            var category_name = $(this).data('name');
-            var category_description = $(this).data('description');
+            var featured_id =  $(this).data('id');
+            var featured_name = $(this).data('name');
+            var featured_description = $(this).data('description');
 
-            console.log(category_name)
+            console.log(featured_name)
 
 
-            $('#update_category_name').val(category_name)
-            $('#update_category_description').val(category_description)
-            $('#update_category_id').val(category_id)
+            $('#update_featured_name').val(featured_name)
+            $('#update_featured_description').val(featured_description)
+            $('#update_featured_id').val(featured_id)
             
 
 
@@ -198,13 +198,13 @@
         })
 
 
-        $('#form-update-categoria').on('submit', function(e) {
+        $('#form-update-features').on('submit', function(e) {
 
             e.preventDefault()
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/updateCategory',
+                url: '<?= base_url() ?>painel/updateFeatures',
                 data: $(this).serialize(),
                 success: function(data) {
 
@@ -224,13 +224,13 @@
 
         })
 
-        $('#form-add-category').on('submit', function(e) {
+        $('#form-add-features').on('submit', function(e) {
 
             e.preventDefault()
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/addCategory',
+                url: '<?= base_url() ?>painel/addFeatures',
                 data: $(this).serialize(),
                 success: function(data) {
 
@@ -252,7 +252,7 @@
 
 
 
-        function deleteCategory(category_id) {
+        function deleteFeatured(featured_id) {
 
             swal({
                 title: "Atenção!",
@@ -269,9 +269,9 @@
                 if (isConfirm) {
                     $.ajax({
                         method: 'POST',
-                        url: '<?= base_url() ?>painel/deleteCategory',
+                        url: '<?= base_url() ?>painel/deleteFeatures',
                         data: {
-                            category_id: category_id
+                            featured_id: featured_id
                         },
                         success: function(data) {
 

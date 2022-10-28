@@ -2,24 +2,33 @@
 class user_model extends CI_Model
 {
 
-    public function getUserByEmail($user_email) {
+    public function getUserByEmail($user_email)
+    {
 
         $this->db->where('user_email', $user_email);
         return $this->db->get('users')->row_array();
-
     }
 
-    public function getUserByToken($user_token) {
+    public function getUsers()
+    {
+
+        return $this->db->get('users')->result();
+    }
+
+    public function getUserByToken($user_token)
+    {
         $this->db->where('user_token', $user_token);
         return $this->db->get('users')->row_array();
     }
 
-    public function getUserById($user_id) {
+    public function getUserById($user_id)
+    {
         $this->db->where('id', $user_id);
         return $this->db->get('users')->row_array();
     }
 
-    public function updateUserCredits($raffle_user, $raffle_amount, $user_credits) {
+    public function updateUserCredits($raffle_user, $raffle_amount, $user_credits)
+    {
 
         $this->db->where('id', $raffle_user);
 
@@ -30,7 +39,8 @@ class user_model extends CI_Model
         return $this->db->update('users', $data);
     }
 
-    public function updateImage($user_id, $user_image) {
+    public function updateImage($user_id, $user_image)
+    {
 
         $this->db->where('id', $user_id);
 
@@ -41,7 +51,8 @@ class user_model extends CI_Model
         return $this->db->update('users', $data);
     }
 
-    public function updatePerfil($user_id, $user_name, $user_surname, $user_email, $user_street, $user_city, $user_district, $user_state, $user_cep ) {
+    public function updatePerfil($user_id, $user_name, $user_surname, $user_email, $user_street, $user_city, $user_district, $user_state, $user_cep)
+    {
 
         $this->db->where('id', $user_id);
 
@@ -60,25 +71,48 @@ class user_model extends CI_Model
         return $this->db->update('users', $data);
     }
 
+    public function updateUserAdmin($user_id,  $user_image, $user_name, $user_surname, $user_email, $user_street, $user_city, $user_district, $user_state, $user_cep, $user_plan, $user_status)
+    {
 
-    public function updatePassword($user_id, $password) {
         $this->db->where('id', $user_id);
 
-        $data = array (
+        $data = array(
+            'user_name' => $user_name,
+            'user_surname' => $user_surname,
+            'user_surname' => $user_surname,
+            'user_email' => $user_email,
+            'user_street' => $user_street,
+            'user_city' => $user_city,
+            'user_district' => $user_district,
+            'user_state' => $user_state,
+            'user_cep' => $user_cep,
+            'user_plan' => $user_plan,
+            'user_status' => $user_status,
+            'user_image' =>  $user_image
+
+        );
+
+        return $this->db->update('users', $data);
+    }
+
+
+    public function updatePassword($user_id, $password)
+    {
+        $this->db->where('id', $user_id);
+
+        $data = array(
             'user_password' => md5($password),
         );
         return $this->db->update('users', $data);
     }
 
-    public function updateToken($user_id) {
+    public function updateToken($user_id)
+    {
         $this->db->where('id', $user_id);
 
-        $data = array (
+        $data = array(
             'user_token' => mt_rand(),
         );
         return $this->db->update('users', $data);
     }
-
- 
 }
-?>

@@ -80,7 +80,7 @@
                       </select>
                     </div>
                     <div class="col-md-6">
-                      <h4 class="card-title mb-1">PECIFICAÇÃO <small class="text-danger">*</small></h4>
+                      <h4 class="card-title mb-1">PRECIFICAÇÃO <small class="text-danger">*</small></h4>
                       <select name="ebook_precificacao" id="ebook_precificacao" required class="form-control">
                         <option default value="">SELECIONE UMA OPÇÃO</option>
 
@@ -424,7 +424,11 @@
         title: "Atenção!",
         text: "Tem certeza que deseja excluir?",
         icon: "warning",
-        // buttons:[cancel, confirm]
+        buttons: [
+                    'Não',
+                    'Sim, quero excluir'
+                ],
+                dangerMode: true,
 
       }).then(function(isConfirm) {
 

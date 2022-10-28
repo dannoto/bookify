@@ -16,7 +16,8 @@ class register_model extends CI_Model
             'user_origin' => $user_origin,
             'user_plan' => 1,
             'user_status' => 1,
-            'user_token' => mt_rand()
+            'user_token' => mt_rand(),
+            'user_image' => 'default.png'
         ); 
 
 

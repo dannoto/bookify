@@ -10,6 +10,7 @@ class Planos extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->model('user_model');
 		$this->load->model('email_model');
+		$this->load->model('plan_model');
 
 
 	}
@@ -17,6 +18,10 @@ class Planos extends CI_Controller {
 
     public function index() {
 
-        $this->load->view('user/planos');
+		$data  = array(
+			'planos' => $this->plan_model->getPlans()
+		);
+
+        $this->load->view('user/planos',$data);
     }
  }

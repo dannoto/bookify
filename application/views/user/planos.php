@@ -27,7 +27,7 @@
             
         </div>
         <div class="grid xl:grid-cols-3 grid-cols-1 home-plano">
-            <div class="xl:col-span-1 col-span-1 grid place-items-center  xl:mt-0 mt-5 m-3">
+            <!-- <div class="xl:col-span-1 col-span-1 grid place-items-center  xl:mt-0 mt-5 m-3">
                 <div class="home-plano-div">
                     <div>
                         <div class="bg-yellowDefault home-plano-breadcumb grid place-items-center">
@@ -72,30 +72,37 @@
                         <button class="bg-greenDefault ">ASSINAR</button>
                     </div>
                 </div>
-            </div>
-            <div class="xl:col-span-1 col-span-1 grid place-items-center xl:mt-0 mt-5 m-3">
+            </div> -->
+            <?php foreach($planos as $p) {?>
+                <div class="xl:col-span-1 col-span-1 grid place-items-center xl:mt-0 mt-5 m-3">
                 <div class="home-plano-div">
                     <div>
                         <div class="bg-yellowDefault home-plano-breadcumb grid place-items-center">
-                            <p>PLANO ANUAL</p>
+                            <p><?=$p->plan_name?></p>
                         </div>
-                        <p class="line-clamp-3 home-plano-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p class="line-clamp-3 home-plano-description"><?=$p->plan_description?></p>
                         <div class="grid place-items-center">
                             <ul class="mt-3 mb-3">
-                                <li><i class="text-greenDefault fa fa-plus"></i> ITEM 1</li>
-                                <li><i class="text-greenDefault fa fa-plus"></i> ITEM 2</li>
-                                <li><i class="text-greenDefault fa fa-plus"></i> ITEM 3</li>
+                                <li><i class="text-greenDefault fa fa-plus"></i> <?=$p->plan_limit_library?> </li>
+                                <li><i class="text-greenDefault fa fa-plus"></i>  <?=$p->plan_limit_quantity?></li>
+                                <li><i class="text-greenDefault fa fa-plus"></i>  <?=$p->plan_limit_free?></li>
+                                <li><i class="text-greenDefault fa fa-plus"></i>  <?=$p->plan_limit_premium?></li>
+
                             </ul>
                         </div>
                         <div class="grid place-items-center mb-5">
-                            <span class="home-plano-currency">R$<span class="home-plano-preco">9,90</span></span>
+                            <span class="home-plano-currency">R$<span class="home-plano-preco"><?=$p->plan_price?></span><span class="home-plano-currency">/ <?=$p->plan_type?></span></span>
                         </div>
                     </div>
                     <div class="home-plano-assinar-btn">
+                       <a href="<?=base_url()?>checkout/<?=$p->id?>">
                         <button class="bg-greenDefault ">ASSINAR</button>
+                       </a>
                     </div>
                 </div>
             </div>
+            <?php } ?>
+            
 
         </div>
     </section>

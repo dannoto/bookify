@@ -9,14 +9,26 @@ class Ebook extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->model('user_model');
 		$this->load->model('email_model');
+		$this->load->model('ebook_model');
 
 
 	}
-	public function detalhes($id)
+	public function detalhes($ebook_id)
 	{
 
+		$ebook = $this->ebook_model->getEbook($ebook_id);
 
-		$this->load->view('user/ebook_details');
+		if ($ebook) {
+
+			$data= array(
+				'ebook' => $this->ebook_model->getEbook($ebook_id),
+			);
+	
+			$this->load->view('user/ebook_details', $data);
+
+		} else {
+			redirect(base_url('catalogo'));
+		}
 	}
 
 }

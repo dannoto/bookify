@@ -12,3 +12,4 @@ $route['ebook/detalhes/(:any)'] = "ebook/detalhes/$1";
 
 $route['painel/ebooks_editar/(:any)'] = "painel/ebooks_editar/$1";
 
+$route['painel/usuarios_editar/(:any)'] = "painel/usuarios_editar/$1";

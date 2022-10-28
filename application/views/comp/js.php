@@ -37,14 +37,14 @@ $(document).ready(function(){
       margin:10,
       nav:false,
       dots:false,
-      loop:true,
+      loop:false,
 
       responsive:{
           0:{
-              items:3
+              items:2
           },
           600:{
-              items:3
+              items:2
           },
           1000:{
               items:5

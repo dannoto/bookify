@@ -14,10 +14,12 @@ class Painel extends CI_Controller
         $this->load->model('admin_model');
         $this->load->model('category_model');
         $this->load->model('payments_model');
+        $this->load->model('config_model');
 
         $this->load->model('audio_model');
         $this->load->model('ebook_model');
         $this->load->model('chapter_model');
+        $this->load->model('plan_model');
     }
 
     public function index()
@@ -31,26 +33,139 @@ class Painel extends CI_Controller
 
 
     // Paginas
+
+    public function updateGateway () {
+
+        $response = array();
+
+        $gateway_public = htmlspecialchars($this->input->post('gateway_public'));
+        $gateway_secret = htmlspecialchars($this->input->post('gateway_secret'));
+
+        if ( $this->config_model->updateConfigPayment($gateway_public, $gateway_secret)) {
+            $response =  array('status' => 'true', 'message' => 'Chaves atualizadas com sucesso.');
+        }   else {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+    
+
+
+        print_r(json_encode($response));
+
+    }
+
+    public function configuracoes_gateways()
+    {
+
+        $data = array(
+            'gateway' => $this->config_model->getGatewayPayment(),
+        );
+
+        $this->load->view('admin/configuracoes', $data);
+    }
+
+    public function planos()
+    {
+
+
+        $data = array(
+            'planos' => $this->plan_model->getPlans(),
+        );
+
+        $this->load->view('admin/planos', $data);
+    }
     public function usuarios()
     {
 
 
-        $data = array();
+        $data = array(
+            'usuarios' => $this->user_model->getUsers(),
+        );
 
-        $this->load->view('admin/usuarios');
+        $this->load->view('admin/usuarios/lista', $data);
     }
 
+    public function usuarios_editar($user_id)
+    {
+
+        $user = $this->user_model->getUserById(htmlspecialchars($user_id));
+
+        if ($user) {
+        } else {
+            redirect(base_url('painel/usuarios'));
+        }
+
+        $data = array(
+            'usuario' => $this->user_model->getUserById(htmlspecialchars($user_id)),
+            'planos' => $this->plan_model->getPlans(),
+
+        );
+
+        $this->load->view('admin/usuarios/editar', $data);
+    }
+
+    public function actUpdateUser()
+    {
+
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $user_id = htmlspecialchars($this->input->post('user_id'));
+            $user_name = htmlspecialchars($this->input->post('user_name'));
+            $user_surname = htmlspecialchars($this->input->post('user_surname'));
+            $user_image = "";
+            $user_email = htmlspecialchars($this->input->post('user_email'));
+            $user_status = htmlspecialchars($this->input->post('user_status'));
+            $user_plan = htmlspecialchars($this->input->post('user_plan'));
+            $user_street = htmlspecialchars($this->input->post('user_street'));
+            $user_city = htmlspecialchars($this->input->post('user_city'));
+            $user_state = htmlspecialchars($this->input->post('user_state'));
+            $user_district = htmlspecialchars($this->input->post('user_district'));
+            $user_cep = htmlspecialchars($this->input->post('user_cep'));
+
+
+            if ($_FILES) {
+
+                $uploadPATH = './assets/img/avatar/';
+                $uploadNAME = mt_rand() . basename($_FILES['user_image']['name']);
+                $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
+
+                if (move_uploaded_file($_FILES['user_image']['tmp_name'], $uploadPATHFULL)) {
+
+                    $user_image = $uploadNAME;
+                } else {
+
+                    $user_image =  "default.png";
+                }
+            } else {
+
+                $user_image =  "default.png";
+            }
+
+
+            if ($this->user_model->updateUserAdmin($user_id,  $user_image, $user_name, $user_surname, $user_email, $user_street, $user_city, $user_district, $user_state, $user_cep, $user_plan, $user_status)) {
+
+                $response =  array('status' => 'true', 'message' => 'Usuário atualizado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
     public function ebooks_publicar()
     {
 
         $data = array(
-                'categorias' => $this->category_model->getCategories(),
-                'features' => $this->category_model->getFeatures()
+            'categorias' => $this->category_model->getCategories(),
+            'features' => $this->category_model->getFeatures()
         );
-        
+
         $this->load->view('admin/ebooks/publicar', $data);
     }
-    
+
     public function ebooks_editar($ebook_id)
     {
 
@@ -63,28 +178,26 @@ class Painel extends CI_Controller
                     'categorias' => $this->category_model->getCategories(),
                     'features' => $this->category_model->getFeatures()
                 );
-    
+
                 $this->load->view('admin/ebooks/editar', $data);
-
-
             } else {
                 redirect(base_url('painel/ebooks_lista'));
             }
-
         } else {
 
             redirect(base_url('painel/ebooks_lista'));
         }
-
-
     }
 
     public function ebooks_lista()
     {
 
 
+
         $data = array(
             'ebooks' => $this->ebook_model->getEbooksAdmin(),
+            'categorias' => $this->category_model->getCategories(),
+            'features' => $this->category_model->getFeatures()
 
         );
 
@@ -93,8 +206,22 @@ class Painel extends CI_Controller
 
     public function ebooks_categorias()
     {
+        $data = array(
+            'ebooks' => $this->ebook_model->getEbooksAdmin(),
+            'categorias' => $this->category_model->getCategories(),
+        );
 
-        $this->load->view('admin/ebooks/categorias');
+        $this->load->view('admin/ebooks/categorias', $data);
+    }
+
+    public function ebooks_features()
+    {
+        $data = array(
+            'ebooks' => $this->ebook_model->getEbooksAdmin(),
+            'features' => $this->category_model->getFeatures()
+        );
+
+        $this->load->view('admin/ebooks/features', $data);
     }
 
     // Paginas
@@ -125,20 +252,19 @@ class Painel extends CI_Controller
             if ($_FILES) {
 
                 $hash = md5($ebook_category);
-                $uploadPATH = './assets/img/ebooks/'.$hash."/";
-                $uploadNAME = mt_rand() . basename($_FILES['ebook_image']['name']) ;
-                $uploadPATHFULL = $uploadPATH . str_replace(" ","", $uploadNAME);
+                $uploadPATH = './assets/img/ebooks/' . $hash . "/";
+                $uploadNAME = mt_rand() . basename($_FILES['ebook_image']['name']);
+                $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
 
-                $uploadPATHFULLdatabase = str_replace(".","", $uploadPATH). str_replace(" ","", $uploadNAME);
+                $uploadPATHFULLdatabase = str_replace(".", "", $uploadPATH) . str_replace(" ", "", $uploadNAME);
 
                 if (!file_exists($uploadPATH)) {
-                    mkdir($uploadPATH, 0777, true);			
+                    mkdir($uploadPATH, 0777, true);
                 }
 
-                if (move_uploaded_file($_FILES['ebook_image']['tmp_name'], $uploadPATHFULL )) {
+                if (move_uploaded_file($_FILES['ebook_image']['tmp_name'], $uploadPATHFULL)) {
 
                     $ebook_image = $uploadPATHFULLdatabase;
-
                 } else {
 
                     $ebook_image =  "/assets/img/ebooks/default.png";
@@ -149,7 +275,7 @@ class Painel extends CI_Controller
             }
 
             $ebook_created = $this->ebook_model->addEbook($ebook_title, $ebook_description, $ebook_image, $ebook_tags, $ebook_status, $ebook_precificacao, $ebook_category, $ebook_featured, $ebook_publisher, $ebook_author);
-           
+
             if ($ebook_created) {
 
                 $response =  array('status' => 'true', 'message' => 'Audiobook criado com sucesso. Comece a editar!', 'ebook_id' => $ebook_created);
@@ -186,25 +312,23 @@ class Painel extends CI_Controller
             if ($_FILES) {
 
                 $hash = md5($ebook_category);
-                $uploadPATH = './assets/img/ebooks/'.$hash."/";
-                $uploadNAME = mt_rand() . basename($_FILES['ebook_image']['name']) ;
-                $uploadPATHFULL = $uploadPATH . str_replace(" ","", $uploadNAME);
+                $uploadPATH = './assets/img/ebooks/' . $hash . "/";
+                $uploadNAME = mt_rand() . basename($_FILES['ebook_image']['name']);
+                $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
 
-                $uploadPATHFULLdatabase = str_replace(".","", $uploadPATH). str_replace(" ","", $uploadNAME);
+                $uploadPATHFULLdatabase = str_replace(".", "", $uploadPATH) . str_replace(" ", "", $uploadNAME);
 
                 if (!file_exists($uploadPATH)) {
-                    mkdir($uploadPATH, 0777, true);			
+                    mkdir($uploadPATH, 0777, true);
                 }
 
-                if (move_uploaded_file($_FILES['ebook_image']['tmp_name'], $uploadPATHFULL )) {
+                if (move_uploaded_file($_FILES['ebook_image']['tmp_name'], $uploadPATHFULL)) {
 
                     $ebook_image = $uploadPATHFULLdatabase;
-
                 } else {
 
                     $ebook_image =  "/assets/img/ebooks/default.png";
                 }
-
             } else {
 
                 $ebook_image =  "";
@@ -307,14 +431,10 @@ class Painel extends CI_Controller
                 if ($this->audio_model->deleteAudiosByChapter($chapter_id)) {
 
                     $response =  array('status' => 'true', 'message' => 'Capítulo excluído com sucesso!');
-
                 } else {
 
                     $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
-
                 }
-
-
             } else {
 
                 $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
@@ -325,6 +445,239 @@ class Painel extends CI_Controller
         }
     }
     //Actions Chaper
+
+
+    // Actions Category 
+
+    public function addCategory()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $category_name = htmlspecialchars($this->input->post('category_name'));
+            $category_description = htmlspecialchars($this->input->post('category_description'));
+
+            if ($this->category_model->addCategory($category_name, $category_description)) {
+
+                $response =  array('status' => 'true', 'message' => 'Capítulo criado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function updateCategory()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+            $category_id = htmlspecialchars($this->input->post('category_id'));
+            $category_name = htmlspecialchars($this->input->post('category_name'));
+            $category_description = htmlspecialchars($this->input->post('category_description'));
+
+
+            if ($this->category_model->updateCategory($category_id, $category_name, $category_description)) {
+
+                $response =  array('status' => 'true', 'message' => 'Capítulo atualizado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function deleteCategory()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $category_id = htmlspecialchars($this->input->post('category_id'));
+
+            if ($this->category_model->deleteCategory($category_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Categoria excluída com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+    //Actions Category 
+
+
+
+    // Actions Category 
+
+    public function addPlan()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $plan_name = htmlspecialchars($this->input->post('plan_name'));
+            $plan_description = htmlspecialchars($this->input->post('plan_description'));
+            $plan_price = htmlspecialchars($this->input->post('plan_price'));
+            $plan_type = htmlspecialchars($this->input->post('plan_type'));
+
+            $plan_limit_library = htmlspecialchars($this->input->post('plan_limit_library'));
+            $plan_limit_quantity = htmlspecialchars($this->input->post('plan_limit_quantity'));
+            $plan_limit_free = htmlspecialchars($this->input->post('plan_limit_free'));
+            $plan_limit_premium = htmlspecialchars($this->input->post('plan_limit_premium'));
+
+            $plan_gateway_id = htmlspecialchars($this->input->post('plan_gateway_id'));
+
+            if ($this->plan_model->addPlan($plan_name, $plan_description, $plan_price, $plan_type, $plan_limit_library, $plan_limit_quantity, $plan_limit_free, $plan_limit_premium, $plan_gateway_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Plano criado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function updatePlan()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+            $plan_id = htmlspecialchars($this->input->post('plan_id'));
+            $plan_name = htmlspecialchars($this->input->post('plan_name'));
+            $plan_description = htmlspecialchars($this->input->post('plan_description'));
+            $plan_price = htmlspecialchars($this->input->post('plan_price'));
+            $plan_type = htmlspecialchars($this->input->post('plan_type'));
+
+            $plan_limit_library = htmlspecialchars($this->input->post('plan_limit_library'));
+            $plan_limit_quantity = htmlspecialchars($this->input->post('plan_limit_quantity'));
+            $plan_limit_free = htmlspecialchars($this->input->post('plan_limit_free'));
+            $plan_limit_premium = htmlspecialchars($this->input->post('plan_limit_premium'));
+
+            $plan_gateway_id = htmlspecialchars($this->input->post('plan_gateway_id'));
+
+            $plan_price = str_replace(".", "", $plan_price);
+            $plan_price = str_replace(",", ".", $plan_price);
+
+
+            if ($this->plan_model->updatePlan($plan_id, $plan_name, $plan_description, $plan_price, $plan_type, $plan_limit_library, $plan_limit_quantity, $plan_limit_free, $plan_limit_premium, $plan_gateway_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Plano atualizado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function deletePlan()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $plan_id = htmlspecialchars($this->input->post('plan_id'));
+
+            if ($this->plan_model->deletePlan($plan_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Plano excluído com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+    //Actions Plan 
+
+
+
+    // Actions Category 
+
+    public function addFeatures()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $featured_name = htmlspecialchars($this->input->post('featured_name'));
+            $featured_description = htmlspecialchars($this->input->post('featured_description'));
+
+            if ($this->category_model->addFeatures($featured_name, $featured_description)) {
+
+                $response =  array('status' => 'true', 'message' => 'Capítulo criado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function updateFeatures()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+            $featured_id = htmlspecialchars($this->input->post('featured_id'));
+            $featured_name = htmlspecialchars($this->input->post('featured_name'));
+            $featured_description = htmlspecialchars($this->input->post('featured_description'));
+
+
+            if ($this->category_model->updateFeatures($featured_id, $featured_name, $featured_description)) {
+
+                $response =  array('status' => 'true', 'message' => 'Capítulo atualizado com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+
+    public function deleteFeatures()
+    {
+        $response = array();
+
+        if ($this->input->post()) {
+
+            $featured_id = htmlspecialchars($this->input->post('featured_id'));
+
+            if ($this->category_model->deleteFeatures($featured_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Categoria excluída com sucesso!');
+            } else {
+
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+
+            print_r(json_encode($response));
+        }
+    }
+    //Features Category 
 
 
     // Actions Audio
@@ -418,7 +771,7 @@ class Painel extends CI_Controller
         }
     }
 
-    public function deleteAudio() 
+    public function deleteAudio()
     {
 
         if ($this->input->post()) {
@@ -444,7 +797,7 @@ class Painel extends CI_Controller
 
     // Actions DOM
 
-    public function getChaptersDOM() 
+    public function getChaptersDOM()
     {
 
         if ($this->input->post()) {
@@ -454,21 +807,14 @@ class Painel extends CI_Controller
             $chapters = $this->chapter_model->getChaptersByEbook($ebook_id);
 
 
-            foreach ($chapters as $c) 
-            {
+            foreach ($chapters as $c) {
                 // Chaperts
 
                 //Audios
-                foreach ($this->audio_model->getAudiosByChapters($c->id) as $a) 
-                {
-                                           
+                foreach ($this->audio_model->getAudiosByChapters($c->id) as $a) {
                 }
-
             }
-
-
         }
-
     }
 
     //Actions DOM

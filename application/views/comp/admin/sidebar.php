@@ -22,19 +22,22 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="menu-icon typcn typcn-coffee"></i>
-                <span class="menu-title">Ebooks</span>
+                <span class="menu-title">Audiobooks</span>
                 <i class="menu-arrow"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url()?>painel/ebooks_publicar">Publicar Ebook</a>
+                    <a class="nav-link" href="<?=base_url()?>painel/ebooks_publicar">Publicar Audiobook</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url()?>painel/ebooks_lista">Lista de Ebooks</a>
+                    <a class="nav-link" href="<?=base_url()?>painel/ebooks_lista">Lista de Audiobooks</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="<?=base_url()?>painel/ebooks_categorias">Categorias</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url()?>painel/ebooks_features">Destaques</a>
                   </li>
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>

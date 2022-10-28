@@ -1,0 +1,20 @@
+<?php
+class config_model extends CI_Model
+{
+
+
+    public function updateConfigPayment($gateway_public, $gateway_secret)
+    {
+
+        $data = array(
+            'gateway_public' => $gateway_public,
+            'gateway_secret' => $gateway_secret
+        );
+
+        return $this->db->update('config_gateway',$data);
+    }
+
+    public function getGatewayPayment() {
+        return $this->db->get('config_gateway')->row_array();
+    }
+}
