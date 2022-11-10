@@ -156,7 +156,7 @@
                                                         </td>
                                                         <td><?= $c->ebook_title ?></td>
                                                         <td><?= $this->category_model->getCategory($c->ebook_category)['category_name'] ?></td>
-                                                        <td><?= $this->category_model->getFeature($c->ebook_featured)['featured_name'] ?></td>
+                                                        <td><?php if ($c->ebook_featured) { echo  $this->category_model->getFeature($c->ebook_featured)['featured_name'] ; } else { echo "-";}?></td>
                                                         <td><?php if ($c->ebook_precificacao == 0) { echo "Grátis";} else { echo "Premium";}?></td>
                                                         <td>
                                                             <a href="<?= base_url() ?>painel/ebooks_editar/<?= $c->id ?>">

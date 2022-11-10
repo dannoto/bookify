@@ -72,4 +72,17 @@ class plan_model extends CI_Model
         return $this->db->update('users_plans', $data);
     }
 
+
+    //Regulations
+
+    public function countUserLibrary($user_id) {
+        $this->db->where('library_user_id', $user_id);
+        return $this->db->count_all_results('users_library');
+    }
+
+    public function getUserPlan($plan_id) {
+        $this->db->where('id', $plan_id);
+        return $this->db->get('users_plans')->row_array();
+    }
+
 }

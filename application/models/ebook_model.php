@@ -54,11 +54,58 @@ class ebook_model extends CI_Model
         return $hours;
     }
 
- 
- 
 
-    public function getEbooksByFeaturesTotal($featured_id)
+    public function getEbooksByFeaturesTotalPrecificacao($features_id, $ebook_precificacao, $limit = null, $start = null)
     {
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+        
+        $this->db->order_by('id', 'desc');
+        $this->db->where('ebook_status', 1);
+        $this->db->where('ebook_delete_status', 1);
+        $this->db->where('ebook_featured', $features_id);
+        $this->db->where('ebook_precificacao', $ebook_precificacao);
+
+        return $this->db->get('ebooks')->result();
+    }
+
+    public function getEbooksByCategoryTotalPrecificacao($category_id, $ebook_precificacao, $limit = null, $start = null)
+    {
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+
+        $this->db->order_by('id', 'desc');
+        $this->db->where('ebook_status', 1);
+        $this->db->where('ebook_delete_status', 1);
+        $this->db->where('ebook_category', $category_id);
+        $this->db->where('ebook_precificacao', $ebook_precificacao);
+
+        return $this->db->get('ebooks')->result();
+    }
+    
+    public function getEbooksByCategoryTotal($category_id, $limit = null, $start = null)
+    {
+
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+        //Para catalogo com limitação
+        $this->db->order_by('id', 'desc');
+        $this->db->where('ebook_status', 1);
+        $this->db->where('ebook_delete_status', 1);
+        $this->db->where('ebook_category', $category_id);
+
+        return $this->db->get('ebooks')->result();
+    }
+
+    public function getEbooksByFeaturesTotal($featured_id, $limit = null, $start = null)
+    {
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+
         //Para catalogo com limitação
         $this->db->order_by('id', 'desc');
         $this->db->where('ebook_status', 1);
@@ -68,17 +115,6 @@ class ebook_model extends CI_Model
         return $this->db->get('ebooks')->result();
     }
 
-    public function getEbooksByCategoryTotal($category_id)
-    {
-
-        //Para catalogo com limitação
-        $this->db->order_by('id', 'desc');
-        $this->db->where('ebook_status', 1);
-        $this->db->where('ebook_delete_status', 1);
-        $this->db->where('ebook_category', $category_id);
-
-        return $this->db->get('ebooks')->result();
-    }
 
     public function getEbooksByFeatures($featured_id)
     {
@@ -135,9 +171,42 @@ class ebook_model extends CI_Model
         return $this->db->get('ebooks')->result();
     }
 
-
-    public function getEbooks()
+    public function getEbooksSearch($ebook_precificacao, $ebook_category, $ebook_title, $limit = null, $start = null)
     {
+
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+
+        if (strlen($ebook_precificacao) > 0 ) {
+            echo "preco";
+            $this->db->where('ebook_precificacao', $ebook_precificacao);
+        }
+        if (strlen($ebook_category) > 0 ) {
+            echo "categoria";
+            $this->db->where('ebook_category', $ebook_category);
+        }
+        if (strlen($ebook_title) > 0 ) {
+
+            $this->db->like('ebook_title', $ebook_title);
+            $this->db->or_like('ebook_tags',$ebook_title); 
+
+        }
+
+        $this->db->order_by('id', 'desc');
+
+        $this->db->where('ebook_status', 1);
+        $this->db->where('ebook_delete_status', 1);
+        return $this->db->get('ebooks')->result();
+    }
+
+    public function getEbooks($limit = null, $start = null)
+    {
+
+        if ($limit !== null) {
+            $this->db->limit($start, $limit);
+        }
+
         $this->db->order_by('id', 'desc');
 
         $this->db->where('ebook_status', 1);
@@ -151,6 +220,18 @@ class ebook_model extends CI_Model
 
         $this->db->where('ebook_delete_status', 1);
         return $this->db->get('ebooks')->result();
+    }
+
+    public function increaseEbookDuration($ebook_id, $audio_duration) {
+        $this->db->where('id', $ebook_id);
+        $this->db->set('ebook_duration', 'ebook_duration'."+".$audio_duration, FALSE);
+        $this->db->update('ebooks'); 
+    }
+
+    public function decreaseEbookDuration($ebook_id, $audio_duration) {
+        $this->db->where('id', $ebook_id);
+        $this->db->set('ebook_duration', 'ebook_duration'."-".$audio_duration, FALSE);
+        $this->db->update('ebooks'); 
     }
 
     public function getEbook($ebook_id)

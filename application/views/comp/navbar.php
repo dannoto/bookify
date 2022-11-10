@@ -51,11 +51,11 @@
                             <img style="height: 45px;width:45px;border-radius :100px;object-fit:cover" src="<?=base_url()?>assets/img/avatar/<?=$this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_image']?>" alt="">
                         </a>
                     </div>
-                    <div class="col-span-1">
+                    <!-- <div class="col-span-1">
                         <a href="<?=base_url()?>sair">
                             <i style="font-size: 35px;" title="Sair" class="fa fa-sign-out ml-3 text-black"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
 

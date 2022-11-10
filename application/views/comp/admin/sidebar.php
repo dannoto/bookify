@@ -1,18 +1,18 @@
-    <nav class="sidebar sidebar-offcanvas" style="background-color: orange !important;" id="sidebar">
-          <ul class="nav">
+    <nav class="sidebar sidebar-offcanvas"  style="background-color: #00b467 !important;" id="sidebar">
+          <ul class="nav" style="background-color: #00b467 !important;">
             <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link" style="background-color: #00b467 !important;">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="<?=base_url()?>assets_admin/images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="<?=base_url()?>assets/img/avatar/avatar.png" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
-                  <p class="designation">Premium user</p>
+                  <p class="profile-name">Vinicius Souza</p>
+                  <p class="designation">Administrador</p>
                 </div>
               </a>
             </li>
-            <li class="nav-item nav-category">Main Menu</li>
+            <li class="nav-item nav-category"> Menu</li>
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url()?>painel">
                 <i class="menu-icon typcn typcn-document-text"></i>
@@ -63,13 +63,13 @@
                 <span class="menu-title">Planos</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="pages/icons/font-awesome.html">
                 <i class="menu-icon typcn typcn-user-outline"></i>
                 <span class="menu-title">Icons</span>
               </a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <li class="nav-item" style="background-color: #00b467 !important;" >
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="menu-icon typcn typcn-document-add"></i>
                 <span class="menu-title">Configurações</span>

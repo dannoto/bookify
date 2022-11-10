@@ -308,6 +308,12 @@
     color:#fff;
     border:1px solid #00B467;
 }
+
+.swal-button--cancel {
+    color:#FFF;
+    background-color: red !important;
+    border: 1px solid red !important;
+}
 /* Pagination */
 
 /* Catalogo */
@@ -322,8 +328,9 @@
     padding-top: 12px; */
     width: auto;
     height: 40px;
-    margin-top: -8px;
-    padding-top: 7px;
+ 
+    margin-top: -5px;
+    padding-top: 4px;
     border-radius: 12px;
 }
 .catalogo-left  h1 {

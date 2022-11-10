@@ -1,7 +1,6 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="position:absolute;">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+<nav  class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="position:absolute;">
+        <div  style="background-color: #00b467 !important"  style="background-color: #00b467 !important" class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="<?=base_url()?>assets_admin/images/logo.svg" alt="logo" /> </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
             <img src="<?=base_url()?>assets_admin/images/logo-mini.svg" alt="logo" /> </a>
         </div>

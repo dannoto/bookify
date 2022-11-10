@@ -15,7 +15,7 @@ class audio_model extends CI_Model
             'audio_duration' => $audio_duration,
             'audio_date' => date('Y-m-d'),
             'audio_time' => date('H:i:s'),
-            'audio_user' => $this->session->userdata('session_admin')['id'],
+            'audio_user' => 1, //$this->session->userdata('session_admin')['id'],
             'audio_status' => 1,
             'audio_delete_status' => 1,
         );
@@ -54,7 +54,7 @@ class audio_model extends CI_Model
                 'audio_duration' => $audio_duration,
                 'audio_date' => date('Y-m-d'),
                 'audio_time' => date('H:i:s'),
-                'audio_user' => $this->session->userdata('session_admin')['id'],
+                'audio_user' => 1 //$this->session->userdata('session_admin')['id'],
 
             );
         } else {
@@ -66,8 +66,7 @@ class audio_model extends CI_Model
                 'audio_duration' => $audio_duration,
                 'audio_date' => date('Y-m-d'),
                 'audio_time' => date('H:i:s'),
-                'audio_user' => $this->session->userdata('session_admin')['id'],
-
+                'audio_user' => 1 //$this->session->userdata('session_admin')['id'],
             );
         }
 

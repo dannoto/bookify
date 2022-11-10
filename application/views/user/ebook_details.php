@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Prícipe - Maqiável</title>
+    <title><?= $ebook['ebook_title'] ?></title>
 
     <?php $this->load->view('comp/css'); ?>
 </head>
@@ -92,7 +92,7 @@
 
         <section class="xl:mt-12 xl:m-0 m-3 mt-8 xl:pt-8  xl:mb-12">
             <div class=" xl:ml-24 xl:mr-24">
-                <h4 class="ebook-title ">VOCÊ TAMBÉM VAI GOSTAR</h4>
+                <h4 class="ebook-title " style="font-size:25px;">VOCÊ TAMBÉM VAI GOSTAR</h4>
 
                 <div class="owl-carousel mt-8 carousel">
 
@@ -117,7 +117,91 @@
 
     <script>
         $('.ebook-add-biblioteca').on('click', function(e) {
-            swal('Adicionado na sua biblioteca.')
+
+            var library_id = null
+            var ebook_id = "<?= $ebook['id'] ?>"
+            var ebook_user = "<?= $this->session->userdata('session_user')['id']; ?>"
+
+            // swal('Adicionado na sua biblioteca.')
+
+            $.ajax({
+
+                method: 'POST',
+                url: '<?= base_url() ?>biblioteca/actaddlibrary',
+                data: {
+                    ebook_id: ebook_id,
+                    ebook_user: ebook_user
+                },
+                success: function(data) {
+
+                    var resp = JSON.parse(data)
+
+                    if (resp.status == "true") {
+
+                        swal({
+                            title: "Feito!",
+                            text: resp.message,
+                            icon: "success",
+
+                        }).then(function(isConfirm) {
+
+                            if (isConfirm) {
+                                location.reload()
+                            } else {
+                                location.reload()
+                            }
+
+
+                        });
+
+                    } else if (resp.status == "upgrade") {
+
+                        swal({
+                            title: "Opss!",
+                            text: resp.message,
+                            icon: "warning",
+                            buttons: [
+                                'SAIR',
+                                'FAZER UPGRADE !'
+                            ],
+                            dangerMode: true,
+
+                        }).then(function(isConfirm) {
+
+                            if (isConfirm) {
+                                window.location.href = "<?= base_url() ?>planos"
+                            } else {
+                                // window.location.href = "<?= base_url() ?>planos"
+                            }
+
+
+                        });
+
+                    } else if (resp.status == "false") {
+
+                        swal({
+                            title: "Ops!",
+                            text: resp.message,
+                            icon: "success",
+
+                        }).then(function(isConfirm) {
+
+                           
+
+                        });
+
+                    } else {
+                        swal('Ocorreu um erro temporário. ');
+
+                    }
+
+
+                },
+                error: function(data) {
+                    swal('Ocorreu um erro temporário. ');
+                },
+
+            });
         })
     </script>
 

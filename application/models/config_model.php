@@ -17,4 +17,10 @@ class config_model extends CI_Model
     public function getGatewayPayment() {
         return $this->db->get('config_gateway')->row_array();
     }
+
+    //Design
+
+    public function getConfigDesign(){
+        return $this->db->get('config_design')->row_array();
+    }
 }

@@ -382,7 +382,7 @@ class Painel extends CI_Controller
             $chapter_ebook = htmlspecialchars($this->input->post('chapter_ebook'));
             $chapter_description = htmlspecialchars($this->input->post('chapter_description'));
 
-            if ($this->ebook_model->addChapter($chapter_title, $chapter_ebook, $chapter_description)) {
+            if ($this->chapter_model->addChapter($chapter_title, $chapter_ebook, $chapter_description)) {
 
                 $response =  array('status' => 'true', 'message' => 'Capítulo criado com sucesso!');
             } else {
@@ -405,7 +405,7 @@ class Painel extends CI_Controller
             $chapter_title = htmlspecialchars($this->input->post('chapter_title'));
             $chapter_description = htmlspecialchars($this->input->post('chapter_description'));
 
-            if ($this->ebook_model->updateChapter($chapter_id, $chapter_title, $chapter_description)) {
+            if ($this->chapter_model->updateChapter($chapter_id, $chapter_title, $chapter_description)) {
 
                 $response =  array('status' => 'true', 'message' => 'Capítulo atualizado com sucesso!');
             } else {
@@ -426,7 +426,7 @@ class Painel extends CI_Controller
 
             $chapter_id = htmlspecialchars($this->input->post('chapter_id'));
 
-            if ($this->ebook_model->deleteChapter($chapter_id)) {
+            if ($this->chapter_model->deleteChapter($chapter_id)) {
 
                 if ($this->audio_model->deleteAudiosByChapter($chapter_id)) {
 
@@ -445,6 +445,12 @@ class Painel extends CI_Controller
         }
     }
     //Actions Chaper
+
+
+
+
+
+
 
 
     // Actions Category 
@@ -687,6 +693,7 @@ class Painel extends CI_Controller
 
         if ($this->input->post()) {
 
+
             $audio_chapter = htmlspecialchars($this->input->post('audio_chapter'));
             $audio_ebook = htmlspecialchars($this->input->post('audio_ebook'));
             $audio_title = htmlspecialchars($this->input->post('audio_title'));
@@ -694,28 +701,51 @@ class Painel extends CI_Controller
             $audio_file = "";
             $audio_duration = htmlspecialchars($this->input->post('audio_duration'));
 
+
+            //Convert to minutes
+            $i = explode(":",$audio_duration);
+            $m = $i[0];
+            $s = ($i[1] / 60);
+            $audio_duration = round(($m + $s), 2);
+
             if ($_FILES) {
 
-                $uploadPATH = './assets/img/audios/';
+                $hash = md5($audio_ebook);
+                $uploadPATH = './assets/audios/' . $hash . "/";
                 $uploadNAME = mt_rand() . basename($_FILES['audio_file']['name']);
-                $uploadPATHFULL = $uploadPATH . $uploadNAME;
+                $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
+
+                $uploadPATHFULLdatabase = str_replace(".", "", $uploadPATH) . str_replace(" ", "", $uploadNAME);
+
+                if (!file_exists($uploadPATH)) {
+                    mkdir($uploadPATH, 0777, true);
+                }
 
                 if (move_uploaded_file($_FILES['audio_file']['tmp_name'], $uploadPATHFULL)) {
 
-                    $audio_file =  $uploadNAME;
+                    $audio_file = $uploadPATHFULLdatabase;
                 } else {
 
                     $audio_file =  "";
                 }
+
             } else {
 
                 $audio_file =  "";
             }
 
 
-            if ($this->ebook_model->addAudio($audio_chapter, $audio_ebook, $audio_title, $audio_description, $audio_file, $audio_duration)) {
+            if ($this->audio_model->addAudio($audio_chapter, $audio_ebook, $audio_title, $audio_description, $audio_file, $audio_duration)) {
+
+
+                // update chapter duration
+                $this->chapter_model->increaseChapterDuration($audio_chapter, $audio_duration);
+
+                // increase ebook duration
+                $this->ebook_model->increaseEbookDuration($audio_ebook, $audio_duration);
 
                 $response =  array('status' => 'true', 'message' => 'Audio criado com sucesso!');
+
             } else {
 
                 $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
@@ -734,31 +764,56 @@ class Painel extends CI_Controller
 
             $audio_id = htmlspecialchars($this->input->post('audio_id'));
             $audio_chapter = htmlspecialchars($this->input->post('audio_chapter'));
+            $audio_ebook = htmlspecialchars($this->input->post('audio_ebook'));
             $audio_title = htmlspecialchars($this->input->post('audio_title'));
             $audio_description = htmlspecialchars($this->input->post('audio_description'));
             $audio_file = "";
             $audio_duration = htmlspecialchars($this->input->post('audio_duration'));
 
-            if ($_FILES) {
+             //Convert to minutes
+             $i = explode(":",$audio_duration);
+             $m = $i[0];
+             $s = ($i[1] / 60);
+             $audio_duration = round(($m + $s), 2);
+             if ($_FILES) {
 
-                $uploadPATH = './assets/img/audios/';
+                $hash = md5($audio_ebook);
+                $uploadPATH = './assets/audios/' . $hash . "/";
                 $uploadNAME = mt_rand() . basename($_FILES['audio_file']['name']);
-                $uploadPATHFULL = $uploadPATH . $uploadNAME;
+                $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
+
+                $uploadPATHFULLdatabase = str_replace(".", "", $uploadPATH) . str_replace(" ", "", $uploadNAME);
+
+                if (!file_exists($uploadPATH)) {
+                    mkdir($uploadPATH, 0777, true);
+                }
 
                 if (move_uploaded_file($_FILES['audio_file']['tmp_name'], $uploadPATHFULL)) {
 
-                    $audio_file =  $uploadNAME;
+                    $audio_file = $uploadPATHFULLdatabase;
                 } else {
 
                     $audio_file =  "";
                 }
+
             } else {
 
                 $audio_file =  "";
             }
 
+            $old_audio_duration = $this->audio_model->getAudio($audio_id)['audio_duration'];
+            $this->chapter_model->decreaseChapterDuration($audio_chapter, $old_audio_duration);
+            $this->ebook_model->decreaseEbookDuration($audio_ebook, $old_audio_duration);
 
-            if ($this->ebook_model->updateAudio($audio_id, $audio_chapter, $audio_title, $audio_description, $audio_file, $audio_duration)) {
+
+
+            if ($this->audio_model->updateAudio($audio_id, $audio_chapter, $audio_title, $audio_description, $audio_file, $audio_duration)) {
+
+                // update chapter duration
+                $this->chapter_model->increaseChapterDuration($audio_chapter, $audio_duration);
+
+                // increase ebook duration
+                $this->ebook_model->increaseEbookDuration($audio_ebook, $audio_duration);
 
                 $response =  array('status' => 'true', 'message' => 'Audio atualizado com sucesso!');
             } else {
@@ -778,7 +833,18 @@ class Painel extends CI_Controller
 
             $audio_id = htmlspecialchars($this->input->post('audio_id'));
 
-            if ($this->ebook_model->deleteAudio($audio_id)) {
+            $audio = $this->audio_model->getAudio($audio_id);
+
+          
+
+             // update chapter duration
+             $this->chapter_model->decreaseChapterDuration($audio['audio_chapter'], $audio['audio_duration']);
+
+             // decrease ebook duration
+             $this->ebook_model->decreaseEbookDuration($audio['audio_ebook'],  $audio['audio_duration']);
+
+
+            if ($this->audio_model->deleteAudio($audio_id)) {
 
                 $response =  array('status' => 'true', 'message' => 'Audio excluido com sucesso!');
             } else {

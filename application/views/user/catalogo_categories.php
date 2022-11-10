@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Bookify - Encontre seu audiobook preferido.</title>
+    <title><?= $category['category_name'] ?></title>
 
     <?php $this->load->view('comp/css'); ?>
 </head>
@@ -18,108 +18,173 @@
 
 
     <section class=" xl:ml-24 xl:mr-24 ml-3 mr-3 ">
-        <div class="grid xl:grid-cols-3 place-items-between">
-            <form action="" method="GET">
-                <div class="xl:col-span-1 catalogo-left">
-                    <p class="mt-5 xl:mb-1 mb-3">Busque por um termo</p>
-                    <div class="xl:col-span-1  flex">
-                        <input type="text" name="q" required style="width: 100%;" value="" class="border border-gray-200 p-2" placeholder="O que está procurando?">
-                        <button class="bg-greenDefault text-white px-2">
-                            <i class="fa fa-search ml-3 mr-3"></i>
-                        </button>
-                    </div>
-            </form>
-        </div>
-        <div class="xl:col-span-2 catalogo-right grid place-items-center">
-            <ul class="flex xl:pt-12 xl:flex hidden">
-                <li class=" xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                            echo " catalogo-active";
-                                        } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=todos">
-                        TODOS
-                    </a>
-                </li>
-                <li class=" xl:ml-12 <?php if ($this->input->get('classificacao') == "pagos") {
-                                            echo " catalogo-active";
-                                        } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=pagos">
-                        PAGOS
-                    </a>
-                </li>
-                <li class=" xl:ml-12 <?php if ($this->input->get('classificacao') == "gratuitos") {
-                                            echo " catalogo-active";
-                                        } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=gratuitos">
-                        GRATUITOS
-                    </a>
-                </li>
+        <div class="grid xl:grid-cols-5 place-items-between">
 
-            </ul>
-
-            <ul class="grid xl:col-span-1 pt-5 xl:pt-12 xl:hidden submenu_mobile">
-                <li class=" submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                                                echo " catalogo-active";
-                                                            } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=todos">
-                        TODOS
-                    </a>
-                </li>
-                <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('pagos') == "pagos") {
-                                                                echo " catalogo-active";
-                                                            } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=pagos">
-                        PAGOS
-                    </a>
-                </li>
-                <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "gratuitos") {
-                                                                echo " catalogo-active";
-                                                            } ?>">
-                    <a href="<?= base_url() ?>busca?classificacao=gratuitos">
-                        GRATUITOS
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-        </div>
-    </section>
-    <section class="xl:mt-5 xl:m-0 m-3 mt-8 xl:pt-5  xl:mb-5">
-
-        <div class=" xl:ml-24 xl:mr-24">
-            <?php if ($this->input->get('q')) { ?>
-                <div>
-                    <h1 class="font-semibold ebook-title mt-5">Resultados para <span class="text-greenDefault font-semibold">"<?= $this->input->get('q') ?>"</span></h1>
-
-                </div>
-            <?php } ?>
-            <div class="grid xl:grid-cols-5 grid-cols-2 mt-8 ">
-
-
-                <?php if (count($ebooks) > 0) { ?>
-                    <?php foreach ($ebooks as $e) { ?>
-
-                    <div class="xl:col-span-1 mt-5 m-3">
-                        <a href="<?= base_url() ?>ebook/detalhes/<?=$e->id?>">
-                            <img style="width: 100%;height: 300px;min-height: 300px;max-height:300px;object-fit:cover" src="<?= base_url() ?><?=$e->ebook_image?>" alt="">
+            <div class="xl:col-span-3 pt-8 catalogo-left">
+                <h1 class="ebook-title"> <?= $category['category_name'] ?></h1>
+                <p> <?= $category['category_description'] ?></p>
+            </div>
+            <div class="xl:col-span-2 catalogo-right grid place-items-end">
+                <ul class="flex xl:pt-12 xl:flex hidden">
+                    <li class=" xl:ml-12 <?php if (strlen($this->input->get('precificacao')) == 0) {
+                                                echo " catalogo-active";
+                                            } ?>">
+                        <a style="font-size:20px ;" href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>">
+                            Todos
                         </a>
-                    </div>
-                    <?php } ?>
+                    </li>
+                    <li class=" xl:ml-12 <?php if ($this->input->get('precificacao') == "1") {
+                                                echo " catalogo-active";
+                                            } ?>">
+                        <a style="font-size:20px ;" href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=1">
+                            Pagos
+                        </a>
+                    </li>
+                    <li class=" xl:ml-12 <?php if ($this->input->get('precificacao') == "0") {
+                                                echo " catalogo-active";
+                                            } ?>">
+                        <a style="font-size:20px ;" href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=0">
+                            Gratuitos
+                        </a>
+                    </li>
 
-                <?php } ?>
-              
+                </ul>
 
+                <ul class="grid xl:col-span-1 pt-5 xl:pt-12 xl:hidden submenu_mobile">
+                    <li class=" submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
+                                                                    echo " catalogo-active";
+                                                                } ?>">
+                        <a href="<?= base_url() ?>busca?classificacao=todos">
+                            TODOS
+                        </a>
+                    </li>
+                    <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('pagos') == "pagos") {
+                                                                    echo " catalogo-active";
+                                                                } ?>">
+                        <a href="<?= base_url() ?>busca?classificacao=pagos">
+                            PAGOS
+                        </a>
+                    </li>
+                    <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "gratuitos") {
+                                                                    echo " catalogo-active";
+                                                                } ?>">
+                        <a href="<?= base_url() ?>busca?classificacao=gratuitos">
+                            GRATUITOS
+                        </a>
+                    </li>
+
+                </ul>
             </div>
         </div>
     </section>
-    <div class="mt-12 grid place-items-center">
-        <div class="flex pagination">
-            <div class="pagination-item">ANTERIOR</div>
-            <div class="pagination-item pagination-item-active">1</div>
-            <div class="pagination-item">2</div>
-            <div class="pagination-item">3</div>
-            <div class="pagination-item">PRÓXIMO</div>
+    <section class="xl:mt-3 xl:m-0 m-3 mt-5 xl:pt-5  xl:mb-5">
+
+        <div class=" xl:ml-24 xl:mr-24">
+            <?php if (count($ebooks) > 0) { ?>
+
+                <div class="grid xl:grid-cols-5 grid-cols-2 mt-8 ">
+                    <?php foreach ($ebooks as $e) { ?>
+                        <div class="xl:col-span-1 mt-5 m-3">
+                            <a href="<?= base_url() ?>ebook/detalhes/<?= $e->id ?>">
+                                <img style="width: 100%;height: 300px;min-height: 300px;max-height:300px;object-fit:cover" src="<?= base_url() ?><?= $e->ebook_image ?>" alt="">
+                            </a>
+                        </div>
+                    <?php } ?>
+
+
+                </div>
+
+            <?php } else { ?>
+
+                <div class=" xl:ml-24 xl:mr-24">
+
+                 
+
+                    <div style="border:1px solid #00b467;color:#00b467">
+                        <br><br>
+                        <h3 class="text-center   " style="color:00b467;font-size:20px">NENHUM RESULTADO ENCONTRADO.</h3>
+                        <br><br>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+
+
+
         </div>
-    </div>
+
+        <?php if (count($ebooks) > 0) { ?>
+   
+            <div class="mt-12 grid place-items-center">
+                <div class="flex pagination">
+
+                    <?php
+                    $pagina = intval($this->input->get('p'));
+
+                    $anterior = ($pagina - 1);
+                    if ($anterior <= 0 || $anterior == "") {
+                        $anterior = null;
+                        $pagina = 1;
+                    }
+                    $atual =  $pagina;
+                    $proxima = ($pagina + 1);
+
+                    ?>
+
+                    <?php if ($atual > 1) {  ?>
+
+                        <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "?precificacao=".$this->input->get('precificacao');} else {}?>     ">
+                            <div class="pagination-item">INÍCIO</div>
+                        </a>
+                    <?php } ?>
+                    <?php if ($atual > 1) {  ?>
+                        <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $anterior ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?>">
+                            <div class="pagination-item">ANTERIOR</div>
+                        </a>
+                    <?php } ?>
+
+                    <?php if ($atual > 1) {  ?>
+                        <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $anterior ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?>">
+                            <div class="pagination-item "><?= $anterior ?></div>
+                        </a>
+                    <?php } ?>
+
+
+
+                    <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $atual ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?> ">
+                                           <div class="pagination-item pagination-item-active"><?= $atual ?></div>
+                    </a>
+
+                    <?php if ($atual < $total_pages) {  ?>
+
+                        <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $proxima ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?>">
+                            <div class="pagination-item"><?= $proxima ?></div>
+                        </a>
+                    <?php } ?>
+
+                    <?php if ($atual < $total_pages) {  ?>
+                        <?php if ($atual >= 1) {  ?>
+                            <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $proxima ?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?>">
+                                <div class="pagination-item">PRÓXIMO</div>
+                            </a>
+                        <?php } ?>
+                    <?php } ?>
+
+                    <?php if ($atual != $total_pages) {  ?>
+
+                    <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?p=<?= $total_pages?><?php if (strlen($this->input->get('precificacao')) > 0 ) { echo "&precificacao=".$this->input->get('precificacao');} else {}?> ">
+                        <div class="pagination-item">ÚLTIMA</div>
+                    </a>
+                    <?php } ?>
+
+
+                </div>
+            </div>
+        <?php } ?>
+
+    </section>
+
 
 
 

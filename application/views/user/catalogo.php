@@ -34,14 +34,14 @@
             <div class="xl:col-span-2 catalogo-right grid place-items-center">
                 <ul class="flex xl:pt-12 xl:flex hidden" style="width: 100%;overflow-x:scroll">
                     <li class=" xl:ml-12 <?php if (!$this->input->get('destaque')) { echo " catalogo-active"; } ?>">
-                        <a class="text-center text-uppercase" href="<?= base_url() ?>catalogo?destaque=0">
+                        <a style="font-size:20px ;"  class="text-center text-uppercase" href="<?= base_url() ?>catalogo?destaque=0">
                             Todos
                         </a>
                     </li>
 
                     <?php foreach ($features as $f) { ?>
                         <li class=" xl:ml-12 <?php if ($this->input->get('destaque') == "<?=$f->id?>") { echo " catalogo-active";} ?>">
-                            <a class="text-center text-uppercase" style="font-size: 20px;" href="<?= base_url() ?>catalogo/d/<?= $f->featured_slug ?>">
+                            <a style="font-size:20px ;"  class="text-center text-uppercase" style="font-size: 20px;" href="<?= base_url() ?>catalogo/d/<?= $f->featured_slug ?>">
                                 <?= $f->featured_name ?>
                             </a>
                         </li>
@@ -50,36 +50,7 @@
 
                 </ul>
 
-                <!-- <ul class="grid xl:col-span-1 pt-5 xl:pt-12 xl:hidden submenu_mobile">
-                    <li class=" submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
-                        <a href="<?= base_url() ?>catalogo?classificacao=todos">
-                            TODOS
-                        </a>
-                    </li>
-                    <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "podcast") {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
-                        <a href="<?= base_url() ?>catalogo?classificacao=podcast">
-                            PODCAST
-                        </a>
-                    </li>
-                    <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "lancamentos") {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
-                        <a href="<?= base_url() ?>catalogo?classificacao=lancamentos">
-                            LANÇAMENTOS
-                        </a>
-                    </li>
-                    <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "bestsellers") {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
-                        <a href="<?= base_url() ?>catalogo?classificacao=bestsellers">
-                            BEST-SELLERS
-                        </a>
-                    </li>
-                </ul> -->
+              
             </div>
         </div>
     </section>

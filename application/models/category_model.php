@@ -79,7 +79,7 @@ class category_model extends CI_Model
 
     public function getCategoryIdBySlug($featured_slug) {
 
-        $this->db->order_by('category_slug', $featured_slug);
+        $this->db->where('category_slug', $featured_slug);
         $data =  $this->db->get('ebooks_categories')->row_array();
         return $data['id'];
     }
@@ -88,7 +88,7 @@ class category_model extends CI_Model
 
     public function getFeaturesIdBySlug($featured_slug) {
 
-        $this->db->order_by('featured_slug', $featured_slug);
+        $this->db->where('featured_slug', $featured_slug);
         $data =  $this->db->get('ebooks_features')->row_array();
         return $data['id'];
     }
