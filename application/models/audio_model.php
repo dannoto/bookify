@@ -97,4 +97,110 @@ class audio_model extends CI_Model
 
         return $this->db->update('ebooks_audios', $data);
     }
+
+
+    // Images
+
+
+    public function getAudioImages($audio_id) {
+
+        $this->db->where('image_audio', $audio_id);
+        $this->db->where('image_delete_status','1');
+
+        return $this->db->get('ebooks_chapters_images')->result();
+
+
+    } 
+
+
+    public function addAudioImage($image_title, $image_description , $image_audio, $image_chapter, $image_ebook, $image_file) {
+
+        $data = array(
+            'image_title' => $image_title,
+            'image_description' => $image_description,
+            'image_file' => $image_file,
+            'image_user' => 1,
+            'image_delete_status' => 1,
+            'image_chapter' => $image_chapter,
+            'image_ebook' => $image_ebook,
+            'image_audio' => $image_audio,
+
+        );
+
+        return $this->db->insert('ebooks_chapters_images', $data);
+
+
+    } 
+
+
+
+
+    public function deleteAudioImage($image_id) 
+        {
+        $this->db->where('id', $image_id);
+
+        $data = array(
+            'image_delete_status' => 0,
+        );
+
+        return $this->db->update('ebooks_chapters_images', $data);
+    }
+
+
+    // Progress Modal
+    public function getProgressCurrent($ebook_id) {
+
+        $this->db->where('progress_ebook', $ebook_id);
+        $this->db->order_by('id','desc');
+        // $this->db->limit('1');
+
+        return $this->db->get('ebooks_audios_progress')->row_array();
+
+    }
+
+    public function getProgressCurrentList($ebook_id) {
+
+        $this->db->where('audio_ebook', $ebook_id);
+        $this->db->order_by('id','asc');
+        $this->db->where('audio_delete_status', 1);
+
+        // $this->db->limit('1');
+
+        return $this->db->get('ebooks_audios')->result();
+
+    }
+
+    public function getProgressFirst($ebook_id) {
+
+        $this->db->where('audio_ebook', $ebook_id);
+        $this->db->where('audio_delete_status', 1);
+        $this->db->order_by('id','asc');
+        return $this->db->get('ebooks_audios')->row_array();
+
+
+    }
+
+    public function addProgress($progress_ebook, $progress_chapter, $progress_audio) {
+
+        $data = array(
+            'progress_ebook' => $progress_ebook,
+            'progress_chapter' => $progress_chapter,
+            'progress_audio' => $progress_audio,
+            'progress_date' =>  date('Y-m-d- H:i:s'),
+        );
+
+        return $this->db->insert('ebooks_audios_progress', $data);
+    }
+
+    public function getProgress($progress_ebook, $progress_chapter, $progress_audio)  {
+        $this->db->where('progress_ebook', $progress_ebook);
+        $this->db->where('progress_chapter', $progress_chapter);
+        $this->db->where('progress_audio', $progress_audio);
+
+        return $this->db->get('ebooks_audios_progress')->row_array();
+
+    }
+
+    
+    // Progress Model
 }

@@ -16,7 +16,7 @@
 
                 <div class="  login ">
                     <div class="m-3"> 
-                        <img style="width:150px;height:50px;object-fit:cover" src="<?=base_url()?>assets/img/logo_green.png" alt="">
+                        <img style="width:150px;height:50px;object-fit:cover" src="<?=base_url()?>assets/img/design/logo.png" alt="">
                     </div>
                     <div class="grid place-items-center">
                         <div class=" ">

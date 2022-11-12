@@ -40,7 +40,9 @@
 
             <div class="grid xl:col-span-1 grid-cols-3">
                 <div class="col-span-1"></div>
-                <div class="flex col-span-2 space-x-4">
+                <div class="flex col-span-2 space-x-4" style="
+    margin-left: 90px;
+">
                     <div>
                         <a href="<?=base_url()?>conta/perfil">
                             <span><?=$this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_name']?> <?=$this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_surname']?></span>

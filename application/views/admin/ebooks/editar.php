@@ -234,7 +234,7 @@
                                     <a target="_blank" href="<?= base_url() ?><?= $e->audio_file ?>">
                                       <i title="OUVIR AUDIO" class="ml-3 mdi  mdi-play-circle-outline " style="color:green;font-size:25px;cursor:pointer"></i>
                                     </a>
-                                    <i title="ADICIONAR IMAGENS" class="ml-3 mdi mdi-image-filter add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
+                                    <i title="ADICIONAR IMAGENS" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->audio_chapter ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
                                     <i title="EDITAR AUDIO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->audio_title ?>" data-description="<?= $e->audio_description ?>" data-chapter="<?= $e->audio_chapter ?>" data-duration="<?= $e->audio_duration ?>" data-file="<?= $e->audio_file ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
                                     <i title="EXCLUIR AUDIO" class="ml-3 mdi mdi-delete delete-audio" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                   </div>
@@ -466,7 +466,7 @@
             <input type="hidden" name="audio_chapter" id="update_audio_chapter" required class="mb-2 form-control">
 
             <input type="text" name="audio_title" id="update_audio_title" required class="mb-2 form-control">
-            
+
             <label for="">DESCRIÇÃO</label><br>
             <textarea type="text" name="audio_description" maxlength="200 " id="update_audio_description" class="mb-2 form-control"></textarea>
 
@@ -489,6 +489,56 @@
     </div>
   </div>
   <!-- Modal Update Audio -->
+
+
+
+  <!-- Modal Add/Update Image -->
+  <div class="modal fade" id="modal-add-image" tabindex="-1" role="dialog" aria-labelledby="modal-add-image" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ADICIONAR IMAGENS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="form-add-image">
+            <div class="row container">
+              <!-- <div class="col-md-9"> -->
+              <input type="hidden" name="image_chapter" id="add_image_chapter">
+              <input type="hidden" name="image_audio" id="add_image_audio">
+
+              <label for="">TÍTULO DA IMAGEM </label>
+              <input type="text" name="image_title" class="form-control mb-1" required maxlength="200" id="add_image_title">
+              <label for="">ADICIONE A IMAGEM </label><br>
+
+              <input type="file" name="image_file" required style="" id="add_image_file" accept="image/*" class=" pt-1 form-control">
+              <!-- </div> -->
+              <!-- <div class="col-md-3"> -->
+              <button class="btn btn-primary mt-3 mb-3 " type="submit" style="height: 40px;font-size:16px; width:100%">+ <small>ADICIONAR IMAGEM</small></button>
+              <!-- </div> -->
+
+              <!-- Lista of Images -->
+
+              <div id="div-image" style="width:100% ;">
+
+              </div>
+
+              <!-- Lista of Images -->
+
+            </div>
+            <br><br>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+          <button class="btn btn-primary">ATUALIZAR</button>
+        </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Add/Update Image -->
 
 
 
@@ -531,6 +581,21 @@
       var audio_id = $(this).data('id')
       $('#add_audio_id').val(audio_id)
       $('#btn-open-modal-add-audio').click()
+
+    })
+
+    $('.add-image').on('click', function(e) {
+
+
+
+      var chapter = $(this).data('chapter')
+      var audio = $(this).data('audio')
+
+      $('#add_image_chapter').val(chapter)
+      $('#add_image_audio').val(audio)
+
+      getImagesDOM(audio)
+
 
     })
   </script>
@@ -733,7 +798,6 @@
 
     })
 
-
     $('#input_ebook_image').on('change', function(ent) {
 
 
@@ -854,25 +918,25 @@
       e.preventDefault()
 
 
-        var extPermitidas = ['mp4', 'MP4', 'mp3', 'MP4'];
-        var extArquivo = $('#update_audio_file').val().split('.').pop();
-        var file = $('#update_audio_file').prop('files')[0];
+      var extPermitidas = ['mp4', 'MP4', 'mp3', 'MP4'];
+      var extArquivo = $('#update_audio_file').val().split('.').pop();
+      var file = $('#update_audio_file').prop('files')[0];
 
-        var formdata = new FormData();
+      var formdata = new FormData();
 
-        formdata.append("audio_id", $('#update_audio_id').val());
-        formdata.append("audio_chapter", $('#update_audio_chapter').val());
+      formdata.append("audio_id", $('#update_audio_id').val());
+      formdata.append("audio_chapter", $('#update_audio_chapter').val());
 
-        formdata.append("audio_ebook", <?= $ebook['id'] ?>);
-        formdata.append("audio_title", $('#update_audio_title').val());
-        formdata.append("audio_description", $('#update_audio_description').val());
-        formdata.append("audio_duration", $('#update_audio_duration').val());
+      formdata.append("audio_ebook", <?= $ebook['id'] ?>);
+      formdata.append("audio_title", $('#update_audio_title').val());
+      formdata.append("audio_description", $('#update_audio_description').val());
+      formdata.append("audio_duration", $('#update_audio_duration').val());
 
-        if (file) {
-          formdata.append("audio_file", file);
-        } else {
-          formdata.append("audio_file", "");
-        }
+      if (file) {
+        formdata.append("audio_file", file);
+      } else {
+        formdata.append("audio_file", "");
+      }
 
 
 
@@ -891,45 +955,44 @@
 
       //   } else {
 
-        console.log($('#update_audio_duration').val())
+      console.log($('#update_audio_duration').val())
 
-          if ($('#update_audio_duration').val().length == 5) {
+      if ($('#update_audio_duration').val().length == 5) {
 
-            $.ajax({
-              method: 'POST',
-              url: '<?= base_url() ?>painel/updateAudio',
-              data: formdata,
-              cache: false,
-              contentType: false,
-              processData: false,
-              success: function(data) {
+        $.ajax({
+          method: 'POST',
+          url: '<?= base_url() ?>painel/updateAudio',
+          data: formdata,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(data) {
 
-                var resp = JSON.parse(data)
+            var resp = JSON.parse(data)
 
-                if (resp.status == "true") {
-                  getChaptersDOM()
-                } else {
-                  swal(resp.message);
+            if (resp.status == "true") {
+              getChaptersDOM()
+            } else {
+              swal(resp.message);
 
-                }
+            }
 
-              },
-              error: function(data) {
-                swal('Ocorreu um erro temporário. ');
-              },
+          },
+          error: function(data) {
+            swal('Ocorreu um erro temporário. ');
+          },
 
-            });
+        });
 
 
-          } else {
-            swal("Insira a duração corretamente [minutos:segundos] [00:00].")
-          }
+      } else {
+        swal("Insira a duração corretamente [minutos:segundos] [00:00].")
+      }
 
       //   }
 
       // }
     })
-
 
 
     $('#form-update-ebook').submit(function(e) {
@@ -1077,7 +1140,111 @@
       }
 
     })
+
+    $('#form-add-image').submit(function(e) {
+
+      e.preventDefault()
+
+
+      var extPermitidas = ['png', 'jpeg', 'jpg', 'gif', 'PNG', 'JPEG', 'JPG', 'GIF'];
+      var extArquivo = $('#add_image_file').val().split('.').pop();
+      var file = $('#add_image_file').prop('files')[0];
+
+      var chapter = $('#add_image_chapter').val();
+      var ebook = "<?= $ebook['id'] ?>";
+      var audio = $('#add_image_audio').val();
+      var title = $('#add_image_title').val();
+
+      var formdata = new FormData();
+      formdata.append("image_title", title);
+
+      formdata.append("image_chapter", chapter);
+      formdata.append("image_ebook", ebook);
+      formdata.append("image_audio", audio);
+
+
+      if (file) {
+        formdata.append("image_file", file);
+      } else {
+        swal('Selecine uma imagem para enviar.')
+      }
+
+
+      if (typeof extPermitidas.find(function(ext) {
+          return extArquivo == ext;
+        }) == 'undefined') {
+
+        swal('O arquivo precisa ser uma imagem. Formatos permitidos [PNG, JPEG, JPG E GIF]')
+
+      } else {
+
+
+        if (file.size > 5000000) {
+          swal('Arquivo muito grande, máximo permitido 5MB.')
+
+        } else {
+
+
+          $.ajax({
+            method: 'POST',
+            url: '<?= base_url() ?>painel/addImage',
+            data: formdata,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+
+              var resp = JSON.parse(data)
+
+              if (resp.status == "true") {
+
+                $('#add_image_title').val("")
+                $('#add_image_file').val("")
+
+                getImagesDOM(audio)
+              } else {
+                swal(resp.message);
+
+              }
+
+            },
+            error: function(data) {
+              swal('Ocorreu um erro temporário. ');
+            },
+
+          });
+
+
+
+        }
+
+      }
+
+    })
+
+    function getImagesDOM(audio_id) {
+
+      $.ajax({
+        method: 'POST',
+        url: '<?= base_url() ?>painel/getImages',
+        data: {
+          audio_id: audio_id
+        },
+        success: function(data) {
+
+          $('#div-image').html(data)
+
+        },
+        error: function(data) {
+          swal('Ocorreu um erro temporário. ');
+        },
+
+      });
+
+
+    }
   </script>
+
 </body>
 
 </html>

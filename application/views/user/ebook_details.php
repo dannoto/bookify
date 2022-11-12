@@ -55,7 +55,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-black font-semibold uppercase">Capítulos</p>
-                            <p class="text-greenDefault font-semibold uppercase"><?= $ebook['ebook_chapter'] ?></p>
+                            <p class="text-greenDefault font-semibold uppercase"><?php echo count($this->chapter_model->getChaptersByEbook($ebook['id'])); ?></p>
                         </div>
                     </div>
                     <div class="flex ">
@@ -75,11 +75,22 @@
                     </button>
                 </div>
                 <div class="mt-3 grid place-items-center">
-                    <a href="<?= base_url() ?>play/<?= $ebook['id'] ?>">
-                        <button class="ebook-btn border bg-greenDefault p-2 px-12 flex">
-                            <img width="30" height="30" src="<?= base_url() ?>assets/img/icons/play-circle.png" alt="">
-                            <span class="text-white ml-2">COMEÇAR A OUVIR</span>
+                    <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>">
+
+                    <?php if ($this->audio_model->getProgressCurrent($ebook['id']) > 0 ) { ?>
+                        <button class="ebook-btn border bg-greenDefault p-2 px-8 flex justify-content-center">
+                           
+                            <img width="30" class="ml-10" height="30" src="<?= base_url() ?>assets/img/icons/play-circle.png" alt="">
+                            <span class="text-white ml-3">CONTINUAR </span>
                         </button>
+
+                        <?php } else {?>
+                            <button class="ebook-btn border bg-greenDefault p-2 px-12 flex">
+                                            <img width="30" height="30" src="<?= base_url() ?>assets/img/icons/play-circle.png" alt="">
+                                            <span class="text-white ml-2">COMEÇAR A OUVIR</span>
+                                        </button>
+                        <?php } ?>
+                      
                     </a>
                 </div>
             </div>
@@ -186,7 +197,7 @@
 
                         }).then(function(isConfirm) {
 
-                           
+
 
                         });
 

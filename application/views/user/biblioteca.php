@@ -26,24 +26,24 @@
             <div class="xl:col-span-2 catalogo-right grid place-items-center">
                 <ul class="flex xl:pt-12 xl:flex hidden">
                     <li style="padding-top: 6px;" class="  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                                echo " catalogo-active";
-                                            } ?>">
+                                                                        echo " catalogo-active";
+                                                                    } ?>">
                         <a style="font-size:17px ;" href="<?= base_url() ?>biblioteca?classificacao=todos">
                             TODOS
                         </a>
                     </li>
                     <li style="padding-top: 6px;" class="  xl:ml-12 <?php if ($this->input->get('classificacao') == "concluidos") {
-                                                echo " catalogo-active";
-                                            } ?>">
+                                                                        echo " catalogo-active";
+                                                                    } ?>">
                         <a style="font-size:17px ;" href="<?= base_url() ?>biblioteca?classificacao=concluidos">
                             CONCLUÍDOS
                         </a>
                     </li>
                     <li style="padding-top: 6px;" class="  xl:ml-12 <?php if ($this->input->get('classificacao') == "andamento") {
-                                                echo " catalogo-active";
-                                            } ?>">
+                                                                        echo " catalogo-active";
+                                                                    } ?>">
                         <a style="font-size:17px ;" href="<?= base_url() ?>biblioteca?classificacao=andamento">
-                             ANDAMENTO
+                            ANDAMENTO
                         </a>
                     </li>
 
@@ -51,22 +51,22 @@
 
                 <ul class="grid xl:col-span-1 pt-5 xl:pt-12 xl:hidden submenu_mobile">
                     <li style="padding-top: 6px;" class="  submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
+                                                                                                echo " catalogo-active";
+                                                                                            } ?>">
                         <a href="<?= base_url() ?>biblioteca?classificacao=todos">
                             TODOS
                         </a>
                     </li>
                     <li style="padding-top: 6px;" class="  submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "concluidos") {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
+                                                                                            echo " catalogo-active";
+                                                                                        } ?>">
                         <a href="<?= base_url() ?>biblioteca?classificacao=concluidos">
                             CONCLUÍDOS
                         </a>
                     </li>
                     <li style="padding-top: 6px;" class="  submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "andamnto") {
-                                                                    echo " catalogo-active";
-                                                                } ?>">
+                                                                                            echo " catalogo-active";
+                                                                                        } ?>">
                         <a href="<?= base_url() ?>biblioteca?classificacao=andamento">
                             EM ANDAMENTO
                         </a>
@@ -86,22 +86,22 @@
 
                 <div class=" xl:ml-3 xl:mr-32 grid mt-5 xl:grid-cols-3 grid-cols-1 biblioteca">
                     <div class="col-span-1 grid xl:place-items-center">
-                        <a href="<?= base_url() ?>ebook/detalhes/<?=$ebook['id']?>">
-                            <img class="xl:m-auto" style="width: 100%;height: 300px;min-height: 300px;max-height:300px;object-fit:cover" src="<?= base_url() ?><?= $ebook['ebook_image']?>" alt="">
+                        <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
+                            <img class="xl:m-auto" style="width: 100%;height: 300px;min-height: 300px;max-height:300px;object-fit:cover" src="<?= base_url() ?><?= $ebook['ebook_image'] ?>" alt="">
                         </a>
                     </div>
                     <div class="col-span-2  ">
 
-                        <a href="<?= base_url() ?>ebook/detalhes/<?=$ebook['id']?>">
-                            <h1 class="xl:mt-0 mt-5 xl:mt-5 xl:text-left text-uppercase"><?= $ebook['ebook_title']?> </h1>
+                        <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
+                            <h1 class="xl:mt-0 mt-5 xl:mt-5 xl:text-left text-uppercase"><?= $ebook['ebook_title'] ?> </h1>
 
                         </a>
-                        <p class="line-clamp-3"><?= $ebook['ebook_description']?></p>
+                        <p class="line-clamp-3"><?= $ebook['ebook_description'] ?></p>
                         <div class="mt-8">
-                            <a href="<?=base_url()?>play/<?=$ebook['id']?>">
+                            <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>">
                                 <button class=" border bg-greenDefault p-2 xl:px-12 flex justify-center">
-                                    <img class="biblioteca-icon-img" style="width:35px;height:35px;" src="<?= base_url() ?>assets/img/icons/play-circle.png" alt="">
-                                    <span class="text-white ml-3 "  style="font-size: 17px;margin-top:4px;">CONTINUAR</span>
+                                    <img class="biblioteca-icon-img" style="width:27px;height:27px;" src="<?= base_url() ?>assets/img/icons/play-circle.png" alt="">
+                                    <span class="text-white ml-3 " style="font-size: 17px;margin-top:0px;">CONTINUAR</span>
                                 </button>
                             </a>
                         </div>
@@ -138,6 +138,7 @@
 
 
 
+
     <?php $this->load->view('comp/js'); ?>
 
 
@@ -166,6 +167,9 @@
             });
         }
     </script>
+
+
+  
 
 </body>
 

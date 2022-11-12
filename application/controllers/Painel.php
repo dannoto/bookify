@@ -34,23 +34,23 @@ class Painel extends CI_Controller
 
     // Paginas
 
-    public function updateGateway () {
+    public function updateGateway()
+    {
 
         $response = array();
 
         $gateway_public = htmlspecialchars($this->input->post('gateway_public'));
         $gateway_secret = htmlspecialchars($this->input->post('gateway_secret'));
 
-        if ( $this->config_model->updateConfigPayment($gateway_public, $gateway_secret)) {
+        if ($this->config_model->updateConfigPayment($gateway_public, $gateway_secret)) {
             $response =  array('status' => 'true', 'message' => 'Chaves atualizadas com sucesso.');
-        }   else {
+        } else {
             $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
         }
-    
+
 
 
         print_r(json_encode($response));
-
     }
 
     public function configuracoes_gateways()
@@ -226,6 +226,151 @@ class Painel extends CI_Controller
 
     // Paginas
 
+
+    //Imagens
+    public function addImage()
+    {
+        $image_title =  htmlspecialchars($this->input->post('image_title'));
+        $image_description = "text";
+        $image_ebook = htmlspecialchars($this->input->post('image_ebook'));
+        $image_chapter = htmlspecialchars($this->input->post('image_chapter'));
+        $image_audio = htmlspecialchars($this->input->post('image_audio'));
+
+
+        if ($_FILES) {
+
+            $hash = md5($image_ebook);
+            $uploadPATH = './assets/img/audios/' . $hash . "/";
+            $uploadNAME = mt_rand() . basename($_FILES['image_file']['name']);
+            $uploadPATHFULL = $uploadPATH . str_replace(" ", "", $uploadNAME);
+
+            $uploadPATHFULLdatabase = str_replace(".", "", $uploadPATH) . str_replace(" ", "", $uploadNAME);
+
+            if (!file_exists($uploadPATH)) {
+                mkdir($uploadPATH, 0777, true);
+            }
+
+            if (move_uploaded_file($_FILES['image_file']['tmp_name'], $uploadPATHFULL)) {
+
+                $image_file = $uploadPATHFULLdatabase;
+            } else {
+
+                $image_file =  "/assets/img/audios/default.png";
+            }
+        } else {
+
+            $image_file =  "";
+        }
+
+
+        $response = array();
+
+        if ($this->audio_model->addAudioImage($image_title, $image_description , $image_audio, $image_chapter, $image_ebook, $image_file)) {
+            $response =  array('status' => 'true', 'message' => 'Imagem adicionada com sucesso.');
+        } else {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
+    }
+
+    public function deleteImage() 
+    {
+
+        $image_id = htmlspecialchars($this->input->post('image_id'));
+
+        $response = array();
+
+        if ($this->audio_model->deleteAudioImage($image_id)) {
+            $response =  array('status' => 'true', 'message' => 'Imagem excluída com sucesso.');
+        } else {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
+
+    }
+
+
+    public function getImages()
+    {
+        $audio_id = htmlspecialchars($this->input->post('audio_id'));
+        $images = $this->audio_model->getAudioImages($audio_id);
+
+
+
+        if (count($images) > 0) {
+            
+                echo '
+                    <div class="container">
+                    <h4>Lista de Imagens</h4>
+                    <hr>
+                    </div>
+                ';
+
+
+                foreach ($images as $i) {
+
+
+                    echo '
+                        <div class="row container mb-3">
+                        <div class="col-md-9">
+                            <img title="'.$i->image_title.'" src="' . base_url() . '' . $i->image_file . '" style="max-width: 100%;width:100%;height:80px;max-height:80px;object-fit:cover" >
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-danger delete_image" data-audio="'.$i->image_audio.'" id="' . $i->id . '" type="button" style="height: 80px;font-size:16px;">X</button>
+                        </div>
+                        </div>
+                    ';
+                }
+
+                echo "
+                <script>
+              
+                  $('.delete_image').on('click', function(e) {
+              
+              
+                    var image_id = $(this).attr('id')
+                    var audio_id = $(this).data('audio');
+              
+                    $.ajax({
+                      method: 'POST',
+                      url: '".base_url()."painel/deleteImage',
+                      data: {
+                        image_id: image_id
+                      },
+              
+                      success: function(data) {
+              
+                        var resp = JSON.parse(data)
+              
+                        if (resp.status == 'true') {
+                          getImagesDOM(audio_id)
+                        } else {
+                          swal(resp.message);
+              
+                        }
+              
+                      },
+                      error: function(data) {
+                        swal('Ocorreu um erro temporário. ');
+                      },
+              
+                    });
+              
+              
+                  })
+                </script>";
+        } else {
+            echo ' <div class="container">
+            <p class="text-center mt-5 mb-5">NENHUMA IMAGEM ADICIONADA.</p>
+            <hr>
+            </div>';
+        }
+    }
+    //Imagens
 
 
     // Actions Ebook
@@ -703,7 +848,7 @@ class Painel extends CI_Controller
 
 
             //Convert to minutes
-            $i = explode(":",$audio_duration);
+            $i = explode(":", $audio_duration);
             $m = $i[0];
             $s = ($i[1] / 60);
             $audio_duration = round(($m + $s), 2);
@@ -728,7 +873,6 @@ class Painel extends CI_Controller
 
                     $audio_file =  "";
                 }
-
             } else {
 
                 $audio_file =  "";
@@ -745,7 +889,6 @@ class Painel extends CI_Controller
                 $this->ebook_model->increaseEbookDuration($audio_ebook, $audio_duration);
 
                 $response =  array('status' => 'true', 'message' => 'Audio criado com sucesso!');
-
             } else {
 
                 $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
@@ -770,12 +913,12 @@ class Painel extends CI_Controller
             $audio_file = "";
             $audio_duration = htmlspecialchars($this->input->post('audio_duration'));
 
-             //Convert to minutes
-             $i = explode(":",$audio_duration);
-             $m = $i[0];
-             $s = ($i[1] / 60);
-             $audio_duration = round(($m + $s), 2);
-             if ($_FILES) {
+            //Convert to minutes
+            $i = explode(":", $audio_duration);
+            $m = $i[0];
+            $s = ($i[1] / 60);
+            $audio_duration = round(($m + $s), 2);
+            if ($_FILES) {
 
                 $hash = md5($audio_ebook);
                 $uploadPATH = './assets/audios/' . $hash . "/";
@@ -795,7 +938,6 @@ class Painel extends CI_Controller
 
                     $audio_file =  "";
                 }
-
             } else {
 
                 $audio_file =  "";
@@ -835,13 +977,13 @@ class Painel extends CI_Controller
 
             $audio = $this->audio_model->getAudio($audio_id);
 
-          
 
-             // update chapter duration
-             $this->chapter_model->decreaseChapterDuration($audio['audio_chapter'], $audio['audio_duration']);
 
-             // decrease ebook duration
-             $this->ebook_model->decreaseEbookDuration($audio['audio_ebook'],  $audio['audio_duration']);
+            // update chapter duration
+            $this->chapter_model->decreaseChapterDuration($audio['audio_chapter'], $audio['audio_duration']);
+
+            // decrease ebook duration
+            $this->ebook_model->decreaseEbookDuration($audio['audio_ebook'],  $audio['audio_duration']);
 
 
             if ($this->audio_model->deleteAudio($audio_id)) {

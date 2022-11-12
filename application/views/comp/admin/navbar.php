@@ -35,7 +35,7 @@
           
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <!-- <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-bell-outline"></i>
                 <span class="count">7</span>
               </a>
@@ -72,9 +72,9 @@
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
                   </div>
                 </a>
-              </div>
+              </div> -->
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-email-outline"></i>
                 <span class="count bg-success">3</span>
@@ -112,21 +112,24 @@
                   </div>
                 </a>
               </div>
-            </li>
+            </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle" src="<?=base_url()?>assets_admin/images/faces/face8.jpg" alt="Profile image"> </a>
+                <img class="img-xs rounded-circle"  src="<?=base_url()?>assets/img/avatar/avatar.png"  alt="Profile image"> </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="<?=base_url()?>assets_admin/images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                  <img class="img-md rounded-circle"  src="<?=base_url()?>assets/img/avatar/avatar.png"  alt="Profile image">
+                  <p class="mb-1 mt-3 font-weight-semibold">Vinicius Souza</p>
+                  <!-- <p class="font-weight-light text-muted mb-0">viniciussouza@gmail.com</p> -->
                 </div>
-                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
+                <!-- <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                 <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
                 <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a> -->
+                <!-- <a  style="cursor:pointer"> -->
+                  <a class="dropdown-item" href="<?=base_url()?>painel/sair">Sair<i class="dropdown-item-icon ti-power-off"></i></a>
+
+                <!-- </a> -->
               </div>
             </li>
           </ul>
