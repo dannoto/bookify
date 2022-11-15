@@ -16,3 +16,6 @@ $route['painel/usuarios_editar/(:any)'] = "painel/usuarios_editar/$1";
 
 
 $route['painel/play/i/(:any)'] = "painel/play/i/$1";
+
+
+$route['checkout/(:any)'] = "checkout/index/$1";

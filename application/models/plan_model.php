@@ -85,4 +85,15 @@ class plan_model extends CI_Model
         return $this->db->get('users_plans')->row_array();
     }
 
+
+    public function updateUserPlan($user_id, $plan_id) {
+
+        $this->db->where('id', $user_id);
+
+        $data = array(
+            'user_plan' => $plan_id,
+        );
+
+        return $this->db->update('users', $data);
+    }
 }

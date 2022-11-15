@@ -8,7 +8,9 @@ class Perfil extends CI_Controller {
 		$this->load->model('register_model');
 		$this->load->model('login_model');
 		$this->load->model('user_model');
-		$this->load->model('email_model');
+        $this->user_model->authControl();
+        $this->user_model->authPlan();
+				$this->load->model('email_model');
 
 		$this->load->model('raffles_model');
 		$this->load->model('payments_model');

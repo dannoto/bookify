@@ -7,7 +7,10 @@ class Carrinho extends CI_Controller {
 		parent::__construct();
 		$this->load->model('register_model');
 		$this->load->model('login_model');
+		
 		$this->load->model('user_model');
+        $this->user_model->authControl();
+		
 		$this->load->model('email_model');
 		$this->load->model('cart_model');
 		$this->load->model('raffles_model');

@@ -115,4 +115,37 @@ class user_model extends CI_Model
         );
         return $this->db->update('users', $data);
     }
+
+
+
+    public function authControl()
+    {
+
+        if ($this->session->userdata('session_user')) {
+
+            
+        } else {
+
+            redirect(base_url('login'));
+
+        }
+    }
+
+    public function authPlan()
+    {
+
+        if ($this->session->userdata('session_user')) {
+
+            
+            if ($this->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == "0") {
+    
+                redirect(base_url('planos/escolha'));
+    
+            } else {
+                
+            }
+        } else {
+
+        }
+    }
 }

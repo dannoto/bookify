@@ -1,3 +1,5 @@
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -5,13 +7,21 @@
 <script src="<?=base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
 <script src="<?=base_url() ?>assets/js/jquery.min.js"></script>
 <script src="<?=base_url() ?>assets/js/owl.carousel.min.js"></script>
+
+
+<script>
+  $(document).ready( function() {
+
+    $('main').css('display','block')
+    // $('loading').css('display','none')
+
+    // $('#loadingMask').fadeOut();
+});
+</script>
 <script>
     $(".tickets-quantity").on('click','li',function (){
                     alert($(this).text());
     });
-
-
-  
 
 
     function toggleNav() {
@@ -53,4 +63,21 @@ $(document).ready(function(){
     }
   );
 });
+</script>
+
+<script>
+
+
+  $('#btn-navbar').on('click', function (e) {
+
+    var state = $('#div-navbar').css('display');
+
+    if (state == "none") {
+      $('#div-navbar').css('display','block');
+    } else {
+      $('#div-navbar').css('display','none');
+    }
+
+
+  })
 </script>

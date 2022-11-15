@@ -179,11 +179,11 @@ class ebook_model extends CI_Model
         }
 
         if (strlen($ebook_precificacao) > 0 ) {
-            echo "preco";
+            // echo "preco";
             $this->db->where('ebook_precificacao', $ebook_precificacao);
         }
         if (strlen($ebook_category) > 0 ) {
-            echo "categoria";
+            // echo "categoria";
             $this->db->where('ebook_category', $ebook_category);
         }
         if (strlen($ebook_title) > 0 ) {

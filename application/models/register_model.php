@@ -14,7 +14,7 @@ class register_model extends CI_Model
             'user_time' => date('H:i:s'),
             'user_refer' => mt_rand(),
             'user_origin' => $user_origin,
-            'user_plan' => 1,
+            'user_plan' => 0,
             'user_status' => 1,
             'user_token' => mt_rand(),
             'user_image' => 'default.png'

@@ -17,7 +17,7 @@ class library_model extends CI_Model
 
     public function getLibrary($user_id)
     {
-        $this->db->order_by('library_user_id', $user_id);
+        $this->db->where('library_user_id', $user_id);
         return $this->db->get('users_library')->result();
     }
 

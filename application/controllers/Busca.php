@@ -13,6 +13,8 @@ class Busca extends CI_Controller
 		$this->load->model('user_model');
 		$this->load->model('email_model');
 		$this->load->model('category_model');
+		$this->load->model('config_model');
+
 	}
 
 

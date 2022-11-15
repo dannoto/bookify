@@ -11,15 +11,15 @@
 </head>
 
 
-<body >
+<body>
 
-    <?php $this->load->view('comp/navbar_home'); ?>
+    <?php $this->load->view('comp/navbar'); ?>
+
     <main style="display:none;">
-
         <section class="mt-12">
             <div class="grid place-items-center mb-12">
-                <h1 class="ebook-title" style="font-size:25px">CONHEÇA NOSSOS PLANOS</h1>
-
+                <h1 class="ebook-title" style="font-size:25px">ESCOLHA UM PLANO</h1>
+                <p>Antes de começar aproveitar o Bookify. Escolha um plano.</p>
             </div>
             <div class="grid xl:grid-cols-3 grid-cols-1 home-plano">
 
@@ -117,10 +117,12 @@
 
 
         </section>
+
     </main>
     <div id="loadingMask" class="grid place-items-center" style="width: 100%; height: 100%; position: fixed;">
         <img src="<?= base_url() ?>assets/img/design/loading.gif" alt="">
     </div>
+
 
     <?php $this->load->view('comp/js'); ?>
 

@@ -177,146 +177,148 @@
 
     <?php $this->load->view('comp/navbar'); ?>
 
+    <main style="display:none;">
+        <section class=" " style="background-color: #171717;height:auto;">
 
-    <section class=" " style="background-color: #171717;height:auto;">
-
-        <div class="grid grid-cols-3 xl:hidden block">
-            <div class="col-span-1 xl:col-span-1  xl:hidden block">
-                <center>
-                    <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
-                        <button data-toggle="modal" class="mt-8 flex" data-target="#exampleModal">
-                            <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-chevron-left"></i>
-                            <p style="font-size:18px;">VOLTAR</p>
-                        </button>
-                    </a>
-                </center>
-            </div>
-            <div class="col-span-2 xl:col-span-1  xl:hidden block">
-                <center>
-                    <button class="flex mt-8 myBtn" >
-                        <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-bars"></i>
-                        <p style="font-size:18px;">LISTA DE CAPÍTULOS</p>
-                    </button>
-                </center>
-            </div>
-        </div>
-        <div class="grid xl:grid-cols-4  grid-cols-1">
-            <div class="col-span-1 xl:col-span-1 xl:block hidden ">
-                <center>
-                    <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
-                        <button data-toggle="modal" class="mt-8 flex" data-target="#exampleModal">
-                            <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-chevron-left"></i>
-                            <p style="font-size:18px;">VOLTAR</p>
-                        </button>
-                    </a>
-                </center>
-            </div>
-            <div class="col-span-1 xl:col-span-2 xl:m-1 m-3 ">
-
-                <center>
-                    <h3 style="font-size: 20px;font-weight:bold" class="font-center mt-8 line-clamp-1" title="<?= $ebook['ebook_title'] ?>"> <?= $ebook['ebook_title'] ?></h3>
-                    <p class="line-clamp-1 mb-3 " title="<?= $chapter['chapter_title'] ?> - <?= $audio['audio_title'] ?>"><?= $chapter['chapter_title'] ?> - <?= $audio['audio_title'] ?></p>
-                </center>
-
-                <?php if (count($this->audio_model->getAudioImages($audio['id'])) == 0) { ?>
-
-                    <div class="xl:m-8">
-                        <!-- <img src="http://localhost/bookify//assets/img/ebooks/6ea9ab1baa0efb9e19094440c317e21b/default.png" alt=""> -->
-                        <img style="width: 80%;height: 300px;min-height: 300px;max-height:300px;object-fit:contain;margin-left:10%;margin-right:10%" src="<?= base_url() ?><?= $ebook['ebook_image'] ?>" alt="">
-
-                    </div>
-
-                <?php } else { ?>
-
-                    <div class="owl-carousel  carousel">
-                        <?php foreach ($this->audio_model->getAudioImages($audio['id']) as $f) { ?>
-                            <div>
-                                <img style="width: 80%;height: 300px;min-height: 300px;max-height:300px;object-fit:contain;margin-left:10%;margin-right:10%" src="<?= base_url() ?><?= $f->image_file ?>" alt="">
-
-                            </div>
-                        <?php } ?>
-                    </div>
-
-                <?php } ?>
-
-                <div class="grid xl:grid-cols-1 place-items-end mt-5" style="width: 80%;margin-left:10%;margin-right:10%">
-                    <div class="time">
-                        <time id="time-elapsed" class="text-white">00:00</time>
-                        <span style="color:#FFF"> / </span>
-                        <time id="duration" class="text-white">00:00</time>
-                    </div>
+            <div class="grid grid-cols-3 xl:hidden block">
+                <div class="col-span-1 xl:col-span-1  xl:hidden block">
+                    <center>
+                        <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
+                            <button data-toggle="modal" class="mt-8 flex" data-target="#exampleModal">
+                                <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-chevron-left"></i>
+                                <p style="font-size:18px;">VOLTAR</p>
+                            </button>
+                        </a>
+                    </center>
                 </div>
-                <div class="video-progress mt-3" style="width: 80%;margin-left:10%;margin-right:10%">
-                    <progress id="progress-bar" style="width: 100%;color:#FFF;background-color:#FFF" value="0" min="0"></progress>
-                    <input class="seek" style="display:none ;" id="seek" value="0" min="0" type="range" step="1">
-                    <div class="seek-tooltip" style="display:none ;" id="seek-tooltip">00:00</div>
+                <div class="col-span-2 xl:col-span-1  xl:hidden block">
+                    <center>
+                        <button class="flex mt-8 myBtn">
+                            <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-bars"></i>
+                            <p style="font-size:18px;">LISTA DE CAPÍTULOS</p>
+                        </button>
+                    </center>
                 </div>
+            </div>
+            <div class="grid xl:grid-cols-4  grid-cols-1">
+                <div class="col-span-1 xl:col-span-1 xl:block hidden ">
+                    <center>
+                        <a href="<?= base_url() ?>ebook/detalhes/<?= $ebook['id'] ?>">
+                            <button data-toggle="modal" class="mt-8 flex" data-target="#exampleModal">
+                                <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-chevron-left"></i>
+                                <p style="font-size:18px;">VOLTAR</p>
+                            </button>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-span-1 xl:col-span-2 xl:m-1 m-3 ">
 
-                <div class="grid place-items-center mt-5" style="margin-bottom:100px">
-                    <div class="flex space-x-5">
-                        <?php if ($previous != "-1") { ?>
-                            <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $previous ?>">
-                                <button>
-                                    <i style="font-size:25px;color:#FFF;" class="fa fa-forward"></i>
-                                </button>
-                            </a>
-                        <?php } ?>
+                    <center>
+                        <h3 style="font-size: 20px;font-weight:bold" class="font-center mt-8 line-clamp-1" title="<?= $ebook['ebook_title'] ?>"> <?= $ebook['ebook_title'] ?></h3>
+                        <p class="line-clamp-1 mb-3 " title="<?= $chapter['chapter_title'] ?> - <?= $audio['audio_title'] ?>"><?= $chapter['chapter_title'] ?> - <?= $audio['audio_title'] ?></p>
+                    </center>
 
-                        <button data-title="Play (k)" id="play">
-                            <!-- <svg class="playback-icons">
+                    <?php if (count($this->audio_model->getAudioImages($audio['id'])) == 0) { ?>
+
+                        <div class="xl:m-8">
+                            <!-- <img src="http://localhost/bookify//assets/img/ebooks/6ea9ab1baa0efb9e19094440c317e21b/default.png" alt=""> -->
+                            <img style="width: 80%;height: 300px;min-height: 300px;max-height:300px;object-fit:contain;margin-left:10%;margin-right:10%" src="<?= base_url() ?><?= $ebook['ebook_image'] ?>" alt="">
+
+                        </div>
+
+                    <?php } else { ?>
+
+                        <div class="owl-carousel  carousel">
+                            <?php foreach ($this->audio_model->getAudioImages($audio['id']) as $f) { ?>
+                                <div>
+                                    <img style="width: 80%;height: 300px;min-height: 300px;max-height:300px;object-fit:contain;margin-left:10%;margin-right:10%" src="<?= base_url() ?><?= $f->image_file ?>" alt="">
+
+                                </div>
+                            <?php } ?>
+                        </div>
+
+                    <?php } ?>
+
+                    <div class="grid xl:grid-cols-1 place-items-end mt-5" style="width: 80%;margin-left:10%;margin-right:10%">
+                        <div class="time">
+                            <time id="time-elapsed" class="text-white">00:00</time>
+                            <span style="color:#FFF"> / </span>
+                            <time id="duration" class="text-white">00:00</time>
+                        </div>
+                    </div>
+                    <div class="video-progress mt-3" style="width: 80%;margin-left:10%;margin-right:10%">
+                        <progress id="progress-bar" style="width: 100%;color:#FFF;background-color:#FFF" value="0" min="0"></progress>
+                        <input class="seek" style="display:none ;" id="seek" value="0" min="0" type="range" step="1">
+                        <div class="seek-tooltip" style="display:none ;" id="seek-tooltip">00:00</div>
+                    </div>
+
+                    <div class="grid place-items-center mt-5" style="margin-bottom:100px">
+                        <div class="flex space-x-5">
+                            <?php if ($previous != "-1") { ?>
+                                <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $previous ?>">
+                                    <button>
+                                        <i style="font-size:25px;color:#FFF;" class="fa fa-forward"></i>
+                                    </button>
+                                </a>
+                            <?php } ?>
+
+                            <button data-title="Play (k)" id="play">
+                                <!-- <svg class="playback-icons">
                             <use href="#play-icon"></use>
                             <use class="hidden" href="#pause"></use>
                         </svg> -->
-                            <div class="playback-icon">
-                                <use id="button-play">
-                                    <i style="font-size:25px;color:#FFF;" class="fa fa-pause"></i>
+                                <div class="playback-icon">
+                                    <use id="button-play">
+                                        <i style="font-size:25px;color:#FFF;" class="fa fa-pause"></i>
 
-                                </use>
-                                <use id="button-pause" style="display:none ;">
-                                    <i style="font-size:25px;color:#FFF;" class="fa fa-play"></i>
+                                    </use>
+                                    <use id="button-pause" style="display:none ;">
+                                        <i style="font-size:25px;color:#FFF;" class="fa fa-play"></i>
 
-                                </use>
-                            </div>
+                                    </use>
+                                </div>
 
-                        </button>
-                        <?php if ($next != "-1") { ?>
-                            <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $next ?>">
-                                <button>
-                                    <i style="font-size:25px;color:#FFF;" class="fa fa-forward"></i>
-                                </button>
-                            </a>
-                        <?php } ?>
+                            </button>
+                            <?php if ($next != "-1") { ?>
+                                <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $next ?>">
+                                    <button>
+                                        <i style="font-size:25px;color:#FFF;" class="fa fa-forward"></i>
+                                    </button>
+                                </a>
+                            <?php } ?>
+                        </div>
                     </div>
+
+
+
+
+
+                    <div class="mt-5">
+                        <video controls autoplay class="video" id="video" preload="metadata" poster="poster.jpg">
+                            <source src="<?= base_url() ?><?= $audio['audio_file'] ?>" type="video/mp4">
+                            </source>
+                        </video>
+                    </div>
+
                 </div>
-
-
-
-
-
-                <div class="mt-5">
-                    <video controls autoplay class="video" id="video" preload="metadata" poster="poster.jpg">
-                        <source src="<?= base_url() ?><?= $audio['audio_file'] ?>" type="video/mp4">
-                        </source>
-                    </video>
+                <div class="col-span-1 xl:col-span-1 xl:block hidden ">
+                    <center>
+                        <button class="flex mt-8 myBtn">
+                            <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-bars"></i>
+                            <p style="font-size:18px;">LISTA DE CAPÍTULOS</p>
+                        </button>
+                    </center>
                 </div>
-
             </div>
-            <div class="col-span-1 xl:col-span-1 xl:block hidden ">
-                <center>
-                    <button class="flex mt-8 myBtn" >
-                        <i style="font-size:18px;color:#FFF;margin-right:15px" class="fa pt-1 fa-bars"></i>
-                        <p style="font-size:18px;">LISTA DE CAPÍTULOS</p>
-                    </button>
-                </center>
-            </div>
-        </div>
 
-        <div class="row"></div>
+            <div class="row"></div>
 
 
-    </section>
-
-
+        </section>
+    </main>
+    <div id="loadingMask" class="grid place-items-center" style="width: 100%; height: 100%; position: fixed;">
+        <img src="<?= base_url() ?>assets/img/design/loading.gif" alt="">
+    </div>
 
 
     <div id="myModal" class="modal">
@@ -336,10 +338,10 @@
                         <?php $count++ ?>
 
                         <div class="mt-1 chapter" id="<?= $e->id ?>" <?php if ($e->id == $chapter['id']) {
-                                                                        echo "style='cursor: pointer;'";
-                                                                    } else {
-                                                                        echo "style='cursor: pointer;'";
-                                                                    } ?>>
+                                                                            echo "style='cursor: pointer;'";
+                                                                        } else {
+                                                                            echo "style='cursor: pointer;'";
+                                                                        } ?>>
                             <div class="border border-primary   row">
                                 <div class="col-md-9">
                                     <div class="d-block align-items-left p-2 ">
@@ -352,10 +354,10 @@
                         </div>
 
                         <div class="audio-<?= $e->id ?> " <?php if ($e->id == $chapter['id']) {
-                                                            echo "block";
-                                                        } else {
-                                                            echo "hidden";
-                                                        } ?>>
+                                                                echo "block";
+                                                            } else {
+                                                                echo "hidden";
+                                                            } ?>>
                             <?php foreach ($this->audio_model->getAudiosByChapters($e->id) as $f) { ?>
                                 <div class="mt-3 ml-5" <?php if ($f->id == $audio['id']) {
                                                             echo "style='cursor: pointer;border:1px solid green'";
@@ -405,6 +407,8 @@
     </div>
 
 
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -412,6 +416,16 @@
     <script src="<?= base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
     <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/js/owl.carousel.min.js"></script>
+
+    <script>
+  $(document).ready( function() {
+
+    $('main').css('display','block')
+    // $('loading').css('display','none')
+
+    // $('#loadingMask').fadeOut();
+});
+</script>
     <!-- Modal -->
     <script>
         // Get the modal
@@ -419,7 +433,7 @@
 
         // Get the button that opens the modal
         // var btn = $('.myBtn')
-       
+
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
@@ -427,7 +441,7 @@
         // When the user clicks on the button, open the modal
         // btn.onclick = function() {
         // }
-        $('.myBtn').on('click', function(e){
+        $('.myBtn').on('click', function(e) {
             modal.style.display = "block";
         })
 
@@ -612,12 +626,12 @@
                 })
 
                 if (progress == '100') {
-                    var next = "<?=$next?>";
+                    var next = "<?= $next ?>";
 
                     if (next == "-1") {
                         // alert('acabou')
                     } else {
-                        window.location.href = "<?=base_url()?>play/u/<?=$ebook['id']?>?s=<?=$next?>";
+                        window.location.href = "<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $next ?>";
                     }
                 }
 

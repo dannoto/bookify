@@ -10,10 +10,15 @@ class Catalogo extends CI_Controller
 		parent::__construct();
 		$this->load->model('register_model');
 		$this->load->model('login_model');
+
 		$this->load->model('user_model');
+        $this->user_model->authPlan();
+		
 		$this->load->model('email_model');
 		$this->load->model('category_model');
 		$this->load->model('ebook_model');
+		$this->load->model('config_model');
+
 	}
 
 

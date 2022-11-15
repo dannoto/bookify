@@ -28,4 +28,24 @@ class Planos extends CI_Controller {
 
         $this->load->view('user/planos',$data);
     }
+
+	public function escolha() {
+
+		$data  = array(
+			'planos' => $this->plan_model->getPlans(),
+			'config' => $this->config_model->getConfigDesign(),
+		);
+
+        $this->load->view('user/planos_escolha',$data);
+    }
+
+	public function obrigado() {
+
+		$data  = array(
+			'planos' => $this->plan_model->getPlans(),
+			'config' => $this->config_model->getConfigDesign(),
+		);
+
+        $this->load->view('user/planos_obrigado',$data);
+    }
  }

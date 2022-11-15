@@ -47,6 +47,9 @@
    .ebook-add-biblioteca {
     border:2px solid #00B467
    }
+   .ebook-remove-biblioteca {
+    border:2px solid red;
+   }
 
     nav img {
         width: 45px;
