@@ -618,7 +618,8 @@
                     data: {
                         progress_ebook: "<?= $ebook['id'] ?>",
                         progress_chapter: "<?= $chapter['id'] ?>",
-                        progress_audio: "<?= $audio['id'] ?>"
+                        progress_audio: "<?= $audio['id'] ?>",
+                        progress_user: "<?=$this->session->userdata('session_user')['id']?>"
                     },
                     success: function(data) {
                         console.log(data)

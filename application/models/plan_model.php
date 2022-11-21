@@ -18,6 +18,33 @@ class plan_model extends CI_Model
         return $this->db->get('users_plans')->row_array();
     }
 
+    public function checkWatchCount($watch_date, $watch_ebook, $watch_user) {
+
+        $this->db->where('watch_user', $watch_user);
+
+        if ($watch_ebook != null) {
+            $this->db->where('watch_ebook', $watch_ebook);
+        }
+        
+        $this->db->like('watch_date', $watch_date);
+
+
+        return $this->db->get('users_watch')->result();
+
+    }
+
+    public function insertWatchCount($watch_date, $watch_ebook, $watch_user) {
+
+        $data = array(
+            'watch_user' => $watch_user,
+            'watch_ebook' => $watch_ebook, 
+            'watch_date' => $watch_date,
+        );
+
+        return $this->db->insert('users_watch', $data);
+
+    }
+
     public function addPlan($plan_name, $plan_description, $plan_price, $plan_type, $plan_limit_library, $plan_limit_quantity, $plan_limit_free, $plan_limit_premium, $plan_gateway_id)
     {
 

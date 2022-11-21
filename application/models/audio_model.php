@@ -187,15 +187,18 @@ class audio_model extends CI_Model
             'progress_chapter' => $progress_chapter,
             'progress_audio' => $progress_audio,
             'progress_date' =>  date('Y-m-d- H:i:s'),
+            'progress_user' => $this->session->userdata('session_user')['id']
         );
 
         return $this->db->insert('ebooks_audios_progress', $data);
     }
 
-    public function getProgress($progress_ebook, $progress_chapter, $progress_audio)  {
+    public function getProgress($progress_ebook, $progress_chapter, $progress_audio, $progress_user)  {
         $this->db->where('progress_ebook', $progress_ebook);
         $this->db->where('progress_chapter', $progress_chapter);
         $this->db->where('progress_audio', $progress_audio);
+        $this->db->where('progress_user', $progress_user);
+
 
         return $this->db->get('ebooks_audios_progress')->row_array();
 

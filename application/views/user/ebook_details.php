@@ -73,16 +73,16 @@
 
                         <?php if ($this->library_model->isLibrary($ebook['id'], $this->session->userdata('session_user')['id'])) { ?>
                             <div class="mt-8 grid place-items-center">
-                                <button class="ebook-btn ebook-add-biblioteca  p-2 px-5">
-                                    <i class="fa fa-plus"></i>
-                                    <span class="text-black">ADICIONAR NA BIBLIOTECA</span>
+                                <button class="ebook-btn ebook-remove-biblioteca  p-2 px-5">
+                                    <i class="fa fa-close"></i>
+                                    <span class="text-black">REMOVER DA BIBLIOTECA</span>
                                 </button>
                             </div>
                         <?php } else { ?>
                             <div class="mt-8 grid place-items-center">
-                                <button class="ebook-btn ebook-remove-biblioteca  p-2 px-5">
-                                    <i class="fa fa-close"></i>
-                                    <span class="text-black">REMOVER DA BIBLIOTECA</span>
+                                <button class="ebook-btn ebook-add-biblioteca  p-2 px-5">
+                                    <i class="fa fa-plus"></i>
+                                    <span class="text-black">ADICIONAR NA BIBLIOTECA</span>
                                 </button>
                             </div>
                         <?php } ?>
@@ -221,7 +221,95 @@
                         }).then(function(isConfirm) {
 
                             if (isConfirm) {
-                                window.location.href = "<?= base_url() ?>planos"
+                                window.location.href = "<?= base_url() ?>planos?action=upgrade&type=library"
+                            } else {
+                                // window.location.href = "<?= base_url() ?>planos"
+                            }
+
+
+                        });
+
+                    } else if (resp.status == "false") {
+
+                        swal({
+                            title: "Ops!",
+                            text: resp.message,
+                            icon: "warning",
+
+                        }).then(function(isConfirm) {
+
+
+
+                        });
+
+                    } else {
+                        swal('Ocorreu um erro temporário. ');
+
+                    }
+
+
+                },
+                error: function(data) {
+                    swal('Ocorreu um erro temporário. ');
+                },
+
+            });
+        })
+
+        $('.ebook-remove-biblioteca').on('click', function(e) {
+
+            var library_id = null
+            var ebook_id = "<?= $ebook['id'] ?>"
+            var ebook_user = "<?= $this->session->userdata('session_user')['id']; ?>"
+
+            // swal('Adicionado na sua biblioteca.')
+
+            $.ajax({
+
+                method: 'POST',
+                url: '<?= base_url() ?>biblioteca/actremovelibrary',
+                data: {
+                    ebook_id: ebook_id,
+                    ebook_user: ebook_user
+                },
+                success: function(data) {
+
+                    var resp = JSON.parse(data)
+
+                    if (resp.status == "true") {
+
+                        swal({
+                            title: "Feito!",
+                            text: resp.message,
+                            icon: "success",
+
+                        }).then(function(isConfirm) {
+
+                            if (isConfirm) {
+                                location.reload()
+                            } else {
+                                location.reload()
+                            }
+
+
+                        });
+
+                    } else if (resp.status == "upgrade") {
+
+                        swal({
+                            title: "Opss!",
+                            text: resp.message,
+                            icon: "warning",
+                            buttons: [
+                                'SAIR',
+                                'FAZER UPGRADE !'
+                            ],
+                            dangerMode: true,
+
+                        }).then(function(isConfirm) {
+
+                            if (isConfirm) {
+                                window.location.href = "<?= base_url() ?>planos?action=upgrade&type=library"
                             } else {
                                 // window.location.href = "<?= base_url() ?>planos"
                             }

@@ -11,16 +11,34 @@
 </head>
 
 
-<body >
+<body>
 
     <?php $this->load->view('comp/navbar_home'); ?>
     <main style="display:none;">
 
         <section class="mt-12">
-            <div class="grid place-items-center mb-12">
+            <div class="grid place-items-center mb-5">
                 <h1 class="ebook-title" style="font-size:25px">CONHEÇA NOSSOS PLANOS</h1>
 
             </div>
+
+            <?php if ($this->input->get()) { ?>
+                <div class="grid place-items-center mb-5 m-3">
+
+                    <?php if ($this->input->get('type') == "premium") { ?>
+                        <p>Você não pode acessar audiobooks premiums, apenas gratuitos. Faça um upgrade para acessar todo nosso catálogo.</p>
+
+                    <?php } else if ($this->input->get('type') == "library") { ?>
+                        <p>Você atingiu o limite máximo do uso da biblioteca. Faça um upgrade para adicionar mais audiobooks na sua biblioteca.</p>
+
+                    <?php } else if ($this->input->get('type') == "quantity") { ?>
+                        <p>Você atingiu o limite máximo de audiobooks mensais. Faça um upgrade para poder ouvir mais conteúdos este mês. </p>
+                    <?php } ?>
+
+
+
+                </div>
+            <?php } ?>
             <div class="grid xl:grid-cols-3 grid-cols-1 home-plano">
 
                 <?php foreach ($planos as $p) { ?>
@@ -71,11 +89,17 @@
                                     <span class="home-plano-currency">R$ <span class="home-plano-preco"><?= str_replace(".", ",", $p->plan_price) ?></span><span class="home-plano-currency">/ <?= $type ?></span></span>
                                 </div>
                             </div>
-                            <div class="home-plano-assinar-btn">
-                                <a href="<?= base_url() ?>checkout/<?= $p->id ?>">
-                                    <button class="bg-greenDefault ">ASSINAR <i class="fa ml-1 fa-arrow-right"></i></button>
-                                </a>
-                            </div>
+                            <?php if ($this->session->userdata('session_user') AND $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == $p->id) { ?>
+                                <div class="home-plano-assinar-btn">
+                                    <button class="bg-red-600 border border-red-600">PLANO ATUAL <i class="fa ml-1 fa-check"></i></button>
+                                </div>
+                            <?php } else { ?>
+                                <div class="home-plano-assinar-btn">
+                                    <a href="<?= base_url() ?>checkout/<?= $p->id ?>">
+                                        <button class="bg-greenDefault ">ASSINAR <i class="fa ml-1 fa-arrow-right"></i></button>
+                                    </a>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } ?>
