@@ -30,7 +30,7 @@ if (ENVIRONMENT == "development") {
 
 } else  if (ENVIRONMENT == "production") {
 
-    $config['base_url'] = 'https://ccoanalitica.com/book';
+    $config['base_url'] = 'https://ccoanalitica.com/book/';
 }
 
 /*
