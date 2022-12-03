@@ -83,7 +83,7 @@ class Checkout extends CI_Controller
                     $postData = $this->input->post();
 
                     // Make payment 
-                    $paymentID = $this->payment($postData);
+                    $paymentID = $this->payment($postData, $plan_id);
 
                     // If payment successful 
                     if ($paymentID) {
@@ -111,7 +111,7 @@ class Checkout extends CI_Controller
         }
     }
 
-    function payment($postData)
+    function payment($postData, $plan_id)
     {
 
         // If post data is not empty 
