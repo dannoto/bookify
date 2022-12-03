@@ -61,4 +61,28 @@ class Planos extends CI_Controller {
 
         $this->load->view('user/planos_falhou',$data);
     }
+
+
+	public function cancelar() {
+
+		if ($this->input->get()) {
+
+				$subscription_id = $this->input->get('subscription_id');
+
+				$response = array();
+
+				$cancel_request = $this->stripe_lib->cancelSubscription($subscription_id);
+
+				if ($cancel_request) {
+					echo "ok <br>";
+					print_r($cancel_request);
+				} else {
+					echo "erro <br>";
+					print_r($cancel_request);
+				}
+
+		} else {
+			redirect(base_url('conta/assinaturas'));
+		}
+	}
  }
