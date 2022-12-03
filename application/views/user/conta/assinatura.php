@@ -74,21 +74,36 @@
 
                     </div>
 
-                    <div class=" grid xl:grid-cols-2 grid-cols-1">
+                    <?php if ($subs['status'] == 'canceled') { ?>
+                        <div class=" grid xl:grid-cols-2 grid-cols-1">
                         <div class="xl:col-span-1 xl:pr-3">
                             <div class="conta-perfil-btn  mb-12">
                                 <a href="<?= base_url('planos') ?>">
-                                    <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
+                                    <button class="bg-greenDefault text-white font-semibol px-5">RENOVAR ASSINATURA</button>
 
                                 </a>
                             </div>
                         </div>
-                        <div class="xl:col-span-1">
-                            <div onclick="cancelSubscription(this.id)" id="<?=$subs['stripe_subscription_id']?>" class="conta-perfil-btn  mb-12">
-                                <button class="bg-red-400 text-white font-semibol px-5">CANCELAR ASSINATURA</button>
+                       
+                    </div>
+                    <?php } else if ($subs['status'] == 'active') { ?>
+                        <div class=" grid xl:grid-cols-2 grid-cols-1">
+                            <div class="xl:col-span-1 xl:pr-3">
+                                <div class="conta-perfil-btn  mb-12">
+                                    <a href="<?= base_url('planos') ?>">
+                                        <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
+
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="xl:col-span-1">
+                                <div onclick="cancelSubscription(this.id)" id="<?=$subs['stripe_subscription_id']?>" class="conta-perfil-btn  mb-12">
+                                    <button class="bg-red-400 text-white font-semibol px-5">CANCELAR ASSINATURA</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
+                  
 
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">HISTÓRICO DE PAGAMENTOS</h1>
