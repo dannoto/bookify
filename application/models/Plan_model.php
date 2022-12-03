@@ -41,7 +41,7 @@ class plan_model extends CI_Model
 
     public function cancelSubscription($subscription_id) {
 
-        $subscription_id = $this->plan_model->getUserCurrentSubscription($subscription_id)['stripe_subscription_id'];
+        $subscription_id = $this->getUserCurrentSubscription($subscription_id)['stripe_subscription_id'];
         $response = array();
 
         $cancel_request = $this->stripe_lib->cancelSubscription($subscription_id);
@@ -50,7 +50,7 @@ class plan_model extends CI_Model
 
 
             $user = $this->session->userdata('session_user');
-            $plan = $this->plan_model->getPlan($user['user_plan']);
+            $plan = $this->getPlan($user['user_plan']);
 
             if ($cancel_request['status'] == 'canceled') {
 
