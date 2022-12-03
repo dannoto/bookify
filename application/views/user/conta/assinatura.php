@@ -51,7 +51,7 @@
                 <div class="xl:col-span-2 conta-perfil xl:mr-48 xl:ml-48 m-5">
 
                     <div class="xl:mt-12 mt-5">
-                        <h1 style="font-size:25px;" class="ebook-title"><?= $plan['plan_name'] ?></h1>
+                        <h1 style="font-size:25px;" class="ebook-title text-green-500"><?= $plan['plan_name'] ?></h1>
                         <!-- <h3 class="text-uppercase text-green-500 font-semibold"></h3> -->
                         <p>R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
                                                                 $plan['plan_type'] = "Mês";
