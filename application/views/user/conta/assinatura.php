@@ -52,7 +52,7 @@
 
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">MEU PLANO</h1>
-                        <?php print_r($plan)?>
+                        <?php print_r($subs)?>
                         <h3 class="text-uppercase"><?= $plan['plan_name'] ?></h3>
                         <p>R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
                                                                 $plan['plan_type'] = "Mês";
@@ -60,7 +60,9 @@
                                                                 $plan['plan_type'] = "Ano";
                                                             } else {
                                                                 $plan['plan_type'] = "Mês";
-                                                            } ?></p>
+                                                            } 
+                                                            
+                                                            echo $plan['plan_type']?></p>
                     </div>
                     <div class="mb-8">
                         <p class="font-semibold">INICIO: <?= $subs['plan_period_start'] ?></p>
