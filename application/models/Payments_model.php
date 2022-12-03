@@ -39,6 +39,7 @@ class payments_model extends CI_Model
 
      public function getUserPayments($user_id) {
         $this->db->where('user_id', $user_id);
+        $this->db->order_by('id','desc');
         return $this->db->get('users_payments')->result();
      }
 
