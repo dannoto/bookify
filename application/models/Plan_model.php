@@ -14,7 +14,7 @@ class plan_model extends CI_Model
 
         $this->db->where('user_id', $user_id);
         $this->db->where('status','active');
-        return $this->db->get('users_subscriptions')->row_array();
+        return $this->db->get('users_plans')->row_array();
     }
 
     public function getPlan($plan_id)
