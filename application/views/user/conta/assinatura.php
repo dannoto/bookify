@@ -91,7 +91,7 @@
                         <?php if (count($this->payments_model->getUserPayments($this->session->userdata('session_user')['id'])) > 0) { ?>
 
                             <div class="grid pla-items-center mt-3">
-                                <table class="table-auto">
+                                <table class="" style="width:100% ;">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
