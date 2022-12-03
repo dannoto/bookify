@@ -65,8 +65,8 @@
                                                             echo $plan['plan_type']?></p>
                     </div>
                     <div class="mb-8">
-                        <p class="font-semibold">INICIO: <?= $subs['plan_period_start'] ?></p>
-                        <p class="font-semibold">VENCIMENTO: <?= $subs['plan_period_end'] ?></p>
+                        <p class="font-semibold">INICIO:  <?=date('d-m-Y H:i:s', strtotime(  $subs['plan_period_start'] ))  ?>  </p>
+                        <p class="font-semibold">VENCIMENTO: <?=date('d-m-Y H:i:s', strtotime( $subs['plan_period_end'] ))  ?></p>
 
                     </div>
 
@@ -107,7 +107,7 @@
                                                 <td class="text-uppercase"><?= $p->payment_method ?></td>
                                                 <td class="text-uppercase">R$ <?= $p->plan_amount ?></td>
                                                 <td><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></td>
-                                                <td><?= $p->created ?></td>
+                                                <td><?= date('d-m-Y H:i:s', strtotime($p->created ))  ?></td>
                                             </tr>
                                         <?php } ?>
 
