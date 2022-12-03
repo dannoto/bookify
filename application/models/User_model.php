@@ -142,7 +142,7 @@ class user_model extends CI_Model
 
         if ($this->session->userdata('session_user')) {
 
-            $user_data = $this->session->userdata('session_user');
+            $user_data = $this->user_model->getUserById($this->session->userdata('session_user')['id']);
             $user_current_subscription = $this->plan_model->getUserCurrentSubscription($user_data['user_subscription']);
 
             $expiration_date = date("Y-m-d H:i:s", $user_current_subscription['plan_period_end']);
