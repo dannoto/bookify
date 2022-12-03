@@ -52,6 +52,7 @@
 
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">MEU PLANO</h1>
+                        <?php print_r($plan)?>
                         <h3 class="text-uppercase"><?= $plan['plan_name'] ?></h3>
                         <p>R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
                                                                 $plan['plan_type'] = "Mês";
@@ -100,7 +101,7 @@
 
                                         <?php foreach ($this->payments_model->getUserPayments($this->session->userdata('session_user')['id']) as $p) { ?>
                                             <tr>
-                                                <td><?= $p->id ?></td>
+                                                <td>#<?= $p->id ?></td>
                                                 <td class="text-uppercase"><?= $p->payment_method ?></td>
                                                 <td class="text-uppercase">R$ <?= $p->plan_amount ?></td>
                                                 <td><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></td>
