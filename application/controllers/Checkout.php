@@ -222,6 +222,8 @@ class Checkout extends CI_Controller
 
     function cancelCurrentSubscription($subscription_id)
     {
+
+        $subscription_id = $this->plan_model->getUserCurrentSubscription($subscription_id)['stripe_subscription_id'];
         $response = array();
 
         $cancel_request = $this->stripe_lib->cancelSubscription($subscription_id);
@@ -248,7 +250,7 @@ class Checkout extends CI_Controller
             $response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
         }
 
-        // print_r(json_encode($response));
+        print_r(json_encode($response));
     }
 
     // function payment_status($id)
