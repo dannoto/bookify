@@ -1,11 +1,10 @@
 <div class="panel">
     <form action="" method="POST" id="paymentFrm">
         <div class="panel-heading">
-            <h3 class="panel-title">Plan Subscription with Stripe</h3>
             <!-- Plan Info -->
             <?php print_r($plan)?>
             <p>
-                <input type="text" name="subscr_plan"  value="<?php echo $plan->id; ?>" id="subscr_plan">
+                <input type="text" name="subscr_plan"  value="<?php echo $plan['id']; ?>" id="subscr_plan">
 
                 <h2>PLANO</h2>
 
