@@ -94,11 +94,11 @@
                                 <table class="" style="width:100% ;">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>GATEWAY</th>
-                                            <th>VALOR</th>
-                                            <th>PLANO</th>
-                                            <th>DATA</th>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">GATEWAY</th>
+                                            <th class="text-center">VALOR</th>
+                                            <th class="text-center">PLANO</th>
+                                            <th class="text-center">DATA</th>
                                         </tr>
                                     </thead>
                                     <tbody>
