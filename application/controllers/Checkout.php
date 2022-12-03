@@ -185,10 +185,10 @@ class Checkout extends CI_Controller
                             $subscription_id = $this->payments_model->insertSubscription($subscripData);
 
                             // Update subscription id in the users table  
-                            if ($subscription_id && !empty($this->userID)) {
+                            if ($subscription_id) {
                                
                                 //Upddate Plan ; 
-                                $this->plan_model->updateUserPlan($this->userID, $plan['id']);
+                                $this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan['id']);
 
                                 // Update Subscription
                                 $this->plan_model->updateUserSubscription($this->userID, $subscription_id);
