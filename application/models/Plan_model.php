@@ -13,7 +13,7 @@ class plan_model extends CI_Model
     public function getUserCurrentSubscription($subscription_id) {
 
         $this->db->where('id', $subscription_id);
-        return $this->db->get('users_subscription')->row_array();
+        return $this->db->get('users_subscriptions')->row_array();
     }
 
     public function getPlan($plan_id)
