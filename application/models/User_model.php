@@ -156,6 +156,10 @@ class user_model extends CI_Model
             $expiration_date =  date('Y-m-d H:i:s', strtotime($user_current_subscription['plan_period_end']));
             $today = date('Y-m-d H:i:s');
             $today_limit = date('Y-m-d H:i:s', strtotime($user_current_subscription['plan_period_end']. ' + 3 days'));
+
+            $expiration_date =  strtotime($expiration_date);
+            $today = strtotime($today);
+            $today_limit = strtotime($today_limit);
             
             echo $today_limit."<br>";
             echo $expiration_date."<br>";
@@ -177,33 +181,33 @@ class user_model extends CI_Model
 
             // // // // // / // // // 
 
-            // if ($user_current_subscription['status'] == 'canceled') {
+            if ($user_current_subscription['status'] == 'canceled') {
 
-            //     if ($expiration_date > $today) {
+                if ($expiration_date > $today) {
 
-            //         echo "Cancelado e plano resetado.";
+                    echo "Cancelado e plano resetado.";
 
-            //         //Reset Plan
-            //         // $this->plan_model->updateUserPlan($user_data['id'], '0');
-            //     } else {
-            //         echo "Cancelado, mas ainda esta valido";
-            //     }
+                    //Reset Plan
+                    // $this->plan_model->updateUserPlan($user_data['id'], '0');
+                } else {
+                    echo "Cancelado, mas ainda esta valido";
+                }
 
-            // } else if ($user_current_subscription['status'] == 'active') {
+            } else if ($user_current_subscription['status'] == 'active') {
 
-            //     if ($expiration_date > $today_limit ) {
+                if ($expiration_date > $today_limit ) {
 
-            //         echo "Não pagou, cancelando a pe plano resetado.";
+                    echo "Não pagou, cancelando a pe plano resetado.";
 
-            //         //CancelSubscription
-            //         // $this->plan_model->cancelSubscription($user_data['user_subscription']);
+                    //CancelSubscription
+                    // $this->plan_model->cancelSubscription($user_data['user_subscription']);
                     
-            //         //Reset Plan
-            //         // $this->plan_model->updateUserPlan($user_data['id'], '0');
-            //     } else {
-            //         echo "Plano ainda nao venceu, esta valido";
-            //     }
-            // }
+                    //Reset Plan
+                    // $this->plan_model->updateUserPlan($user_data['id'], '0');
+                } else {
+                    echo "Plano ainda nao venceu, esta valido";
+                }
+            }
         } else {
 
             redirect(base_url('login'));
