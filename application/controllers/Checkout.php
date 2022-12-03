@@ -117,13 +117,20 @@ class Checkout extends CI_Controller {
                                 'created' => $created, 
                                 'status' => $status 
                             ); 
+
+                            // Add Payment
+                            $this->payments_model->addPayment($subscripData);
+
+                            //Add Subscription
                             $subscription_id = $this->payments_model->insertSubscription($subscripData); 
                              
                             // Update subscription id in the users table  
-                            if($subscription_id && !empty($this->userID)){ 
-                                $data = array('subscription_id' => $subscription_id); 
-                                $update = $this->user_model->updateUser($data, $this->userID); 
-                            } 
+                            // if($subscription_id && !empty($this->userID)){ 
+                            //     $data = array('subscription_id' => $subscription_id); 
+                            //     $update = $this->user_model->updateUser($data, $this->userID); 
+                            // } 
+
+                            // Add PLaymento
                              
                             return $subscription_id; 
                         } 

@@ -36,11 +36,18 @@ class payments_model extends CI_Model
      * Insert subscription data in the database 
      * @param data array 
      */ 
+
+    public function addPayment($data) {
+        return $this->db->insert('users_payments',$data);
+        // return $this->db->insert_id();
+    }
+
     public function insertSubscription($data){ 
         // $insert = $this->db->insert($this->subscripTbl,$data); 
         // return $insert?$this->db->insert_id():false; 
 
-        return $this->db->insert('users_subscriptions',$data);
+         $this->db->insert('users_subscriptions',$data);
+         return $this->db->insert_id();
     } 
      
     /* 
