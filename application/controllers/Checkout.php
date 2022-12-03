@@ -13,6 +13,7 @@ class Checkout extends CI_Controller {
         // Load product model 
         $this->load->model('user_model'); 
         $this->load->model('plan_model'); 
+        $this->load->model('payments_model'); 
 
         // Get user ID from current SESSION 
         $this->userID = $this->session->userdata('session_user')['id']; 
