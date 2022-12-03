@@ -32,7 +32,7 @@ class Checkout extends CI_Controller {
              
             // If payment successful 
             if($paymentID){ 
-                redirect('user/pagamento/_status'.$paymentID); 
+                redirect('user/pagamento_status'.$paymentID); 
             }else{ 
                 $apiError = !empty($this->stripe_lib->api_error)?' ('.$this->stripe_lib->api_error.')':''; 
                 $data['error_msg'] = 'Transaction has been failed!'.$apiError; 
