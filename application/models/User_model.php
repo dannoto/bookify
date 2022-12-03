@@ -149,26 +149,30 @@ class user_model extends CI_Model
             // $expiration_date = DateTime::createFromFormat("Y-m-d H:i:s", $user_current_subscription['plan_period_end']); 
             $expiration_date = date('d-m-Y',strtotime($user_current_subscription['plan_period_end']));
             $today = date('d-m-Y',time()); 
+            $today_limit = date($user_current_subscription['plan_period_end'], $user_current_subscription['plan_period_end'].'+3 days'); 
 
+            //Expiration
             $expiration_date =  date_create($expiration_date);
+
             $today = date_create($today);
-            $today_limit = date(date('Y-m-d H:i:s'), strtotime($user_current_subscription['plan_period_end']."+3 days"));
+            $today_limit = date_create($today_limit);
 
-            $diff =  date_diff($today, $expiration_date);
+            $days =  date_diff($today, $expiration_date);
+            $days_limit =  date_diff($today_limit, $expiration_date);
 
-            if($diff->format("%R%a") > 0){
-                echo "active";
-            }else{
-                echo "inactive";
-            }
-            echo "Remaining Days ".$diff->format("%R%a days"). " totar limit: ". $today_limit;
+            // if($diff->format("%R%a") > 0){
+            //     echo "active";
+            // }else{
+            //     echo "inactive";
+            // }
+            echo " EXPIRACAO ".$expiration_date." ; LIMITE: ".$today_limit.";Remaining Days ".$days->format("%R%a days"). " totar limit: ". $days_limit;
             // echo "<br>EXPIRATION DATE: ".$expiration_date;
             // echo "<br>TODAY: ".$today;
             // echo "<br>LIMIT: ".$today_limit;
 
             if ($user_current_subscription['status'] == 'canceled') {
 
-                if ($expiration_date > $today) {
+                if ($days <= 0) {
 
                     echo "Cancelado e plano resetado.";
 
@@ -180,7 +184,7 @@ class user_model extends CI_Model
 
             } else if ($user_current_subscription['status'] == 'active') {
 
-                if ($expiration_date > $today_limit) {
+                if ($days <= 0 ) {
 
                     echo "Não pagou, cancelando a pe plano resetado.";
 
