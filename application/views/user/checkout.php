@@ -3,14 +3,26 @@
         <div class="panel-heading">
             <h3 class="panel-title">Plan Subscription with Stripe</h3>
             <!-- Plan Info -->
-            <?php print_r($plans)?>
+            <?php print_r($plan)?>
             <p>
-                <b>Select Plan:</b>
-                <select name="subscr_plan" id="subscr_plan">
-                    <?php foreach($plans as $plan){ ?>
-                    <option value="<?php echo $plan->id; ?>"><?php echo $plan->plan_name.' [$'.$plan->plan_price.'/'.$plan->plan_type.''; ?></option>
-                    <?php } ?>
-                </select>
+                <input type="text" name="subscr_plan"  value="<?php echo $plan->id; ?>" id="subscr_plan">
+
+                <h2>PLANO</h2>
+
+                
+                <?php if ($plan['plan_type'] == 1) {
+                    $plan['plan_type'] = "Mês";
+                } else if ($plan['plan_type'] == 4) {
+                    $plan['plan_type'] = "Ano";
+                } else {
+                    $plan['plan_type'] = "Mês";
+                } 
+                
+                ?>
+                
+                
+                <p><?php echo $plan['plan_name'].' R$ '.$plan['plan_price'].' / '.$plan['plan_type']; ?></p>
+               
             </p>
         </div>
         <div class="panel-body">
