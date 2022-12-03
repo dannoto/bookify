@@ -147,7 +147,7 @@ class user_model extends CI_Model
 
             // $expiration_date = strtotime($user_current_subscription['plan_period_end']);
             // $expiration_date = DateTime::createFromFormat("Y-m-d H:i:s", $user_current_subscription['plan_period_end']); 
-            $expiration_date = new Date($user_current_subscription['plan_period_end']);  
+            $expiration_date = new DateTime($user_current_subscription['plan_period_end']);  
             $today =  date('Y-m-d- H:i:s');
             $today_limit = date($expiration_date, strtotime("+3 days"));
 
