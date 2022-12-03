@@ -59,27 +59,32 @@
                                                                 $plan['plan_type'] = "Ano";
                                                             } else {
                                                                 $plan['plan_type'] = "Mês";
-                                                            } 
-                                                            
-                                                            echo $plan['plan_type']?></p>
+                                                            }
+
+                                                            echo $plan['plan_type'] ?></p>
                     </div>
                     <div class="mb-8">
-                        <p class="font-semibold">INICIO:  <?=date('d-m-Y H:i:s', strtotime(  $subs['plan_period_start'] ))  ?>  </p>
-                        <p class="font-semibold">VENCIMENTO: <?php if ($subs['plan_period_end'] == "-") { echo "-";} else { echo date('d-m-Y H:i:s', strtotime( $subs['plan_period_end'] )); }  ?></p>
+                        <p class="font-semibold">INICIO: <?= date('d-m-Y H:i:s', strtotime($subs['plan_period_start']))  ?> </p>
+                        <p class="font-semibold">VENCIMENTO: <?php if ($subs['plan_period_end'] == "-") {
+                                                                    echo "-";
+                                                                } else {
+                                                                    echo date('d-m-Y H:i:s', strtotime($subs['plan_period_end']));
+                                                                }  ?></p>
+                        <p>STATUS: <?php if ($subs['status'] == "active") {echo "<span class='text-green-500'>ATIVA</span>"; } else if ($subs == "canceled") {echo "<span class='text-red-500'>CANCELADA</span>";} ?></p>
 
                     </div>
 
                     <div class=" grid xl:grid-cols-2 grid-cols-1">
                         <div class="xl:col-span-1 xl:pr-3">
                             <div class="conta-perfil-btn  mb-12">
-                                                            <a href="<?=base_url('planos')?>">
-                                                            <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
+                                <a href="<?= base_url('planos') ?>">
+                                    <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
 
-                                                            </a>
-                        </div>
+                                </a>
+                            </div>
                         </div>
                         <div class="xl:col-span-1">
-                            <div class="conta-perfil-btn  mb-12">
+                            <div onclick="cancelSubscription(this.id)" id="<?=$subs['stripe_subscription_id']?>" class="conta-perfil-btn  mb-12">
                                 <button class="bg-red-400 text-white font-semibol px-5">CANCELAR ASSINATURA</button>
                             </div>
                         </div>
@@ -105,11 +110,11 @@
 
                                         <?php foreach ($this->payments_model->getUserPayments($this->session->userdata('session_user')['id']) as $p) { ?>
                                             <tr>
-                                                <td><small class="text-center"># <?= $p->id ?></small:</td>
-                                                <td class="uppercase"><small class="text-center"><?= $p->payment_method ?></small:</td>
-                                                <td class="uppercase"><small class="text-center">R$ <?= $p->plan_amount ?></small:</td>
-                                                <td><small class="text-center"><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></small:</td>
-                                                <td><small class="text-center"><?= date('d-m-Y H:i:s', strtotime($p->created ))  ?></small:</td>
+                                                <td><small class="text-center"># <?= $p->id ?></small:< /td>
+                                                <td class="uppercase"><small class="text-center"><?= $p->payment_method ?></small:< /td>
+                                                <td class="uppercase"><small class="text-center">R$ <?= $p->plan_amount ?></small:< /td>
+                                                <td><small class="text-center"><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></small:< /td>
+                                                <td><small class="text-center"><?= date('d-m-Y H:i:s', strtotime($p->created))  ?></small:< /td>
                                             </tr>
                                         <?php } ?>
 
@@ -167,6 +172,60 @@
                     body.style.display = "block";
                 }
             });
+        }
+    </script>
+
+    <script>
+        function cancelSubscription(subscription_id) {
+
+
+            subscription_id = subscription_id
+
+            swal({
+                title: "Atenção!",
+                text: 'Tem certeza que deseja cancelar sua assinatura?',
+                icon: "warning",
+                buttons: [
+                    'Não',
+                    'Sim, quero cancelar!'
+                ],
+                dangerMode: true,
+
+            }).then(function(isConfirm) {
+
+                if (isConfirm) {
+                    $.ajax({
+                        method: 'POST',
+                        url: '<?= base_url() ?>planos/cancelar',
+                        data: {
+                            subscription_id: subscription_id
+                        },
+                        success: function(data) {
+
+                            var resp = JSON.parse(data)
+
+                            if (resp.status == "true") {
+                                swal(resp.message).then(function(e){
+                                    location.reload()
+                                });
+                            } else {
+                                swal(resp.message).then(function(e){
+                                    location.reload()
+                                });
+
+                            }
+
+                        },
+                        error: function(data) {
+                            swal('Ocorreu um erro temporário. ');
+                        },
+
+                    });
+                }
+
+
+            });
+
         }
     </script>
 

@@ -69,9 +69,9 @@ class Planos extends CI_Controller {
 
 	public function cancelar() {
 
-		if ($this->input->get()) {
+		if ($this->input->post()) {
 
-				$subscription_id = $this->input->get('subscription_id');
+				$subscription_id = $this->input->post('subscription_id');
 
 				$response = array();
 
