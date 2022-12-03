@@ -2,6 +2,24 @@
 class plan_model extends CI_Model
 {
 
+    function __construct()
+    {
+        parent::__construct();
+
+        // Load Stripe library 
+        $this->load->library('stripe_lib');
+
+        // Load product model 
+        $this->load->model('user_model');
+        $this->load->model('plan_model');
+        $this->load->model('payments_model');
+        $this->load->model('email_model');
+
+        $this->load->config('stripe');
+		$this->load->library('stripe_lib');
+
+    }
+
     public function getPlans()
     {
         $this->db->order_by('id', 'desc');
@@ -20,6 +38,40 @@ class plan_model extends CI_Model
         
         return $this->db->update('users_subscriptions', $data);
     }
+
+    public function cancelSubscription($subscription_id) {
+
+        $subscription_id = $this->plan_model->getUserCurrentSubscription($subscription_id)['stripe_subscription_id'];
+        $response = array();
+
+        $cancel_request = $this->stripe_lib->cancelSubscription($subscription_id);
+
+        if ($cancel_request) {
+
+
+            $user = $this->session->userdata('session_user');
+            $plan = $this->plan_model->getPlan($user['user_plan']);
+
+            if ($cancel_request['status'] == 'canceled') {
+
+                if ($this->plan_model->updateSubscribeStatus($cancel_request['id'], $user['id'], 'canceled')) {
+
+                    $this->email_model->canceledSubscribe($user, $plan, $cancel_request);
+                    $response =  array('status' => 'true', 'message' => 'Sua assinatura foi cancelada. Voce não será mais cobrado.');
+                } else {
+                    $response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
+                }
+            } else {
+                $response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
+            }
+        } else {
+            $response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
+        }
+
+        print_r(json_encode($response));
+
+    }
+
     public function getUserCurrentSubscription($subscription_id) {
 
         $this->db->where('id', $subscription_id);
