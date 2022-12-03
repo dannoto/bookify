@@ -116,7 +116,7 @@ class Checkout extends CI_Controller {
                                 'created' => $created, 
                                 'status' => $status 
                             ); 
-                            $subscription_id = $this->user_model->insertSubscription($subscripData); 
+                            $subscription_id = $this->payments_model->insertSubscription($subscripData); 
                              
                             // Update subscription id in the users table  
                             if($subscription_id && !empty($this->userID)){ 
