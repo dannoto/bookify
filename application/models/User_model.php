@@ -9,6 +9,7 @@ class user_model extends CI_Model
         return $this->db->get('users')->row_array();
     }
 
+    //
     public function getUsers()
     {
 
