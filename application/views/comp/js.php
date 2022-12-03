@@ -13,7 +13,7 @@
   $(document).ready( function() {
 
     $('main').css('display','block')
-    // $('loading').css('display','none')
+    $('#loadingMask').css('display','none')
 
     // $('#loadingMask').fadeOut();
 });

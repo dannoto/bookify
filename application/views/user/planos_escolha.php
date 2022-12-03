@@ -19,7 +19,7 @@
         <section class="mt-12">
             <div class="grid place-items-center mb-12">
                 <h1 class="ebook-title" style="font-size:25px">ESCOLHA UM PLANO</h1>
-                <p>Antes de começar aproveitar o Bookify. Escolha um plano.</p>
+                <p>Antes de começar a aproveitar o Bookify. Escolha um plano.</p>
             </div>
             <div class="grid xl:grid-cols-3 grid-cols-1 home-plano">
 
