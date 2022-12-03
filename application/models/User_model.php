@@ -157,9 +157,9 @@ class user_model extends CI_Model
             $today = date('Y-m-d H:i:s');
             $today_limit = date('Y-m-d H:i:s', strtotime($user_current_subscription['plan_period_end']. ' + 3 days'));
             
-            echo $today_limit;
-            echo $expiration_date;
-            echo $today;
+            echo $today_limit."<br>";
+            echo $expiration_date."<br>";
+            echo $today."<br>";
 
 
             // $days =  date_diff($today, $expiration_date);
