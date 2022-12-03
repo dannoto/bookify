@@ -37,6 +37,11 @@ class payments_model extends CI_Model
      * @param data array 
      */ 
 
+     public function getUserPayments($user_id) {
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('users_payments')->result();
+     }
+
     public function addPayment($data) {
         return $this->db->insert('users_payments',$data);
         // return $this->db->insert_id();

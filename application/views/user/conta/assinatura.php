@@ -52,10 +52,18 @@
 
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">MEU PLANO</h1>
+                        <h3 class="text-uppercase"><?= $plan['plan_name'] ?></h3>
+                        <p>R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
+                                                                $plan['plan_type'] = "Mês";
+                                                            } else if ($plan['plan_type'] == 4) {
+                                                                $plan['plan_type'] = "Ano";
+                                                            } else {
+                                                                $plan['plan_type'] = "Mês";
+                                                            } ?></p>
                     </div>
                     <div class="mb-8">
-                        <p class="font-semibold">INICIO: 19/10/2022</p>
-                        <p class="font-semibold">VENCIMENTO: 19/11/2022</p>
+                        <p class="font-semibold">INICIO: <?= $plan['plan_period_start'] ?></p>
+                        <p class="font-semibold">VENCIMENTO: <?= $plan['plan_period_end'] ?></p>
 
                     </div>
 
@@ -75,9 +83,44 @@
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">HISTÓRICO DE PAGAMENTOS</h1>
 
-                        <div class="grid pla-items-center">
-                            <p>NENHUM HISTÓRICO REGISTRADO.</p>
-                        </div>
+                        <?php if (count($this->payments_model->getUserPayments($this->session->userdata('session_user')['id'])) > 0) { ?>
+
+                            <div class="grid pla-items-center mt-3">
+                                <table class="table-auto">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>GATEWAY</th>
+                                            <th>VALOR</th>
+                                            <th>PLANO</th>
+                                            <th>DATA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php foreach ($this->payments_model->getUserPayments($this->session->userdata('session_user')['id']) as $p) { ?>
+                                            <tr>
+                                                <td><?= $p->id ?></td>
+                                                <td class="text-uppercase"><?= $p->payment_method ?></td>
+                                                <td class="text-uppercase">R$ <?= $p->plan_amount ?></td>
+                                                <td><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></td>
+                                                <td><?= $p->created ?></td>
+                                            </tr>
+                                        <?php } ?>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        <?php } else { ?>
+
+                            <div class="grid pla-items-center">
+                                <p>NENHUM HISTÓRICO REGISTRADO.</p>
+                            </div>
+
+                        <?php } ?>
+
                     </div>
 
                 </div>

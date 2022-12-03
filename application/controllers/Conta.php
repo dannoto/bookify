@@ -19,6 +19,7 @@ class Conta extends CI_Controller {
         $this->load->model('raffles_model');
         $this->load->model('payments_model');
         $this->load->model('cart_model');
+        $this->load->model('plan_model');
 
 
 	}
@@ -33,7 +34,11 @@ class Conta extends CI_Controller {
 
     }
     public function assinatura() {
-        $this->load->view('user/conta/assinatura');
+
+        $data = array(
+            'plan' => $this->plan_model->getUserCurrentPlan($this->session->userdata('session_user')['id']);
+        );
+        $this->load->view('user/conta/assinatura', $data);
 
     }
 
