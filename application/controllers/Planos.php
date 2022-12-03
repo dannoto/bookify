@@ -16,6 +16,8 @@ class Planos extends CI_Controller {
 
 		$this->load->model('config_model');
 
+		$this->load->config('stripe');
+
 	}
 
 
