@@ -18,11 +18,13 @@
     <main style="display:none;">
 
         <section class="mt-12">
+            <br><br>
             <div class="grid place-items-center mb-12 xl:m-0 m-3">
-                <h1 class="ebook-title uppercase" style="font-size:25px">OPS, <?= $this->session->userdata('session_user')['user_name']; ?>!</h1>
+                <h1 class="ebook-title uppercase" style="font-size:25px">OPSS, <?= $this->session->userdata('session_user')['user_name']; ?>!</h1>
                 <p style="font-size: 20px;" class="xl:mt-0 xl:font-base mt-3">Ocorreu um erro durante o pagamento do seu plano. Vamos tentar novamente?</p>
                 <small><?=$message?></small>
             </div>
+            <br><br>
             <div class="grid xl:grid-cols-1 grid-cols-1 home-plano place-items-center">
 
                 <div class="home-plano-assinar-btn xl:mt-5  xl:w-1/3 w-full">

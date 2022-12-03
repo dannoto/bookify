@@ -18,6 +18,7 @@
     <main style="display:none;">
 
         <section class="mt-12">
+        <br><br>
             <div class="grid place-items-center mb-12 xl:m-0 m-3">
                 <h1 class="ebook-title uppercase" style="font-size:25px">PARABÉNS, <?= $this->session->userdata('session_user')['user_name']; ?>!</h1>
                 <p style="font-size: 20px;" class="xl:mt-0 xl:font-base mt-3">Você escolheu o plano <span class="text-greenDefault font-semibold">
@@ -29,6 +30,7 @@
                         )['plan_name']; ?>
                     </span> é hora de começar a aproveitar o Bookify!</p>
             </div>
+            <br><br>
             <div class="grid xl:grid-cols-1 grid-cols-1 home-plano place-items-center">
 
                 <div class="home-plano-assinar-btn xl:mt-5  xl:w-1/3 w-full">
