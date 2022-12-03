@@ -21,14 +21,7 @@
         <br><br>
             <div class="grid place-items-center mb-12 xl:m-0 m-3">
                 <h1 class="ebook-title uppercase" style="font-size:25px">PARABÉNS, <?= $this->session->userdata('session_user')['user_name']; ?>!</h1>
-                <p style="font-size: 20px;" class="xl:mt-0 xl:font-base mt-3">Você escolheu o plano <span class="text-greenDefault font-semibold">
-                        <?=
-                        $this->plan_model->getPlan(
-                            $this->user_model->getUserById(
-                                $this->session->userdata('session_user')['id']
-                            )['user_plan']
-                        )['plan_name']; ?>
-                    </span> é hora de começar a aproveitar o Bookify!</p>
+                <p style="font-size: 20px;" class="xl:mt-0 xl:font-base mt-3">Você sua assinatura foi concluída. É hora de começar a aproveitar o Bookify!</p>
             </div>
             <br><br>
             <div class="grid xl:grid-cols-1 grid-cols-1 home-plano place-items-center">
