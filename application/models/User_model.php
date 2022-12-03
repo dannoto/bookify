@@ -152,15 +152,16 @@ class user_model extends CI_Model
 
             $expiration_date =  date_create($expiration_date);
             $today = date_create($today);
-            // $today_limit = date($user_current_subscription['plan_period_end'], strtotime("+3 days"));
+            $today_limit = date($expiration_date, strtotime("+3 days"));
 
             $diff =  date_diff($today, $expiration_date);
-            if($diff->format("%R%a")>0){
-                    echo "active";
+
+            if($diff->format("%R%a") > 0){
+                echo "active";
             }else{
                 echo "inactive";
             }
-            echo "Remaining Days ".$diff->format("%R%a days");
+            echo "Remaining Days ".$diff->format("%R%a days"). " totar limit: ". $today_limit;
             // echo "<br>EXPIRATION DATE: ".$expiration_date;
             // echo "<br>TODAY: ".$today;
             // echo "<br>LIMIT: ".$today_limit;
@@ -181,7 +182,7 @@ class user_model extends CI_Model
 
                 if ($expiration_date > $today_limit) {
 
-                    echo "Mão pagou, cancelando a pe plano resetado.";
+                    echo "Não pagou, cancelando a pe plano resetado.";
 
                     //CancelSubscription
                     // $this->plan_model->cancelSubscription($user_data['user_subscription']);
