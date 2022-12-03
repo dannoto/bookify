@@ -105,11 +105,11 @@
 
                                         <?php foreach ($this->payments_model->getUserPayments($this->session->userdata('session_user')['id']) as $p) { ?>
                                             <tr>
-                                                <td># <?= $p->id ?></td>
-                                                <td class="uppercase"><?= $p->payment_method ?></td>
-                                                <td class="uppercase">R$ <?= $p->plan_amount ?></td>
-                                                <td><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></td>
-                                                <td><?= date('d-m-Y H:i:s', strtotime($p->created ))  ?></td>
+                                                <td><small># <?= $p->id ?></small:</td>
+                                                <td class="uppercase"><small><?= $p->payment_method ?></small:</td>
+                                                <td class="uppercase"><small>R$ <?= $p->plan_amount ?></small:</td>
+                                                <td><small><?= $this->plan_model->getPlan($p->plan_id)['plan_name'] ?></small:</td>
+                                                <td><small><?= date('d-m-Y H:i:s', strtotime($p->created ))  ?></small:</td>
                                             </tr>
                                         <?php } ?>
 
