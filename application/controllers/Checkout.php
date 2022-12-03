@@ -31,10 +31,46 @@ class Checkout extends CI_Controller
 
             if ($plan['plan_price'] == 0) {
 
+                if ($plan['plan_type'] == 1) {
+                    $plan['plan_type'] = "Mês";
+                } else if ($plan['plan_type'] == 4) {
+                    $plan['plan_type'] = "Ano";
+                } else {
+                    $plan['plan_type'] = "Mês";
+                }
 
+
+                $subscripData = array(
+                    'user_id' => $this->userID,
+                    'plan_id' => $plan['id'],
+                    'stripe_subscription_id' => "-",
+                    'stripe_customer_id' => "-",
+                    'stripe_plan_id' => "-",
+                    'plan_amount' => 0,
+                    'plan_amount_currency' => 'brl',
+                    'plan_interval' => $plan['plan_type'],
+                    'plan_interval_count' =>"-",
+                    'plan_period_start' => date('Y-m-d H:i:s'),
+                    'plan_period_end' => "-",
+                    'payer_email' => $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_email'],
+                    'created' => date('Y-m-d H:i:s'),
+                    'status' => "active",
+                );
+
+                // Add Payment
+                $this->payments_model->addPayment($subscripData);
+
+                //Add Subscription
+                $subscription_id = $this->payments_model->insertSubscription($subscripData);
+
+                // UpdateSubscription
+                $this->plan_model->updateUserSubscription($this->session->userdata('session_user')['id'], $subscription_id);
+               
+                //  UpdateUser Plan
                 if ($this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan['id'])) {
                     redirect(base_url('planos/obrigado'));
                 }
+
             } else {
 
 
@@ -64,6 +100,7 @@ class Checkout extends CI_Controller
                 // Pass plans data to the list view 
                 $this->load->view('user/checkout', $data);
             }
+
         } else {
             redirect(base_url('planos'));
         }
@@ -147,12 +184,14 @@ class Checkout extends CI_Controller
 
                             // Update subscription id in the users table  
                             if ($subscription_id && !empty($this->userID)) {
-                                // $data = array('subscription_id' => $subscription_id); 
-                                // $update = $this->user_model->updateUser($data, $this->userID); 
-                                $this->plan_model->updateUserPlan($this->userID, $subscription_id);
+                               
+                                //Upddate Plan ; 
+                                $this->plan_model->updateUserPlan($this->userID, $plan['id']);
+
+                                // Update Subscription
+                                $this->plan_model->updateUserSubscription($this->userID, $subscription_id);
                             }
 
-                            // Add PLaymento
 
                             return $subscription_id;
                         }

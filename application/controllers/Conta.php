@@ -36,7 +36,8 @@ class Conta extends CI_Controller {
     public function assinatura() {
 
         $data = array(
-            'plan' => $this->plan_model->getUserCurrentPlan($this->session->userdata('session_user')['id']),
+            'plan' => $this->plan_model->getPlan($this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_plan']),
+            'subs' => $this->plan_model->getUserCurrentSubscription($this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_subscription']),
         );
         $this->load->view('user/conta/assinatura', $data);
 

@@ -62,8 +62,8 @@
                                                             } ?></p>
                     </div>
                     <div class="mb-8">
-                        <p class="font-semibold">INICIO: <?= $plan['plan_period_start'] ?></p>
-                        <p class="font-semibold">VENCIMENTO: <?= $plan['plan_period_end'] ?></p>
+                        <p class="font-semibold">INICIO: <?= $subs['plan_period_start'] ?></p>
+                        <p class="font-semibold">VENCIMENTO: <?= $subs['plan_period_end'] ?></p>
 
                     </div>
 

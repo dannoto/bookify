@@ -10,11 +10,9 @@ class plan_model extends CI_Model
         return $this->db->get('users_plans')->result();
     }
 
-    public function getUserCurrentPlan($user_id, $plan_id) {
-        
-        $this->db->where('plan_id', $plan_id);
-        $this->db->where('user_id', $user_id);
-        $this->db->where('status','active');
+    public function getUserCurrentSubscription($subscription_id) {
+
+        $this->db->where('id', $subscription_id);
         return $this->db->get('users_subscription')->row_array();
     }
 
@@ -127,6 +125,17 @@ class plan_model extends CI_Model
 
         $data = array(
             'user_plan' => $plan_id,
+        );
+
+        return $this->db->update('users', $data);
+    }
+
+    public function updateUserSubscription($user_id, $subscription_id) {
+
+        $this->db->where('id', $user_id);
+
+        $data = array(
+            'user_subscription' => $subscription_id,
         );
 
         return $this->db->update('users', $data);
