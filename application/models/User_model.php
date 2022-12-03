@@ -149,6 +149,10 @@ class user_model extends CI_Model
             $today = date('Y-m-d- H:i:s');
             $today_limit = date($expiration_date, strtotime("+3 days"));
 
+            echo "<br>EXPIRATION DATE: ".$expiration_date;
+            echo "<br>TODAY: ".$today;
+            echo "<br>LIMIT: ".$today_limit;
+
             if ($user_current_subscription['status'] == 'canceled') {
 
                 if ($expiration_date > $today) {
