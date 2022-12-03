@@ -24,10 +24,13 @@ class Checkout extends CI_Controller
     public function index($id)
     {
 
-        $plan_id = htmlspecialchars($id);
-        $plan = $this->plan_model->getPlan($plan_id);
+        $plan_get = htmlspecialchars($id);
+        $plan = $this->plan_model->getPlan($plan_get);
+        
 
         if ($plan) {
+
+            $plan_id = $plan['id'];
 
             if ($plan['plan_price'] == 0) {
 
@@ -67,7 +70,7 @@ class Checkout extends CI_Controller
                 $this->plan_model->updateUserSubscription($this->session->userdata('session_user')['id'], $subscription_id);
                
                 //  UpdateUser Plan
-                if ($this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan['id'])) {
+                if ($this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan_id)) {
                     redirect(base_url('planos/sucesso?id='.$subscription_id.''));
                 }
 
@@ -188,7 +191,7 @@ class Checkout extends CI_Controller
                             if ($subscription_id) {
                                
                                 //Upddate Plan ; 
-                                $this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan['id']);
+                                $this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan_id);
 
                                 // Update Subscription
                                 $this->plan_model->updateUserSubscription($this->userID, $subscription_id);
