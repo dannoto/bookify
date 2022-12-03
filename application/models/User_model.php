@@ -150,7 +150,7 @@ class user_model extends CI_Model
             $expiration_date = date('d-m-Y',strtotime($user_current_subscription['plan_period_end']));
             $today = date('d-m-Y',time()); 
             $today_limit = date_create('Y-m-d H:i:s');
-            $today_limit = date($today_limit, $today_limit.'+3 days'); 
+            $today_limit = date($today_limit, strtotime($today_limit.'+3 days')); 
             
             //Expiration
             $expiration_date =  date_create($expiration_date);
