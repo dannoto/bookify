@@ -146,7 +146,8 @@ class user_model extends CI_Model
             $user_current_subscription = $this->plan_model->getUserCurrentSubscription($user_data['user_subscription']);
 
             // $expiration_date = strtotime($user_current_subscription['plan_period_end']);
-            $expiration_date = DateTime::createFromFormat("Y-m-d H:i:s", $user_current_subscription['plan_period_end']); 
+            // $expiration_date = DateTime::createFromFormat("Y-m-d H:i:s", $user_current_subscription['plan_period_end']); 
+            $expiration_date = new Date($user_current_subscription['plan_period_end']);  
             $today =  date('Y-m-d- H:i:s');
             $today_limit = date($expiration_date, strtotime("+3 days"));
 
@@ -161,7 +162,7 @@ class user_model extends CI_Model
                     echo "Cancelado e plano resetado.";
 
                     //Reset Plan
-                    $this->plan_model->updateUserPlan($user_data['id'], '0');
+                    // $this->plan_model->updateUserPlan($user_data['id'], '0');
                 } else {
                     echo "Cancelado, mas ainda esta valido";
                 }
@@ -173,10 +174,10 @@ class user_model extends CI_Model
                     echo "Mão pagou, cancelando a pe plano resetado.";
 
                     //CancelSubscription
-                    $this->plan_model->cancelSubscription($user_data['user_subscription']);
+                    // $this->plan_model->cancelSubscription($user_data['user_subscription']);
                     
                     //Reset Plan
-                    $this->plan_model->updateUserPlan($user_data['id'], '0');
+                    // $this->plan_model->updateUserPlan($user_data['id'], '0');
                 } else {
                     echo "Plano ainda nao venceu, esta valido";
                 }
