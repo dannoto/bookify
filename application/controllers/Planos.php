@@ -78,12 +78,34 @@ class Planos extends CI_Controller {
 				$cancel_request = $this->stripe_lib->cancelSubscription($subscription_id);
 
 				if ($cancel_request) {
-					echo "ok <br>";
-					print_r($cancel_request);
+					
+
+					$user = $this->session->userdata('session_user');
+					$plan = $this->plan_model->getPlan($user['user_plan']);
+
+					if ($cancel_request['status'] == 'canceled') {
+
+						if ($this->plan_model->updateSubscribeStatus($cancel_request['id'], $user['id'], 'canceled')) {
+
+							$this->email_model->canceledSubscribe($user, $plan , $cancel_request);
+							$response =  array('status' => 'true', 'message' => 'Sua assinatura foi cancelada. Voce não será mais cobrado.');
+
+						} else {
+            				$response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
+
+						}
+
+					}  else {
+						$response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
+
+					}
+
 				} else {
-					echo "erro <br>";
-					print_r($cancel_request);
+					$response =  array('status' => 'false', 'message' => 'Houve um problema no cancelamento. Contate o suporte.');
 				}
+
+				print_r(json_encode($response));
+
 
 		} else {
 			redirect(base_url('conta/assinaturas'));

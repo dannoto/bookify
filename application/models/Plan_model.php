@@ -10,6 +10,16 @@ class plan_model extends CI_Model
         return $this->db->get('users_plans')->result();
     }
 
+    public function updateSubscribeStatus($stripe_subscription_id, $user_id, $status) {
+        $this->db->where('user_id', $user_id);
+        $this->db->where('stripe_subscription_id', $stripe_subscription_id);
+
+        $data = array(
+            'status' => $status
+        );
+        
+        return $this->db->update('users_subscriptions', $data);
+    }
     public function getUserCurrentSubscription($subscription_id) {
 
         $this->db->where('id', $subscription_id);

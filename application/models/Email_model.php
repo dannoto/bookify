@@ -8,6 +8,11 @@ class email_model extends CI_Model
 
     }
 
+    
+    public function canceledSubscribe($user, $plan , $cancel_request) {
+        return true;
+    }
+
    
 
 }
