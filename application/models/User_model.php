@@ -147,13 +147,23 @@ class user_model extends CI_Model
 
             // $expiration_date = strtotime($user_current_subscription['plan_period_end']);
             // $expiration_date = DateTime::createFromFormat("Y-m-d H:i:s", $user_current_subscription['plan_period_end']); 
-            $expiration_date = new DateTime($user_current_subscription['plan_period_end']);  
-            $today =  date('Y-m-d- H:i:s');
-            $today_limit = date($user_current_subscription['plan_period_end'], strtotime("+3 days"));
+            $expiration_date = date('d-m-Y',strtotime($user_current_subscription['plan_period_end']));
+            $today = date('d-m-Y',time()); 
 
-            echo $expiration_date;
-            echo $today;
-            echo $today_limit;
+            $expiration_date =  date_create($expiration_date);
+            $today = date_create($today);
+            // $today_limit = date($user_current_subscription['plan_period_end'], strtotime("+3 days"));
+
+            $diff =  date_diff($today, $expiration_date);
+            if($diff->format("%R%a")>0){
+                    echo "active";
+            }else{
+                echo "inactive";
+            }
+            echo "Remaining Days ".$diff->format("%R%a days");
+            // echo "<br>EXPIRATION DATE: ".$expiration_date;
+            // echo "<br>TODAY: ".$today;
+            // echo "<br>LIMIT: ".$today_limit;
 
             if ($user_current_subscription['status'] == 'canceled') {
 
