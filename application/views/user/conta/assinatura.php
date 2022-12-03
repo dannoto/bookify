@@ -70,7 +70,7 @@
                                                                 } else {
                                                                     echo date('d-m-Y H:i:s', strtotime($subs['plan_period_end']));
                                                                 }  ?></p>
-                        <p><span class="font-semibold">STATUS:</span> <?php if ($subs['status'] == "active") {echo "<span class='text-green-500'>ATIVA</span>"; } else if ($subs == "canceled") {echo "<span class='text-red-500'>CANCELADA</span>";} ?></p>
+                        <p><span class="font-semibold">STATUS:</span> <?php if ($subs['status'] == "active") {echo "<span class='text-green-500'>ATIVO</span>"; } else if ($subs['status'] == "canceled") {echo "<span class='text-red-500'>CANCELADA</span>";} ?></p>
 
                     </div>
 
