@@ -11,7 +11,7 @@ class Registro extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('email_model');
 
-
+//
 	}
 	public function index()
 	{
