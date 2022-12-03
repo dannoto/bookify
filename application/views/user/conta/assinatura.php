@@ -52,7 +52,7 @@
 
                     <div class="xl:mt-12 mt-5">
                         <h1 style="font-size:25px;" class="ebook-title">MEU PLANO</h1>
-                        <h3 class="text-uppercase"><?= $plan['plan_name'] ?></h3>
+                        <h3 class="text-uppercase text-green-500 font-semibold"><?= $plan['plan_name'] ?></h3>
                         <p>R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
                                                                 $plan['plan_type'] = "Mês";
                                                             } else if ($plan['plan_type'] == 4) {
@@ -64,13 +64,13 @@
                                                             echo $plan['plan_type'] ?></p>
                     </div>
                     <div class="mb-8">
-                        <p class="font-semibold">INICIO: <?= date('d-m-Y H:i:s', strtotime($subs['plan_period_start']))  ?> </p>
-                        <p class="font-semibold">VENCIMENTO: <?php if ($subs['plan_period_end'] == "-") {
+                        <p > <span class="font-semibold">INÍCIO:</span> <?= date('d-m-Y H:i:s', strtotime($subs['plan_period_start']))  ?> </p>
+                        <p > <span class="font-semibold">VENCIMENTO:</span> <?php if ($subs['plan_period_end'] == "-") {
                                                                     echo "-";
                                                                 } else {
                                                                     echo date('d-m-Y H:i:s', strtotime($subs['plan_period_end']));
                                                                 }  ?></p>
-                        <p>STATUS: <?php if ($subs['status'] == "active") {echo "<span class='text-green-500'>ATIVA</span>"; } else if ($subs == "canceled") {echo "<span class='text-red-500'>CANCELADA</span>";} ?></p>
+                        <p><span class="font-semibold">STATUS:</span> <?php if ($subs['status'] == "active") {echo "<span class='text-green-500'>ATIVA</span>"; } else if ($subs == "canceled") {echo "<span class='text-red-500'>CANCELADA</span>";} ?></p>
 
                     </div>
 
