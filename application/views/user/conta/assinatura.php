@@ -72,8 +72,11 @@
                     <div class=" grid xl:grid-cols-2 grid-cols-1">
                         <div class="xl:col-span-1 xl:pr-3">
                             <div class="conta-perfil-btn  mb-12">
-                                <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
-                            </div>
+                                                            <a href="<?=base_url('planos')?>">
+                                                            <button class="bg-greenDefault text-white font-semibol px-5">ALTERAR PLANO</button>
+
+                                                            </a>
+                        </div>
                         </div>
                         <div class="xl:col-span-1">
                             <div class="conta-perfil-btn  mb-12">
