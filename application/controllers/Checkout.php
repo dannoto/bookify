@@ -16,6 +16,8 @@ class Checkout extends CI_Controller
         $this->load->model('user_model');
         $this->load->model('plan_model');
         $this->load->model('payments_model');
+        $this->load->model('email_model');
+
         $this->load->config('stripe');
 		$this->load->library('stripe_lib');
         $this->user_model->authControl();
