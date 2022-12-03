@@ -39,13 +39,26 @@ class Planos extends CI_Controller {
         $this->load->view('user/planos_escolha',$data);
     }
 
-	public function obrigado() {
+	public function sucesso() {
 
 		$data  = array(
 			'planos' => $this->plan_model->getPlans(),
 			'config' => $this->config_model->getConfigDesign(),
 		);
 
-        $this->load->view('user/planos_obrigado',$data);
+        $this->load->view('user/planos_sucesso',$data);
+    }
+
+	public function falhou() {
+
+
+
+		$data  = array(
+			'planos' => $this->plan_model->getPlans(),
+			'config' => $this->config_model->getConfigDesign(),
+			'message' => $this->input->get('message'),
+		);
+
+        $this->load->view('user/planos_falhou',$data);
     }
  }

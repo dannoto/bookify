@@ -68,7 +68,7 @@ class Checkout extends CI_Controller
                
                 //  UpdateUser Plan
                 if ($this->plan_model->updateUserPlan($this->session->userdata('session_user')['id'], $plan['id'])) {
-                    redirect(base_url('planos/obrigado'));
+                    redirect(base_url('planos/sucesso?id='.$subscription_id.''));
                 }
 
             } else {
@@ -84,15 +84,17 @@ class Checkout extends CI_Controller
 
                     // If payment successful 
                     if ($paymentID) {
-                        redirect('user/pagamento_status' . $paymentID);
+                        // redirect('user/pagamento_status' . $paymentID);
+                        redirect(base_url('planos/sucesso?id='.$paymentID.''));
+
                     } else {
                         $apiError = !empty($this->stripe_lib->api_error) ? ' (' . $this->stripe_lib->api_error . ')' : '';
-                        $data['error_msg'] = 'Transaction has been failed!' . $apiError;
-                        echo $data['error_msg'];
+                        $data['error_msg'] = $apiError;
+                       
+                        redirect(base_url('planos/falhou?message='.$data['error_msg']));
+
                     }
-                } else {
-                    echo "no token";
-                }
+                } 
 
                 // Get plans from the database 
                 $data['plan'] = $plan;
