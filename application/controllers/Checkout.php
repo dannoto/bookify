@@ -63,6 +63,14 @@ class Checkout extends CI_Controller {
             $planName = $planInfo['plan_name']; 
             $planPrice = $planInfo['plan_price']; 
             $planInterval = $planInfo['plan_type']; 
+
+            if ($planInterval == 1) {
+                $planInterval = "month";
+            } else if ($planInterval == 4){
+                $planInterval = "year";
+            } else {
+                $planInterval = "month";
+            }
              
             // Add customer to stripe 
             $customer = $this->stripe_lib->addCustomer($name, $email, $token); 
