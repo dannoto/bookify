@@ -169,8 +169,8 @@ class user_model extends CI_Model
             // }
             // echo " EXPIRACAO ".$expiration_date." ; LIMITE: ".$today_limit.";Remaining Days ".$days->format("%R%a days"). " totar limit: ". $days_limit;
             // echo "<br>EXPIRATION DATE: ".$expiration_date;
-            echo $days;
-            echo $days_limit;
+            var_dump($days);
+            var_dump($days_limit);
 
             if ($user_current_subscription['status'] == 'canceled') {
 
