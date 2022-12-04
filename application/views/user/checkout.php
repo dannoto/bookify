@@ -172,12 +172,12 @@
 
     .pay-btn {
         border: none;
-        background: #22b877;
+        background: #fff;
         line-height: 2em;
-        border-radius: 10px;
+        /* border-radius: 10px; */
         font-size: 19px;
         font-size: 1.2rem;
-        color: #fff;
+        color: #000;
         cursor: pointer;
         position: absolute;
         bottom: 25px;
@@ -187,8 +187,8 @@
     }
 
     .pay-btn:hover {
-        background: #22a877;
-        color: #eee;
+        background: #fff;
+        color: #000;
         -webkit-transition: all .2s ease;
         transition: all .2s ease;
     }
@@ -227,7 +227,7 @@
     }
 
     .credit-info {
-        background: #4488dd;
+        background: #22a877;
         height: 100%;
         width: 50%;
         color: #eee;
@@ -244,8 +244,7 @@
         box-sizing: border-box;
         padding-left: 25px;
         padding-right: 25px;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
+   
         position: relative;
     }
 
@@ -340,7 +339,7 @@
                             <tr>
 
                                 <td>
-                                    <small class="font-semibold">DESCRIÇÃO</small><br>
+                                    <small class="font-semibold">DESCRIÇÃO</small>
                                     <br> <?= $plan['plan_description'] ?><br><br></span>
                                 </td>
 
