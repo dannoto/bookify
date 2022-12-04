@@ -24,7 +24,6 @@ class admin_model extends CI_Model
 
         $actual_link = $_SERVER['REQUEST_URI'];
 
-        echo $actual_link;
 
         if (strpos($actual_link, 'painel/login') !== false) {
             echo 'login';
