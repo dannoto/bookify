@@ -214,7 +214,7 @@
         margin-bottom: 10px;
         margin-top: 3px;
         line-height: 1.5em;
-        font-size: 20px;
+        font-size: 18px;
         font-size: 1.3rem;
         border: none;
         padding: 5px 10px 5px 10px;
@@ -425,10 +425,10 @@
 
                         <table class='half-input-table'>
                             <tr>
-                                <td> EXPIRAÇÃO
+                                <td> <span class="text-white">EXPIRAÇÃO</span>
                                     <div class='input-field' id="card_expiry"></div>
                                 </td>
-                                <td>CVC
+                                <td><span class="text-white">CVC</span>
                                     <div class='input-field' id="card_cvc"></div>
                                 </td>
                             </tr>
@@ -569,7 +569,7 @@
         base: {
             fontWeight: 400,
             fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-            fontSize: '16px',
+            fontSize: '18px',
             lineHeight: '1.4',
             color: '#000',
             height: '1.8',
