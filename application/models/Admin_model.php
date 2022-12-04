@@ -25,8 +25,8 @@ class admin_model extends CI_Model
         $actual_link = $_SERVER['REQUEST_URI'];
 
 
-        if (strpos($actual_link, 'painel/login') !== false) {
-            
+        if (strpos($actual_link, 'painel/login') !== false && strpos($actual_link, 'painel/auth') !== false) {
+
         } else {
             if ($this->session->userdata('session_admin')) {
 
