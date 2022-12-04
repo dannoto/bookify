@@ -21,6 +21,11 @@ class admin_model extends CI_Model
     }
 
     public function authLogin() {
+
+        $actual_link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+        echo $actual_link;
+
         if ($this->session->userdata('session_admin')) {
 
             if ($this->user_model->getUserById($this->session->userdata('session_admin')['id'])['user_admin'] == 1) {
