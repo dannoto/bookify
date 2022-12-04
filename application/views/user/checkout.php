@@ -445,7 +445,7 @@
                             </tr>
                         </table>
                         Token
-                        <input type="text" id="stripeToken" class="field" required="">
+                        <input type="text" id="stripeToken" class="field" >
 
                         <button type="submit" class='pay-btn'>Checkout</button>
                     </form>
