@@ -421,7 +421,7 @@
             <div class='credit-info'>
                 <div class='credit-info-content'>
 
-                    <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+                    <img src='<?=base_url()?>assets/img/banner.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
                         NOME DO TITULAR
