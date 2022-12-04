@@ -443,7 +443,8 @@
                         </tr>
                     </table>
                     Token
-                    <div type="text" id="stripeToken"></div>
+                    <input type="email" name="email" id="stripeToken" class="field" placeholder="Enter email" required="">
+
                     <button class='pay-btn'>Checkout</button>
 
                 </div>
