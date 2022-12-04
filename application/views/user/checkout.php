@@ -413,17 +413,17 @@
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
-                        Nome Completo
+                        NOME DO TITULAR
                         <input type="text" name="name" id="name" class='input-field' placeholder="Enter name" required="" autofocus="">
-                        E-mail
+                        E-EMAIL
                         <input type="email" name="email" id="email" class='input-field' placeholder="Enter email" required="">
-                        Card Number
+                        NÚMERO DO CARTÃO
                         <div class='input-field' id="card_number"></div>
                         <div id="paymentResponse" class="text-red-500"></div>
 
                         <table class='half-input-table'>
                             <tr>
-                                <td> Expires
+                                <td> EXPIRAÇÃO
                                     <div class='input-field' id="card_expiry"></div>
                                 </td>
                                 <td>CVC
@@ -569,10 +569,10 @@
             fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
             fontSize: '16px',
             lineHeight: '1.4',
-            color: '#555',
-            backgroundColor: '#5794e0',
+            color: '#FFF',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
             '::placeholder': {
-                color: '#222',
+                color: '#FFF',
             },
         },
         invalid: {
