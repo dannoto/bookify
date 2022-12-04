@@ -29,7 +29,7 @@
 
     }
 
-   
+
 
     .container {
         height: 100%;
@@ -101,7 +101,7 @@
     }
 
     .half-input-table td:first-of-type {
-        border-right: 10px solid #22a877;
+        border-right: 10px solid #00b467;
         width: 50%;
     }
 
@@ -228,8 +228,15 @@
         height: 40px !important;
     }
 
+    @media (min-width: 1280px) {
+
+        .container {
+            max-width: 100%;
+        }
+    }
+
     .credit-info {
-        background: #22a877;
+        background: #00b467;
         height: 100%;
         width: 50%;
         color: #eee;
@@ -246,7 +253,7 @@
         box-sizing: border-box;
         padding-left: 25px;
         padding-right: 25px;
-   
+
         position: relative;
     }
 
@@ -391,36 +398,36 @@
                         <span style='float:left;'>
                             <div class='thin dense'><small>RECORRENCIA</small></div>
                             <div class='thin dense'>TAXA</div>
-                            
+
                             TOTAL
                         </span>
                         <span style='float:right; text-align:right;'>
                             <div class='thin dense'><?php if ($plan['plan_type'] == 1) {
-                                                                    $plan['plan_type'] = "Mensal";
-                                                                } else if ($plan['plan_type'] == 4) {
-                                                                    $plan['plan_type'] = "Anual";
-                                                                } else {
-                                                                    $plan['plan_type'] = "Mensal";
-                                                                }
+                                                        $plan['plan_type'] = "Mensal";
+                                                    } else if ($plan['plan_type'] == 4) {
+                                                        $plan['plan_type'] = "Anual";
+                                                    } else {
+                                                        $plan['plan_type'] = "Mensal";
+                                                    }
 
-                                                                    echo $plan['plan_type']; 
-                                                                ?> </div>
+                                                    echo $plan['plan_type'];
+                                                    ?> </div>
                             <div class='thin dense'>R$ 0.00</div>
-                            R$ <?= $plan['plan_price'] ?> 
+                            R$ <?= $plan['plan_price'] ?>
                         </span>
                     </div>
                 </div>
             </div>
             <div class='credit-info'>
                 <div class='credit-info-content'>
-                  
+
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
                         NOME DO TITULAR
-                        <input type="text" name="name" id="name" class='input-field'  required="" autofocus="">
+                        <input type="text" name="name" id="name" class='input-field' required="" autofocus="">
                         E-MAIL
-                        <input type="email" name="email" id="email" class='input-field'  required="">
+                        <input type="email" name="email" id="email" class='input-field' required="">
                         NÚMERO DO CARTÃO
                         <div class='input-field' style='height: 2.4em;' id="card_number"></div>
                         <div id="paymentResponse" class="text-red-500"></div>
