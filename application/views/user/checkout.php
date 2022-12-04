@@ -387,7 +387,12 @@
                     <div class='line'></div>
                     <div class='total'>
                         <span style='float:left;'>
-                            <div class='thin dense'><small>RECORRENCIA</small><?php if ($plan['plan_type'] == 1) {
+                            <div class='thin dense'><small>RECORRENCIA</small></div>
+                            <div class='thin dense'>TAXA</div>
+                            TOTAL
+                        </span>
+                        <span style='float:right; text-align:right;'>
+                            <div class='thin dense'><?php if ($plan['plan_type'] == 1) {
                                                                     $plan['plan_type'] = "Mês";
                                                                 } else if ($plan['plan_type'] == 4) {
                                                                     $plan['plan_type'] = "Ano";
@@ -397,12 +402,7 @@
 
                                                                     echo $plan['plan_type']; 
                                                                 ?> </div>
-                            <div class='thin dense'>Delivery</div>
-                            TOTAL
-                        </span>
-                        <span style='float:right; text-align:right;'>
-                            <div class='thin dense'>$68.75</div>
-                            <div class='thin dense'>$4.95</div>
+                            <div class='thin dense'>R$ 0.00</div>
                             R$ <?= $plan['plan_price'] ?> / 
                         </span>
                     </div>
