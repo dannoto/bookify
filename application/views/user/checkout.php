@@ -43,8 +43,8 @@
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        background: -webkit-linear-gradient(#c5e5e5, #ccddf9);
-        background: linear-gradient(#c9e5e9, #ccddf9);
+        background: #f8f8f8dd;
+        width: 100%;
     }
 
     .dropdown-select.visible {
@@ -112,7 +112,7 @@
         display: -ms-flexbox;
         display: flex;
         box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 30px;
+        /* border-radius: 30px; */
         z-index: 10;
     }
 
@@ -410,22 +410,7 @@
             </div>
             <div class='credit-info'>
                 <div class='credit-info-content'>
-                    <table class='half-input-table'>
-                        <tr>
-                            <td>Please select your card: </td>
-                            <td>
-                                <div class='dropdown' id='card-dropdown'>
-                                    <div class='dropdown-btn' id='current-card'>Visa</div>
-                                    <div class='dropdown-select'>
-                                        <ul>
-                                            <li>Master Card</li>
-                                            <li>American Express</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                  
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
