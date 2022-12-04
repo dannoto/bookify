@@ -72,13 +72,13 @@
                                                             <div class="col-md-9">
                                                                 <div class="d-block align-items-left p-2 ">
                                                                     <small style="font-size: 10px"></small>
-                                                                    <h5 title="<?= ucfirst($e->faq_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_title) ?></h5>
+                                                                    <h5 title="<?= ucfirst($e->faq_category_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_category_title) ?></h5>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 align-items-center">
                                                                 <div class="d-flex mt-3">
                                                                     <i title="ADICIONAR CATEGORIA" class="ml-3 mdi mdi-library-music add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
-                                                                    <i title="EDITAR CATEGORIA" class="ml-3 mdi  mdi-pencil update-category" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
+                                                                    <i title="EDITAR CATEGORIA" class="ml-3 mdi  mdi-pencil update-category" data-id="<?= $e->id ?>" data-title="<?= $e->faq_category_title ?>" data-description="<?= $e->faq_Category_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
                                                                     <i title="EXCLUIR CATEGORIA" class="ml-3 mdi mdi-delete delete-category" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                 </div>
                                                             </div>
