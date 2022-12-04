@@ -582,9 +582,9 @@
             fontSize: '16px',
             lineHeight: '1.4',
             color: '#555',
-            backgroundColor: '#fff',
+            backgroundColor: '#5794e0',
             '::placeholder': {
-                color: '#888',
+                color: '#222',
             },
         },
         invalid: {
