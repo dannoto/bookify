@@ -333,18 +333,18 @@
         <div class='window'>
             <div class='order-info'>
                 <div class='order-info-content'>
-                    <h2 class="uppercase"><?=$plan['plan_name']?></h2>
+                    <h2 class="uppercase"><?= $plan['plan_name'] ?></h2>
                     <div class='line'></div>
                     <table class='order-table'>
                         <tbody>
                             <tr>
-                                
+
                                 <td>
-                                    <br> <?=$plan['plan_description']?><br><br></span>
+                                    <br> <?= $plan['plan_description'] ?><br><br></span>
                                 </td>
 
                             </tr>
-                           
+
                         </tbody>
 
                     </table>
@@ -395,15 +395,15 @@
                         <span style='float:right; text-align:right;'>
                             <div class='thin dense'>$68.75</div>
                             <div class='thin dense'>$4.95</div>
-                            R$ <?=$plan['plan_description']?> / <?php   if ($plan['plan_type'] == 1) {
-                     $plan['plan_type'] = "Mês";
-                 } else if ($plan['plan_type'] == 4) {
-                     $plan['plan_type'] = "Ano";
-                 } else {
-                     $plan['plan_type'] = "Mês";
-                 } 
+                            R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
+                                                                    $plan['plan_type'] = "Mês";
+                                                                } else if ($plan['plan_type'] == 4) {
+                                                                    $plan['plan_type'] = "Ano";
+                                                                } else {
+                                                                    $plan['plan_type'] = "Mês";
+                                                                }
 
-                ?>
+                                                                ?>
                         </span>
                     </div>
                 </div>
@@ -428,7 +428,7 @@
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
-                    <input type="hidden" name="subscr_plan"  value="<?php echo $plan['id'];?>" id="subscr_plan">
+                        <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
                         Nome Completo
                         <input type="text" name="name" id="name" class='input-field' placeholder="Enter name" required="" autofocus="">
                         E-mail
@@ -447,8 +447,8 @@
                                 </td>
                             </tr>
                         </table>
-                       
-                        <input class="hidden" type="text" id="stripeToken" class="field" >
+
+                        <input class="hidden" type="text" id="stripeToken" class="field">
 
                         <button type="submit" class='pay-btn'>Checkout</button>
                     </form>
