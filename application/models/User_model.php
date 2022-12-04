@@ -161,9 +161,9 @@ class user_model extends CI_Model
             $today = new DateTime ($today);
             $today_limit = new DateTime ($today_limit);
             
-            echo $today_limit."<br>";
-            echo $expiration_date."<br>";
-            echo $today."<br>";
+            // echo $today_limit."<br>";
+            // echo $expiration_date."<br>";
+            // echo $today."<br>";
 
             // // // // // / // // // 
 
