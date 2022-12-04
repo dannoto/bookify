@@ -570,6 +570,7 @@
             fontSize: '16px',
             lineHeight: '1.4',
             color: '#FFF',
+            height: '1.8',
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
             '::placeholder': {
                 color: '#FFF',
