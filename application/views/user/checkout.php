@@ -1,6 +1,14 @@
 
-<?php $this->load->view('comp/navbar')?>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <style>
     * {
         font-family: 'Poppins', sans-serif;
@@ -22,7 +30,7 @@
     }
 
     /* Product page
-----------------------------*/
+        ----------------------------*/
     .product_wrap {
         width: 100%;
         position: relative;
@@ -68,13 +76,13 @@
     }
 
     .product_price {
-        ;
+        
         color: #464748;
     }
 
 
     /* Checkout section
-----------------------------*/
+        ----------------------------*/
     .checkout {
         position: absolute;
         top: 50%;
@@ -170,6 +178,9 @@
         box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
     }
 </style>
+<body>
+<?php $this->load->view('comp/navbar')?>
+
 <div class="checkout">
     <div class="checkout_wrap">
         <div class="row">
@@ -214,6 +225,8 @@
         </div>
     </div>
 </div>
+</body>
+</html>
 
 
 <!-- <div class="panel">
