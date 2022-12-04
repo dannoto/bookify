@@ -340,6 +340,7 @@
                             <tr>
 
                                 <td>
+                                    <small class="font-semibold">DESCRIÇÃO</small><br>
                                     <br> <?= $plan['plan_description'] ?><br><br></span>
                                 </td>
 
@@ -348,7 +349,6 @@
                         </tbody>
 
                     </table>
-                    <div class='line'></div>
                     <!-- <table class='order-table'>
                         <tbody>
                             <tr>
