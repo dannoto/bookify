@@ -333,29 +333,23 @@
         <div class='window'>
             <div class='order-info'>
                 <div class='order-info-content'>
-                    <h2>Order Summary</h2>
+                    <h2 class="uppercase"><?=$plan['plan_name']?></h2>
                     <div class='line'></div>
                     <table class='order-table'>
                         <tbody>
                             <tr>
-                                <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
-                                </td>
+                                
                                 <td>
-                                    <br> <span class='thin'>Nike</span>
-                                    <br> Free Run 3.0 Women<br> <span class='thin small'> Color: Grey/Orange, Size: 10.5<br><br></span>
+                                    <br> <?=$plan['plan_description']?><br><br></span>
                                 </td>
 
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class='price'>$99.95</div>
-                                </td>
-                            </tr>
+                           
                         </tbody>
 
                     </table>
                     <div class='line'></div>
-                    <table class='order-table'>
+                    <!-- <table class='order-table'>
                         <tbody>
                             <tr>
                                 <td><img src='https://dl.dropboxusercontent.com/s/qbj9tsbvthqq72c/Vintage-20L-Backpack-by-Fj%C3%A4llr%C3%A4ven.jpg' class='full-width'></img>
@@ -390,7 +384,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                     <div class='line'></div>
                     <div class='total'>
                         <span style='float:left;'>
@@ -401,7 +395,15 @@
                         <span style='float:right; text-align:right;'>
                             <div class='thin dense'>$68.75</div>
                             <div class='thin dense'>$4.95</div>
-                            $435.55
+                            R$ <?=$plan['plan_description']?> / <?php   if ($plan['plan_type'] == 1) {
+                     $plan['plan_type'] = "Mês";
+                 } else if ($plan['plan_type'] == 4) {
+                     $plan['plan_type'] = "Ano";
+                 } else {
+                     $plan['plan_type'] = "Mês";
+                 } 
+
+                ?>
                         </span>
                     </div>
                 </div>
