@@ -396,7 +396,7 @@
                     <div class='line'></div>
                     <div class='total'>
                         <span style='float:left;'>
-                            <div class='thin dense'><small>RECORRENCIA</small></div>
+                            <div class='thin dense'><small>RECORRÊNCIA</small></div>
                             <div class='thin dense'>TAXA</div>
 
                             TOTAL
