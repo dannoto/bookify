@@ -425,23 +425,23 @@
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     Nome Completo
-                    <input class='input-field' id="name"></input>
+                    <div class='input-field' id="name"></div>
                     E-mail
-                    <input type="email" class='input-field' id="email"></input>
+                    <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
                     Card Number
-                    <input class='input-field' id="card_number"></input>
+                    <input type="email" name="email" id="email" class="field" placeholder="Enter email" required="">
                     <table class='half-input-table'>
                         <tr>
                             <td> Expires
-                                <input class='input-field' id="card_expiry"></input>
+                                <div class='input-field' id="card_expiry"></div>
                             </td>
                             <td>CVC
-                                <input class='input-field' id="card_cvc"></input>
+                                <div class='input-field' id="card_cvc"></div>
                             </td>
                         </tr>
                     </table>
                     Token
-                    <input type="text" id="stripeToken">
+                    <div type="text" id="stripeToken"></div>
                     <button class='pay-btn'>Checkout</button>
 
                 </div>
