@@ -440,6 +440,8 @@
                             </td>
                         </tr>
                     </table>
+                    Token
+                    <input type="text" id="stripeToken">
                     <button class='pay-btn'>Checkout</button>
 
                 </div>
