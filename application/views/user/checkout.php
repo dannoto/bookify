@@ -426,7 +426,6 @@
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
                         Nome Completo
-                        <div class='input-field' id="name"></div>
                         <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
                         E-mail
                         <input type="email" name="email" id="email" class="field" placeholder="Enter email" required="">
