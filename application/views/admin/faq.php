@@ -99,7 +99,7 @@
                                                                         <a target="_blank" href="">
                                                                             <i title="OUVIR AUDIO" class="ml-3 mdi  mdi-play-circle-outline " style="color:green;font-size:25px;cursor:pointer"></i>
                                                                         </a>
-                                                                        <i title="ADICIONAR CONTEUDO" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->audio_chapter ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
+                                                                        <i title="ADICIONAR CONTEUDO" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->faq_title ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
                                                                         <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>"  style="color:#222;font-size:25px;cursor:pointer"></i>
                                                                         <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-audio" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                     </div>
