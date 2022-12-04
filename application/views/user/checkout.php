@@ -210,7 +210,7 @@
     }
 
     .input-field {
-        background: rgba(255, 255, 255, 0.1);
+        background: #FFF;
         margin-bottom: 10px;
         margin-top: 3px;
         line-height: 1.5em;
@@ -218,7 +218,7 @@
         font-size: 1.3rem;
         border: none;
         padding: 5px 10px 5px 10px;
-        color: #fff;
+        color: #000;
         box-sizing: border-box;
         width: 100%;
         margin-left: auto;
