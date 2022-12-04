@@ -389,15 +389,16 @@
                         <span style='float:left;'>
                             <div class='thin dense'><small>RECORRENCIA</small></div>
                             <div class='thin dense'>TAXA</div>
+                            <br>
                             TOTAL
                         </span>
                         <span style='float:right; text-align:right;'>
                             <div class='thin dense'><?php if ($plan['plan_type'] == 1) {
-                                                                    $plan['plan_type'] = "Mês";
+                                                                    $plan['plan_type'] = "Mensal";
                                                                 } else if ($plan['plan_type'] == 4) {
-                                                                    $plan['plan_type'] = "Ano";
+                                                                    $plan['plan_type'] = "Anual";
                                                                 } else {
-                                                                    $plan['plan_type'] = "Mês";
+                                                                    $plan['plan_type'] = "Mensal";
                                                                 }
 
                                                                     echo $plan['plan_type']; 
