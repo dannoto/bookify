@@ -198,7 +198,7 @@ hr{
                   <input class="cc-cvc" type="name" placeholder="CVV">
                 </div>
               </div>
-              <button class="checkout_pay" type "button" value="submit">Pay &raquo;</button>
+              <button class="checkout_pay" type ="button" value="submit">Pay &raquo;</button>
             </form>
           </div>
         </div>
@@ -213,16 +213,16 @@ hr{
     <form action="" method="POST" id="paymentFrm">
         <div class="panel-heading">
             Plan Info
-            <? php // print_r($plan)
+            <?  // print_r($plan)
             ?>
             <p>
-                <input type="text" name="subscr_plan"  value="<? php // echo $plan['id']; 
+                <input type="text" name="subscr_plan"  value="<?  // echo $plan['id']; 
                                                                 ?>" id="subscr_plan">
 
                 <h2>PLANO</h2>
 
                 
-                <? php // if ($plan['plan_type'] == 1) {
+                <?  // if ($plan['plan_type'] == 1) {
                 //     $plan['plan_type'] = "Mês";
                 // } else if ($plan['plan_type'] == 4) {
                 //     $plan['plan_type'] = "Ano";
@@ -233,7 +233,7 @@ hr{
                 ?>
                 
                 
-                <p><? php // echo $plan['plan_name'].' R$ '.$plan['plan_price'].' / '.$plan['plan_type']; 
+                <p><?  // echo $plan['plan_name'].' R$ '.$plan['plan_price'].' / '.$plan['plan_type']; 
                     ?></p>
                
             </p>
@@ -274,6 +274,23 @@ hr{
     </form>
 </div> -->
 <script src="https://js.stripe.com/v3/"></script>
+<script>
+    $('.cc-number').payment('formatCardNumber');
+$('.cc-exp').payment('formatCardExpiry');
+$('.cc-cvc').payment('formatCardCVC');
+$('.checkout_pay').hide();
+
+$(document).on('keyup', '.cc-number, .cc-cvc, .cc-exp', function (){
+	var cname = $('.cc-number').val();
+	var ccvc = $('.cc-cvc').val();
+	var cexp = $('.cc-exp').val();
+
+	if( cname != "" && ccvc != "" && cexp !="" ){
+		$('.checkout_pay').fadeIn(300);
+	}
+
+});
+</script>
 <script>
     var stripe = Stripe('<?php echo $this->config->item('stripe_publishable_key'); ?>');
 
