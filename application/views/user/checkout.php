@@ -434,7 +434,7 @@
 
                         <input class="hidden" type="text" id="stripeToken" class="field">
 
-                        <button type="submit" class='pay-btn'>Checkout</button>
+                        <button type="submit" class='pay-btn'>ASSINAR <i class="fa fa-arrow-right"></i></button>
                     </form>
 
                 </div>
