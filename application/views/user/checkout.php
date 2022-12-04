@@ -420,7 +420,7 @@
                         E-EMAIL
                         <input type="email" name="email" id="email" class='input-field'  required="">
                         NÚMERO DO CARTÃO
-                        <div class='input-field' style='height: 2.4em; padding-top: .7em;' id="card_number"></div>
+                        <div class='input-field' style='height: 2.4em;' id="card_number"></div>
                         <div id="paymentResponse" class="text-red-500"></div>
 
                         <table class='half-input-table'>
