@@ -71,6 +71,7 @@
                 url: '<?= base_url() ?>painel/auth',
                 data: $(this).serialize(),
                 success: function(data) {
+                    console.log(data)
                     var resp = JSON.parse(data)
 
                     if (resp.status == "true") {

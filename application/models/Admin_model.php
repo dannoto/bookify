@@ -26,7 +26,7 @@ class admin_model extends CI_Model
 
 
         if (strpos($actual_link, 'painel/login') !== false) {
-            echo 'login';
+            
         } else {
             if ($this->session->userdata('session_admin')) {
 
