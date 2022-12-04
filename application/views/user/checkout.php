@@ -29,10 +29,7 @@
 
     }
 
-    body {
-        background: #f8f8f8dd;
-
-    }
+   
 
     .container {
         height: 100%;
