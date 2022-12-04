@@ -426,6 +426,7 @@
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     <form action="" method="POST" id="paymentFrm">
+                    <input type="hidden" name="subscr_plan"  value="<?php echo $plan['id'];?>" id="subscr_plan">
                         Nome Completo
                         <input type="text" name="name" id="name" class='input-field' placeholder="Enter name" required="" autofocus="">
                         E-mail
@@ -445,7 +446,7 @@
                             </tr>
                         </table>
                         Token
-                        <input type="text" id="stripeToken" class="field" >
+                        <input class="hidden" type="text" id="stripeToken" class="field" >
 
                         <button type="submit" class='pay-btn'>Checkout</button>
                     </form>
