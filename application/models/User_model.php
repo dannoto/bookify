@@ -165,25 +165,11 @@ class user_model extends CI_Model
             echo $expiration_date."<br>";
             echo $today."<br>";
 
-
-            // $days =  date_diff($today, $expiration_date);
-            // $days_limit =  date_diff($today_limit, $expiration_date);
-
-            // if($diff->format("%R%a") > 0){
-            //     echo "active";
-            // }else{
-            //     echo "inactive";
-            // }
-            // echo " EXPIRACAO ".$expiration_date." ; LIMITE: ".$today_limit.";Remaining Days ".$days->format("%R%a days"). " totar limit: ". $days_limit;
-            // echo "<br>EXPIRATION DATE: ".$expiration_date;
-            // var_dump($days);
-            // var_dump($days_limit);
-
             // // // // // / // // // 
 
             if ($user_current_subscription['status'] == 'canceled') {
 
-                if ($expiration_date > $today) {
+                if ($today > $expiration_date ) {
 
                     echo "Cancelado e plano resetado.";
 
@@ -195,7 +181,7 @@ class user_model extends CI_Model
 
             } else if ($user_current_subscription['status'] == 'active') {
 
-                if ($expiration_date > $today_limit ) {
+                if ($today_limit > $expiration_date  ) {
 
                     echo "Não pagou, cancelando a pe plano resetado.";
 
