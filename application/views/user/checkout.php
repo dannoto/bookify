@@ -389,7 +389,7 @@
                         <span style='float:left;'>
                             <div class='thin dense'><small>RECORRENCIA</small></div>
                             <div class='thin dense'>TAXA</div>
-                            <br>
+                            
                             TOTAL
                         </span>
                         <span style='float:right; text-align:right;'>
@@ -404,7 +404,7 @@
                                                                     echo $plan['plan_type']; 
                                                                 ?> </div>
                             <div class='thin dense'>R$ 0.00</div>
-                            R$ <?= $plan['plan_price'] ?> / 
+                            R$ <?= $plan['plan_price'] ?> /
                         </span>
                     </div>
                 </div>
