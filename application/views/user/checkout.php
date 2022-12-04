@@ -223,7 +223,7 @@
         width: 100%;
         margin-left: auto;
         margin-right: auto;
-        height: 22.4px !important;
+        height: 30px !important;
     }
 
     .credit-info {
