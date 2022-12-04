@@ -99,7 +99,7 @@
     }
 
     .half-input-table td:first-of-type {
-        border-right: 10px solid #4488dd;
+        border-right: 10px solid #22a877;
         width: 50%;
     }
 
@@ -387,14 +387,7 @@
                     <div class='line'></div>
                     <div class='total'>
                         <span style='float:left;'>
-                            <div class='thin dense'>VAT 19%</div>
-                            <div class='thin dense'>Delivery</div>
-                            TOTAL
-                        </span>
-                        <span style='float:right; text-align:right;'>
-                            <div class='thin dense'>$68.75</div>
-                            <div class='thin dense'>$4.95</div>
-                            R$ <?= $plan['plan_price'] ?> / <?php if ($plan['plan_type'] == 1) {
+                            <div class='thin dense'><small>RECORRENCIA</small><?php if ($plan['plan_type'] == 1) {
                                                                     $plan['plan_type'] = "Mês";
                                                                 } else if ($plan['plan_type'] == 4) {
                                                                     $plan['plan_type'] = "Ano";
@@ -402,7 +395,15 @@
                                                                     $plan['plan_type'] = "Mês";
                                                                 }
 
-                                                                ?>
+                                                                    echo $plan['plan_type']; 
+                                                                ?> </div>
+                            <div class='thin dense'>Delivery</div>
+                            TOTAL
+                        </span>
+                        <span style='float:right; text-align:right;'>
+                            <div class='thin dense'>$68.75</div>
+                            <div class='thin dense'>$4.95</div>
+                            R$ <?= $plan['plan_price'] ?> / 
                         </span>
                     </div>
                 </div>
@@ -569,11 +570,11 @@
             fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
             fontSize: '16px',
             lineHeight: '1.4',
-            color: '#FFF',
+            color: '#000',
             height: '1.8',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#FFF',
             '::placeholder': {
-                color: '#FFF',
+                color: '#ddd',
             },
         },
         invalid: {
