@@ -139,34 +139,20 @@
                                             <div class="row">
                                                 <div class="col-5 col-md-5">
                                                     <div class="wrapper border-bottom mb-2 pb-2">
-                                                        <h4 class="font-weight-semibold mb-0"><?php if ($this->ebook_model->getEbook($ebook['id'])['ebook_duration'] == 0) {
-                                                                                                    echo "0";
-                                                                                                } else {
-                                                                                                    echo round(($this->ebook_model->getEbook($ebook['id'])['ebook_duration'] / 60), 2);
-                                                                                                } ?></h4>
+                                                        <h4 class="font-weight-semibold mb-0"><?=count( $this->faq_model->getFaqsCategory() ) ?></h4>
                                                         <div class="d-flex align-items-center">
-                                                            <p class="mb-0"><small>HORAS </small></p>
+                                                            <p class="mb-0"><small>CATEGORIAS </small></p>
                                                             <div class="dot-indicator bg-secondary ml-auto"></div>
                                                         </div>
                                                     </div>
                                                     <div class="wrapper border-bottom mb-2 pb-2">
-                                                        <h4 class="font-weight-semibold mb-0"><?php if ($this->ebook_model->getEbook($ebook['id'])['ebook_duration'] == 0) {
-                                                                                                    echo "0";
-                                                                                                } else {
-                                                                                                    echo round($this->ebook_model->getEbook($ebook['id'])['ebook_duration'], 2);
-                                                                                                } ?></h4>
+                                                        <h4 class="font-weight-semibold mb-0"><?=count( $this->faq_model->countFaq() ) ?></h4>
                                                         <div class="d-flex align-items-center">
-                                                            <p class="mb-0"><small>MINUTOS </small></p>
+                                                            <p class="mb-0"><small>PUBLICAÇÕES </small></p>
                                                             <div class="dot-indicator bg-secondary ml-auto"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="wrapper">
-                                                        <h4 class="font-weight-semibold mb-0"><?php echo count($this->chapter_model->getChaptersByEbook($ebook['id'])); ?></h4>
-                                                        <div class="d-flex align-items-center">
-                                                            <p class="mb-0"><small>CAPÍTULOS</small></p>
-                                                            <div class="dot-indicator bg-primary ml-auto"></div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="col-5 col-md-7 d-flex pl-4">
                                                     <div class="ml-auto">

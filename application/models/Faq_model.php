@@ -8,6 +8,11 @@ class faq_model extends CI_Model
 
     }
 
+    public function countFaq() {
+
+        return $this->db->get('faq_content')->result();
+
+    }
     public function getFaqsContentByCategory($faq_category) {
 
         $this->db->where('faq_category', $faq_category);
