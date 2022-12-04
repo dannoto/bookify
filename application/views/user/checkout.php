@@ -1,6 +1,6 @@
 <style>
-    $primary: #e67e22;
-    $font: 'Lato',
+    /* $primary: #e67e22;
+    $font: 'Lato', */
     sans-serif;
 
     *:focus {
