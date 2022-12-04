@@ -424,28 +424,30 @@
                         </tr>
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
-                    Nome Completo
-                    <div class='input-field' id="name"></div>
-                    <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
-                    E-mail
-                    <input type="email" name="email" id="email" class="field" placeholder="Enter email" required="">
-                    Card Number
-                    <div class='input-field' id="card_number"></div>
+                    <form action="" method="POST" id="paymentFrm">
+                        Nome Completo
+                        <div class='input-field' id="name"></div>
+                        <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
+                        E-mail
+                        <input type="email" name="email" id="email" class="field" placeholder="Enter email" required="">
+                        Card Number
+                        <div class='input-field' id="card_number"></div>
 
-                    <table class='half-input-table'>
-                        <tr>
-                            <td> Expires
-                                <div class='input-field' id="card_expiry"></div>
-                            </td>
-                            <td>CVC
-                                <div class='input-field' id="card_cvc"></div>
-                            </td>
-                        </tr>
-                    </table>
-                    Token
-                    <input type="text"  id="stripeToken" class="field" required="">
+                        <table class='half-input-table'>
+                            <tr>
+                                <td> Expires
+                                    <div class='input-field' id="card_expiry"></div>
+                                </td>
+                                <td>CVC
+                                    <div class='input-field' id="card_cvc"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        Token
+                        <input type="text" id="stripeToken" class="field" required="">
 
-                    <button class='pay-btn'>Checkout</button>
+                        <button type="submit" class='pay-btn'>Checkout</button>
+                    </form>
 
                 </div>
 
