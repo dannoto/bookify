@@ -29,6 +29,11 @@
 
     }
 
+    body {
+        background: #f8f8f8dd;
+
+    }
+
     .container {
         height: 100%;
         -webkit-box-pack: center;
@@ -332,7 +337,7 @@
         <div class='window'>
             <div class='order-info'>
                 <div class='order-info-content'>
-                    <h2 class="uppercase"><?= $plan['plan_name'] ?></h2>
+                    <h2 class="uppercase font-semibold"><?= $plan['plan_name'] ?></h2>
                     <div class='line'></div>
                     <table class='order-table'>
                         <tbody>
@@ -417,7 +422,7 @@
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
                         NOME DO TITULAR
                         <input type="text" name="name" id="name" class='input-field'  required="" autofocus="">
-                        E-EMAIL
+                        E-MAIL
                         <input type="email" name="email" id="email" class='input-field'  required="">
                         NÚMERO DO CARTÃO
                         <div class='input-field' style='height: 2.4em;' id="card_number"></div>
