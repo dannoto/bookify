@@ -35,11 +35,11 @@ class admin_model extends CI_Model
     
                 }  else {
     
-                    // redirect(base_url('painel/login'));
+                    redirect(base_url('painel/login'));
                 }
     
             } else {
-                // redirect(base_url('painel/login'));
+                redirect(base_url('painel/login'));
             }
         }
 
