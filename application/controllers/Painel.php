@@ -20,6 +20,8 @@ class Painel extends CI_Controller
         $this->load->model('ebook_model');
         $this->load->model('chapter_model');
         $this->load->model('plan_model');
+
+        $this->admin_model->authLogin();
     }
 
     public function index()

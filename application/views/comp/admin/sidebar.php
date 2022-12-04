@@ -7,7 +7,7 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Vinicius Souza</p>
+                  <p class="profile-name"><?=$this->session->userdata('session_admin')['user_name']?> <?=$this->session->userdata('session_admin')['user_surname']?></p>
                   <p class="designation">Administrador</p>
                 </div>
               </a>
