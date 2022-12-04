@@ -68,7 +68,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>login/auth',
+                url: '<?= base_url() ?>painel/auth',
                 data: $(this).serialize(),
                 success: function(data) {
                     var resp = JSON.parse(data)

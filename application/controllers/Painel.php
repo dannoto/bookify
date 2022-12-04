@@ -33,6 +33,40 @@ class Painel extends CI_Controller
         $this->load->view('admin/dashboard');
     }
 
+    public function login() {
+
+        
+        $this->load->view('admin/login');
+
+    }
+
+    public function auth() {
+        
+		if ($this->input->post() ) {
+
+			$response = array();
+			
+			$user_email = htmlspecialchars($this->input->post('user_email'));
+			$user_password = htmlspecialchars($this->input->post('user_password'));
+
+			$auth = $this->admin_model->Auth($user_email, $user_password);
+
+			if ($auth) {
+
+				$this->session->set_userdata('session_admin', $auth);
+
+				$response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
+
+			} else {
+
+				$response =  array('status' => 'false', 'message' => 'Suas credenciais estão incorretas.');
+
+			}
+
+			print_r(json_encode($response));
+
+		}
+	}
 
     // Paginas
 
@@ -1053,28 +1087,5 @@ class Painel extends CI_Controller
 
 
 
-    public function auth()
-    {
-        if ($this->input->post()) {
-
-            $response = array();
-
-            $user_email = htmlspecialchars($this->input->post('user_email'));
-            $user_password = htmlspecialchars($this->input->post('user_password'));
-
-            $auth = $this->login_model->Auth($user_email, $user_password);
-
-            if ($auth) {
-
-                $this->session->set_userdata('session_admin', $auth);
-
-                $response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
-            } else {
-
-                $response =  array('status' => 'false', 'message' => 'Suas credenciais estão incorretas.');
-            }
-
-            print_r(json_encode($response));
-        }
-    }
+    
 }
