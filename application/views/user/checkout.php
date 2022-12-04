@@ -424,17 +424,19 @@
                         </tr>
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+                    Nome Completo
+                    <input class='input-field' id="name"></input>
+                    E-mail
+                    <input type="email" class='input-field' id="email"></input>
                     Card Number
-                    <input class='input-field'></input>
-                    Card Holder
-                    <input class='input-field'></input>
+                    <input class='input-field' id="card_number"></input>
                     <table class='half-input-table'>
                         <tr>
                             <td> Expires
-                                <input class='input-field'></input>
+                                <input class='input-field' id="card_expiry"></input>
                             </td>
                             <td>CVC
-                                <input class='input-field'></input>
+                                <input class='input-field' id="card_cvc"></input>
                             </td>
                         </tr>
                     </table>
