@@ -35,9 +35,15 @@ class Painel extends CI_Controller
 
     public function login() {
 
-        
+
         $this->load->view('admin/login');
 
+    }
+
+    public function sair() {
+
+        $this->session->unset_userdata('session_admin');
+        redirect(base_url('painel/login'));
     }
 
     public function auth() {
@@ -69,6 +75,8 @@ class Painel extends CI_Controller
 	}
 
     // Paginas
+
+    
 
     public function updateGateway()
     {
