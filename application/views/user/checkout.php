@@ -432,6 +432,7 @@
                         <input type="email" name="email" id="email" class="field" placeholder="Enter email" required="">
                         Card Number
                         <div class='input-field' id="card_number"></div>
+                        <div id="paymentResponse" class="text-red-500"></div>
 
                         <table class='half-input-table'>
                             <tr>
