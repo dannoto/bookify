@@ -74,7 +74,7 @@
                     var resp = JSON.parse(data)
 
                     if (resp.status == "true") {
-                        window.location.href = '<?= base_url() ?>catalogo'
+                        window.location.href = '<?= base_url() ?>painel/'
                     } else {
                         swal(resp.message)
                     }
