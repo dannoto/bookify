@@ -490,7 +490,13 @@ Credits
 
     <div class='subject'>DailyUI #002 </br><strong>Credit Card Checkout</strong></div>
     <br><br><br>
-    <div class='checkout'>
+    <div class='checkout grid xl:grid-cols-2 grid-cols-1'>
+        <div class="col-span-1">
+
+        </div>
+        <div class="col-span-1">
+
+        </div>
         <div class='order'>
             <h2>Checkout</h2>
             <h5>Order #0101</h5>
