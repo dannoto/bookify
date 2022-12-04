@@ -3,7 +3,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link" style="background-color: #00b467 !important;">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="<?=base_url()?>assets/img/avatar/avatar.png" alt="profile image">
+                  <img class="img-xs rounded-circle" src="<?=base_url()?>assets/img/avatar/<?=$this->session->userdata('session_admin')['user_image']?>" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
