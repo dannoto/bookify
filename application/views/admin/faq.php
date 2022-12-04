@@ -32,10 +32,10 @@
                                     <div class="card">
                                         <div class="card-body pb-0">
                                             <div class="d-block justify-content-between">
-                                                <h4 class="card-title mb-0">CRIE CAPÍTULOS</h4>
+                                                <h4 class="card-title mb-0">CRIE CATEGORIAS</h4>
                                                 <button class="btn btn-primary mt-2 mb-3 px-2" id="btn-modal-add" data-toggle="modal" data-target="#modal-add-capitulo">
                                                     <i class="fa fa-plus"></i>
-                                                    NOVO CAPÍTULO
+                                                    NOVO CATEGORIA
                                                 </button>
                                             </div>
                                         </div>
@@ -57,51 +57,51 @@
 
                                             <h4 class="card-title mb-0">CONTEÚDO </h4>
                                             <div class="d-flex align-items-center justify-content-between w-100">
-                                                <p class="mb-0">Adicione capítulos, audios e imagens ao seu conteúdo.</p>
+                                                <p class="mb-0">Adicione categorias para as FAQ.</p>
 
                                             </div>
 
-                                            <?php if (count($this->chapter_model->getChaptersByEbook($ebook['id'])) > 0) { ?>
+                                            <?php if (count($this->faq_model->getFaqsCategory()) > 0) { ?>
 
                                                 <?php $count = 0 ?>
-                                                <?php foreach ($this->chapter_model->getChaptersByEbook($ebook['id']) as $e) { ?>
+                                                <?php foreach ($this->faq_model->getFaqsCategory() as $e) { ?>
                                                     <?php $count++ ?>
 
                                                     <div class="mt-3">
                                                         <div class="border border-primary  bg-yellow-500 row">
                                                             <div class="col-md-9">
                                                                 <div class="d-block align-items-left p-2 ">
-                                                                    <small style="font-size: 10px"><?= $count ?> CAPÍTULO - <?= round($e->chapter_duration, 2) ?> minutos</small>
-                                                                    <h5 title="<?= ucfirst($e->chapter_title) ?>" class="line-clamp-1"><?= ucfirst($e->chapter_title) ?></h5>
+                                                                    <small style="font-size: 10px"></small>
+                                                                    <h5 title="<?= ucfirst($e->faq_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_title) ?></h5>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 align-items-center">
                                                                 <div class="d-flex mt-3">
-                                                                    <i title="ADICIONAR AUDIO" class="ml-3 mdi mdi-library-music add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
-                                                                    <i title="EDITAR CAPÍTULO" class="ml-3 mdi  mdi-pencil update-chapter" data-id="<?= $e->id ?>" data-title="<?= $e->chapter_title ?>" data-description="<?= $e->chapter_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
-                                                                    <i title="EXCLUIR CAPÍTULO" class="ml-3 mdi mdi-delete delete-chapter" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
+                                                                    <i title="ADICIONAR CATEGORIA" class="ml-3 mdi mdi-library-music add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
+                                                                    <i title="EDITAR CATEGORIA" class="ml-3 mdi  mdi-pencil update-category" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
+                                                                    <i title="EXCLUIR CATEGORIA" class="ml-3 mdi mdi-delete delete-category" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <?php foreach ($this->audio_model->getAudiosByChapters($e->id) as $e) { ?>
+                                                    <?php foreach ($this->faq_model->getFaqsContentByCategory($e->id) as $e) { ?>
                                                         <div class="mt-3 ml-5">
                                                             <div class="border border-primary  bg-yellow-500 row">
                                                                 <div class="col-md-8">
                                                                     <div class="d-block align-items-left p-2 ">
-                                                                        <small style="font-size: 10px"> AÚDIO - <?= round($e->audio_duration, 2) ?> minutos</small>
-                                                                        <h5 title="<?= ucfirst($e->audio_title) ?>" class="line-clamp-1"><?= ucfirst($e->audio_title) ?></h5>
+                                                                        <small style="font-size: 10px"> </small>
+                                                                        <h5 title="<?= ucfirst($e->faq_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_title) ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3 align-items-center">
                                                                     <div class="d-flex mt-4">
-                                                                        <a target="_blank" href="<?= base_url() ?><?= $e->audio_file ?>">
+                                                                        <a target="_blank" href="">
                                                                             <i title="OUVIR AUDIO" class="ml-3 mdi  mdi-play-circle-outline " style="color:green;font-size:25px;cursor:pointer"></i>
                                                                         </a>
-                                                                        <i title="ADICIONAR IMAGENS" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->audio_chapter ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
-                                                                        <i title="EDITAR AUDIO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->audio_title ?>" data-description="<?= $e->audio_description ?>" data-chapter="<?= $e->audio_chapter ?>" data-duration="<?= $e->audio_duration ?>" data-file="<?= $e->audio_file ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
-                                                                        <i title="EXCLUIR AUDIO" class="ml-3 mdi mdi-delete delete-audio" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
+                                                                        <i title="ADICIONAR CONTEUDO" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->audio_chapter ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
+                                                                        <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>"  style="color:#222;font-size:25px;cursor:pointer"></i>
+                                                                        <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-audio" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -279,9 +279,9 @@
 
 
 
-    <button id="btn-open-update-chapter" data-toggle="modal" style="display:none ;" data-target="#modal-update-chapter"></button>
+    <button id="btn-open-update-category" data-toggle="modal" style="display:none ;" data-target="#modal-update-category"></button>
     <!-- Modal Update Capitulo -->
-    <div class="modal fade" id="modal-update-chapter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-update-category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -566,7 +566,7 @@
 
         })
 
-        $('.delete-chapter').on('click', function(e) {
+        $('.delete-category').on('click', function(e) {
 
             var chapter_id = $(this).data('id')
 
@@ -616,7 +616,7 @@
 
         })
 
-        $('.update-chapter').on('click', function(e) {
+        $('.update-category').on('click', function(e) {
 
             var chapter_id = $(this).data('id')
             var chapter_title = $(this).data('title')
@@ -626,7 +626,7 @@
             $('#update_chapter_title').val(chapter_title)
             $('#update_chapter_description').val(chapter_description)
 
-            $('#btn-open-update-chapter').click();
+            $('#btn-open-update-category').click();
 
 
         })
