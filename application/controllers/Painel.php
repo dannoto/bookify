@@ -51,7 +51,7 @@ class Painel extends CI_Controller
     public function faq() {
 
       
-        redirect(base_url('painel/faq'));
+        redirect(base_url('admin/faq'));
 
     }
     public function auth() {
