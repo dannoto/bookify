@@ -416,9 +416,9 @@
                     <form action="" method="POST" id="paymentFrm">
                         <input type="hidden" name="subscr_plan" value="<?php echo $plan['id']; ?>" id="subscr_plan">
                         NOME DO TITULAR
-                        <input type="text" name="name" id="name" class='input-field' placeholder="Enter name" required="" autofocus="">
+                        <input type="text" name="name" id="name" class='input-field'  required="" autofocus="">
                         E-EMAIL
-                        <input type="email" name="email" id="email" class='input-field' placeholder="Enter email" required="">
+                        <input type="email" name="email" id="email" class='input-field'  required="">
                         NÚMERO DO CARTÃO
                         <div class='input-field' style='height: 2.4em; padding-top: .7em;' id="card_number"></div>
                         <div id="paymentResponse" class="text-red-500"></div>
