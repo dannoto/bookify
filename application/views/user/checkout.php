@@ -524,7 +524,7 @@
 </div> -->
 <?php $this->load->view('comp/js') ?>
 <script src="https://js.stripe.com/v3/"></script>
-<script>
+<!-- <script>
     var cardDrop = document.getElementById('card-dropdown');
     var activeDropdown;
     cardDrop.addEventListener('click', function() {
@@ -566,7 +566,7 @@
             activeDropdown = null;
         }
     }
-</script>
+</script> -->
 <script>
     var stripe = Stripe('<?php echo $this->config->item('stripe_publishable_key'); ?>');
 
