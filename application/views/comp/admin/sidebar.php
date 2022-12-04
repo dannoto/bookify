@@ -58,6 +58,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<?=base_url()?>painel/faq">
+                <i class="menu-icon typcn typcn-th-large-outline"></i>
+                <span class="menu-title">FAQ</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="<?=base_url()?>painel/planos">
                 <i class="menu-icon typcn typcn-bell"></i>
                 <span class="menu-title">Planos</span>

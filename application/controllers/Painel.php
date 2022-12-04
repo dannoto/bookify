@@ -15,6 +15,7 @@ class Painel extends CI_Controller
         $this->load->model('category_model');
         $this->load->model('payments_model');
         $this->load->model('config_model');
+        $this->load->model('faq_model');
 
         $this->load->model('audio_model');
         $this->load->model('ebook_model');
@@ -46,6 +47,13 @@ class Painel extends CI_Controller
         redirect(base_url('painel/login'));
     }
 
+
+    public function faq() {
+
+      
+        redirect(base_url('painel/faq'));
+
+    }
     public function auth() {
         
 		if ($this->input->post() ) {
@@ -1083,6 +1091,126 @@ class Painel extends CI_Controller
 
 
 
+// Faq aCtions
+
+
+public function actAddFaq() {
+
+    $response = array();
+
+    $faq_title =  htmlspecialchars($this->input->post('faq_title'));
+    $faq_content =  htmlspecialchars($this->input->post('faq_content'));
+    $faq_category =  htmlspecialchars($this->input->post('faq_category'));
+
+    if ($this->faq_model->addFaq($faq_title, $faq_content, $faq_category)) {
+
+        $response =  array('status' => 'true', 'message' => 'Faq criada com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+
+}
+
+public function acUpdateFaq() {
+    
+    $response = array();
+
+    $faq_id =  htmlspecialchars($this->input->post('faq_id'));
+    $faq_title =  htmlspecialchars($this->input->post('faq_title'));
+    $faq_content =  htmlspecialchars($this->input->post('faq_content'));
+    $faq_category =  htmlspecialchars($this->input->post('faq_category'));
+
+    if ($this->faq_model->updateFaq($faq_id, $faq_title, $faq_content, $faq_category)) {
+
+        $response =  array('status' => 'true', 'message' => 'Faq atualizada com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+}
+
+public function actDeleteFaq() {
+    $response = array();
+
+    $faq_id =  htmlspecialchars($this->input->post('faq_id'));
+   
+
+    if ($this->faq_model->deleteFaq($faq_id)) {
+
+        $response =  array('status' => 'true', 'message' => 'Faq excluída com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+}
+
+public function actAddFaqCategory() {
+
+    $response = array();
+
+    $faq_title =  htmlspecialchars($this->input->post('category_title'));
+    $faq_content =  htmlspecialchars($this->input->post('category_content'));
+
+    if ($this->faq_model->addFaqCategory( $faq_title, $faq_content)) {
+
+        $response =  array('status' => 'true', 'message' => 'Categoria criada com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+}
+
+public function actUpdateFaqCategory() {
+
+    $response = array();
+
+    $category_id =  htmlspecialchars($this->input->post('category_id'));
+    $category_title =  htmlspecialchars($this->input->post('category_title'));
+    $category_content =  htmlspecialchars($this->input->post('category_content'));
+
+    if ($this->faq_model->updateFaqCategory($category_id, $category_title, $category_content)) {
+
+        $response =  array('status' => 'true', 'message' => 'Categoria atualizada com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+    
+}
+
+public function actDeleteFaqCategory() {
+    $response = array();
+
+    $category_id =  htmlspecialchars($this->input->post('category_id'));
+
+
+    if ($this->faq_model->deleteFaqCategory($category_id)) {
+
+        $response =  array('status' => 'true', 'message' => 'Categoria excluida com sucesso!');
+    } else {
+
+        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+    }
+
+
+    print_r(json_encode($response));
+}
 
 
 
