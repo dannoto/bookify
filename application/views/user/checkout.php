@@ -404,7 +404,7 @@
                                                                     echo $plan['plan_type']; 
                                                                 ?> </div>
                             <div class='thin dense'>R$ 0.00</div>
-                            R$ <?= $plan['plan_price'] ?> /
+                            R$ <?= $plan['plan_price'] ?> 
                         </span>
                     </div>
                 </div>
