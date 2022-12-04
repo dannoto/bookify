@@ -1,424 +1,212 @@
 <style>
-    /* $primary: #e67e22;
-    $font: 'Lato', */
-    sans-serif;
+    * {
+  font-family: 'Poppins', sans-serif;
+}
 
-    *:focus {
-        outline: none;
-    }
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: #D4E157;
+}
 
-    .left {
-        width: 70%;
-        float: left;
-        clear: both;
-    }
+hr{  
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #464748, #8c8b8b, #464748);
+  background-image: -moz-linear-gradient(left, #464748, #8c8b8b, #464748);
+  background-image: -ms-linear-gradient(left, #464748, #8c8b8b, #464748);
+  background-image: -o-linear-gradient(left, #464748, #8c8b8b, #464748); 
+}
 
-    .right {
-        width: 30%;
-        float: right;
-        margin-bottom: 25px;
-    }
+/* Product page
+----------------------------*/
+.product_wrap{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-left: 8px;
+}
 
-    body {
-        background: -moz-linear-gradient(-45deg, #e67e22 0%, #f39c12 100%);
-        /* FF3.6-15 */
-        background: -webkit-linear-gradient(-45deg, #e67e22 0%, #f39c12 100%);
-        /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        height: auto;
-        min-height: calc(100vh);
-        font-family: $font;
-        font-weight: 500;
+.product_arrow{
+  position: absolute;
+  left:157px;
+  bottom:37px;
+}
 
-        #wrapper {
-            height: 100vh;
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 15px solid #464748;
+	border-bottom: 10px solid transparent;
+}
 
-            display: flex;
-            display: -webkit-flex;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-justify-content: center;
-            justify-content: center;
+.product_main{
+  position: relative;
+  width: 100%;
+}
+.product_main img{
+  width: 100%;
+}
 
-            #container {
-                background: white;
-                height: 440px;
-                min-width: 600px;
-                width: 600px;
-                z-index: 1;
-                -webkit-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
-                -moz-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
-                box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
+.product_title{
+  padding-bottom: 10px;
+  margin:0px;
+  font-size: 1.1em;
+  font-weight: 400;
+  color: #464748;
+}
+.product_desc{
+  margin: 0px;
+  color: #717375;
+  font-size: 12px;
+}
 
-                #left-col {
-                    width: 40%;
-                    min-width: 240px;
-                    height: 100%;
-                    float: left;
-                    background: #34495e;
+.product_price{;
+  color: #464748;  
+}
 
-                    #left-col-cont {
-                        margin: 20px 25px;
-                        color: white;
 
-                        h2 {
-                            margin: 25px 0 0 0;
-                        }
+/* Checkout section
+----------------------------*/
+.checkout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-                        div.item {
-                            margin: 30px 0;
-                            clear: both;
+.checkout_wrap {
+  width: 500px;
+  height: 300px;
+  background-color: #F7E4AA;
+  border-radius: 5px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  oveflow: hidden;
+}
 
-                            .img-col {
-                                width: 30%;
-                                float: left;
+.checkout_details {
+  height: auto;
+  padding: 10px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: #464748;
+  position: absolute;
+  height: 100%;
+  box-sizing: border-box;
+}
 
-                                img {
-                                    width: 100%;
-                                    max-height: 100px;
-                                }
-                            }
+.checkout_title {
+  margin: 0px;
+  padding: 10px 0px;
+  font-size: 1.1em;
+  font-weight: 400;
+  color: #fff;
+}
 
-                            .meta-col {
-                                width: 70%;
-                                float: right;
+.checkout_form {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0px;
+}
 
-                                h3 {
-                                    font-size: 0.7em;
-                                    margin: 10px 0 0 5px;
-                                }
+.checkout_form input {
+  width: 100%;
+  height: auto;
+  padding: 8px 10px;
+  margin: 8px 0px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #717375;
+  background-color: transparent;
+  color: #F7E4AA;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.020);
+  font-family: 'Poppins', sans-serif;
+}
+.checkout_form input:focus {
+    outline-width: 0;
+}
 
-                                p {
-                                    font-size: 0.9em;
-                                    margin: 5px 0 0 5px;
-                                    opacity: .5;
-                                }
-                            }
-                        }
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #9e9e9e;
+}
 
-                        p#total {
-                            text-transform: uppercase;
-                            text-align: left;
-                            font-size: 0.7em;
-                            opacity: .5;
-                            margin: 115px 0 5px 0;
-                        }
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #717375;
+}
 
-                        h4#total-price {
-                            text-align: left;
-                            font-size: 2em;
-                            margin: 0;
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #717375;
+}
 
-                            span {
-                                color: #1c2834;
-                            }
-                        }
-                    }
-                }
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #717375;
+}
 
-                #right-col {
-                    width: calc(60% - 50px);
-                    min-width: 310px;
-                    height: 100%;
-                    margin: 20px 25px;
-                    float: right;
-
-                    h2 {
-                        float: left;
-                        margin: 6px 0 0 0;
-                    }
-
-                    div#logotype {
-                        float: right;
-                        margin: 4px 0 0 0;
-
-                        img {
-                            width: 60px;
-                            height: auto;
-
-                            &#visa {
-                                margin-top: -10px;
-                            }
-                        }
-                    }
-                }
-
-                form {
-                    margin: 80px auto 0;
-                    width: 100%;
-
-                    #cardnumber {
-                        background: white;
-                        width: calc(100% - 14px);
-                        padding: 4px 6px;
-                        border-radius: 3px;
-                        border: 1px solid lightgrey;
-
-                        input {
-                            display: inline-block;
-                            font-family: $font;
-                            width: calc(25% - 23px);
-                            padding: 4px 6px;
-                            letter-spacing: 6px;
-                            font-size: 0.9em;
-                            border: none;
-                            background: none;
-
-                            &::-webkit-input-placeholder {
-                                opacity: .5;
-                            }
-
-                            &::-moz-placeholder {
-                                opacity: .5;
-                            }
-
-                            &[type=number]::-webkit-inner-spin-button,
-                            [type=number]::-webkit-outer-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
-                            }
-                        }
-
-                        span.divider {
-                            color: rgba(0, 0, 0, .3);
-                        }
-                    }
-
-                    label {
-                        display: block;
-                        font-family: $font;
-                        font-size: 0.7em;
-                        font-weight: 600;
-                        text-transform: uppercase;
-                        margin: 14px 0 4px;
-
-                        &#cvc-label {
-                            i {
-                                cursor: pointer;
-                                margin-left: 3px;
-                            }
-                        }
-                    }
-
-                    input {
-                        display: block;
-                        padding: 6px 8px;
-                        border: 1px solid lightgrey;
-                        border-radius: 2px;
-                        font-size: 0.9em;
-
-                        &:focus {
-                            border-color: $primary;
-                        }
-
-                        &::-webkit-input-placeholder {
-                            opacity: .5;
-                        }
-
-                        &::-moz-placeholder {
-                            opacity: .5;
-                        }
-
-                        &#cardholder {
-                            width: calc(100% - 18px);
-                        }
-
-                        &#cvc {
-                            width: calc(100% - 18px);
-                        }
-                    }
-
-                    select {
-                        border: 1px solid lightgrey;
-                        border-radius: 2px;
-                        background: none;
-                        width: 90px;
-                        font-weight: 500;
-                        font-size: 0.9em;
-                        padding: 6px 8px;
-                        color: rgba(0, 0, 0, .2);
-                        -webkit-appearance: none;
-                        -moz-appearance: none;
-                        appearance: none;
-                    }
-
-                    button {
-                        display: block;
-                        width: 100%;
-                        border: none;
-                        border-radius: 2px;
-                        padding: 8px 0;
-                        font-size: 0.8em;
-
-                        &#purchase {
-                            background: $primary;
-                            color: white;
-                            margin: 0 0 8px;
-                            font-size: 0.9em;
-                        }
-
-                        &#paypal {
-                            background: none;
-                            border: 1px solid lightgrey;
-
-                            &:hover {
-                                background: #003087;
-                                border-color: #003087;
-                                color: white;
-
-                                i {
-                                    color: #009cde;
-                                }
-                            }
-
-                            i {
-                                color: #003087;
-                            }
-                        }
-                    }
-
-                    p#support {
-                        font-size: 0.7em;
-                        text-align: center;
-                        color: rgba(0, 0, 0, .5);
-
-                        a {
-                            text-decoration: none;
-                            color: inherit;
-                            padding: 0 1px 2px 1px;
-                            border-bottom: 1px solid rgba(0, 0, 0, .5);
-
-                            &:hover {
-                                padding-bottom: 3px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        #dailyui {
-            position: fixed;
-            font-size: 15em;
-            font-weight: 700;
-            margin: 0 0 -55px 0;
-            padding: 0;
-            right: 0;
-            bottom: 0;
-            color: rgba(0, 0, 0, .3);
-            z-index: 0;
-            text-align: right;
-            font-family: 'proxima-nova', 'Lato', sans-serif;
-        }
-    }
+.checkout_pay {
+  width: 100%;
+  height: auto;
+  padding: 8px 10px;
+  margin: 8px 0px;
+  border: none;
+  background-color: #F7E4AA;
+  color: #2a2a2a;
+  border-radius: 3px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
 </style>
-<div id="wrapper">
-    <div id="container">
-        <div id="left-col">
-            <div id="left-col-cont">
-                <h2>Summary</h2>
-                <div class="item">
-                    <div class="img-col">
-                        <img src="http://emilcarlsson.se/assets/shirt.png" alt="" />
-                    </div>
-                    <div class="meta-col">
-                        <h3>Blue Ocean Shirt</h3>
-                        <p class="price">$60</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img-col">
-                        <img src="http://emilcarlsson.se/assets/green-shirt.png" alt="" />
-                    </div>
-                    <div class="meta-col">
-                        <h3>Green Pine Shirt</h3>
-                        <p class="price">$55</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img-col">
-                        <img src="http://emilcarlsson.se/assets/belt.png" alt="" />
-                    </div>
-                    <div class="meta-col">
-                        <h3>Cow Skin Belt</h3>
-                        <p class="price">$32</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="img-col">
-                        <img src="http://emilcarlsson.se/assets/watch1.png" alt="" />
-                    </div>
-                    <div class="meta-col">
-                        <h3>Festina Quartz Watch</h3>
-                        <p class="price">$299</p>
-                    </div>
-                </div>
-                <p id="total">Total</p>
-                <h4 id="total-price"><span>$</span> 446</h4>
-            </div>
+<div class="checkout">
+  <div class="checkout_wrap">
+    <div class="row">
+
+      <div class="col-xs-4">
+        <!--PRODUCT-->
+        <div class="product_wrap">
+          <div class="product_main">
+            <img src="https://cdn.shopify.com/s/files/1/1383/5663/products/nUfktRxAtd3kdSy26835S772JrFPTf-right_large.png?v=1480349616">
+          </div>
+          <h1 class="product_title">Mug Life</h1>
+          <small class="product_desc">Designer mug with metalic finish</small>
+          <h3 class="product_price">$14.99</h3>
         </div>
-        <div id="right-col">
-            <h2>Payment</h2>
-            <div id="logotype">
-                <img id="mastercard" src="http://emilcarlsson.se/assets/MasterCard_Logo.png" alt="" />
-            </div>
+      </div>
 
-            <form action="">
-                <label for="">Cardnumber</label>
-                <div id="cardnumber">
-                    <input type="number" max="4" max-length="4" min="4" placeholder="0123" /> <span class="divider">-</span>
-                    <input type="number" max="4" max-length="4" min="4" placeholder="4567" /> <span class="divider">-</span>
-                    <input type="number" max="4" max-length="4" min="4" placeholder="8901" /> <span class="divider">-</span>
-                    <input type="number" max="4" max-length="4" min="4" placeholder="2345" />
+      <div class="col-xs-8">
+        <!--CHECKOUT-->
+        <div class="product_arrow">
+          <div class="triangle-left"></div>
+        </div>
+        <div class="checkout_details">
+          <div class="col-xs-12">
+            <h1 class="checkout_title">Credit Card Detail</h1>
+            <form class="checkout_form">
+              <input type="name" placeholder="Customer Full Name">
+              <input class="cc-number" type="text" placeholder="Card Number" maxlength="20">
+              <div class="row">
+                <div class="col-xs-6">
+                  <input class="cc-exp" type="name" placeholder="Card Expiry">
                 </div>
-
-                <label for="">Cardholder</label>
-                <input id="cardholder" type="text" placeholder="John Doe" />
-                <div class="left">
-                    <label for="">Expiration Date</label>
-                    <select name="month" id="month" onchange="" size="1">
-                        <option value="00">Month</option>
-                        <option value="01">January</option>
-                        <option value="02">February</option>
-                        <option value="03">March</option>
-                        <option value="04">April</option>
-                        <option value="05">May</option>
-                        <option value="06">June</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                    <select name="year" id="year" onchange="" size="1">
-                        <option value="00">Year</option>
-                        <option value="01">2016</option>
-                        <option value="02">2017</option>
-                        <option value="03">2018</option>
-                        <option value="04">2019</option>
-                        <option value="05">2020</option>
-                        <option value="06">2021</option>
-                        <option value="07">2022</option>
-                        <option value="08">2023</option>
-                        <option value="09">2024</option>
-                        <option value="10">2025</option>
-                    </select>
+                <div class="col-xs-6">
+                  <input class="cc-cvc" type="name" placeholder="CVV">
                 </div>
-
-                <div class="right">
-                    <label id="cvc-label" for="">CVC <i class="fa fa-question-circle-o" aria-hidden="true"></i></label>
-                    <input id="cvc" type="text" placeholder="123" maxlength="3" />
-                </div>
-                <button id="purchase">Purchase</button>
-                <button id="paypal"><i class="fa fa-paypal" aria-hidden="true"></i> Pay with PayPal</button>
-                <p id="support">Having problem with checkout? <a href="#">Contact our support</a>.</p>
+              </div>
+              <button class="checkout_pay" type "button" value="submit">Pay &raquo;</button>
             </form>
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
-<h1 id="dailyui">002</h1>
 
 
 <!-- <div class="panel">
