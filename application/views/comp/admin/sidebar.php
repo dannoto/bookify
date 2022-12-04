@@ -69,12 +69,6 @@
                 <span class="menu-title">Planos</span>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="pages/icons/font-awesome.html">
-                <i class="menu-icon typcn typcn-user-outline"></i>
-                <span class="menu-title">Icons</span>
-              </a>
-            </li> -->
             <li class="nav-item" style="background-color: #00b467 !important;" >
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="menu-icon typcn typcn-document-add"></i>
