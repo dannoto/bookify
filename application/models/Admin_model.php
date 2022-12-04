@@ -14,6 +14,7 @@ class admin_model extends CI_Model
 
         $this->db->where('user_email', $user_email);
         $this->db->where('user_password', md5($user_password));
+        $this->db->where('user_admin', 1);
 
         return $this->db->get('users')->row_array();
 
@@ -27,11 +28,11 @@ class admin_model extends CI_Model
 
             }  else {
 
-                redirect(base_url('painel/login'));
+                // redirect(base_url('painel/login'));
             }
 
         } else {
-            redirect(base_url('painel/login'));
+            // redirect(base_url('painel/login'));
         }
     }
 
