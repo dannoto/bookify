@@ -305,10 +305,10 @@
                         <label for="">NOME DO AÚDIO <span class="text-danger">*</span></label><br>
                         <input type="hidden" name="faq_id" id="update_faq_id" required class="mb-2 form-control">
 
-                        <input type="text" name="faq_title" id="update_faq_title" required class="mb-2 form-control">
+                        <input type="text" name="faq_title" id="update_faq_title" maxlength="200" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="faq_description" maxlength="200 " id="update_faq_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_description"  id="update_faq_description" class="mb-2 form-control"></textarea>
 
 
 
