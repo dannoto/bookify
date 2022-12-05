@@ -10,6 +10,7 @@ class Planos extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->model('user_model');
 		$this->load->model('faq_model');
+		$this->load->model('admin_model');
 
 		$this->load->model('email_model');
 		$this->load->model('plan_model');

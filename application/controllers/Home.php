@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 		$this->load->model('plan_model');
 		$this->load->model('faq_model');
 		$this->load->model('config_model');
+		$this->load->model('admin_model');
 
 	}
 
