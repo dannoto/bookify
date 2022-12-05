@@ -32,7 +32,10 @@
 
                     <div class="  login ">
                         <div class="m-3">
-                            <img style="width:150px;height:50px;object-fit:cover" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+                            <a href="<?= base_url() ?>">
+
+                                <img style="width:150px;height:50px;object-fit:cover" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+                            </a>
                         </div>
                         <div class="grid place-items-center">
                             <div class="form-login">
