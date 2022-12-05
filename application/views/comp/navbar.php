@@ -131,7 +131,7 @@
     <div class="navbar nav_home">
 
         <!-- Desktop -->
-        <div class="xl:block hidden mt-3">
+        <div class="xl:block hidden mt-2">
 
             <nav class="grid xl:grid-cols-6 justify-content-between mt-2 mb-2 p-3">
                 <div class="grid xl:col-span-1 manu_logo ">
