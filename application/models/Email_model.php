@@ -55,7 +55,6 @@ class email_model extends CI_Model
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             if ($mail->send()) {
-                return true;
                 echo 'Message has been sent';
             } else {
                 echo "envio falhou";
