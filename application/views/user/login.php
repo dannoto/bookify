@@ -12,7 +12,6 @@
             <div class="grid xl:grid-cols-2 grid-cols-1">
                 <div style="height:100vh" class="xl:col-span-1  col-span-1">
 
-
                     <div class="  login ">
                         <div class="m-3">
                             <a href="<?= base_url() ?>">
@@ -22,7 +21,7 @@
                         </div>
                         <div class="grid place-items-center">
                             <div class=" ">
-                                <form action="" class="mt-20" id="form-login">
+                                <form action="" class="xl:pt-14 pt-8 xl:m-0 m-8" id="form-login">
                                     <div>
                                         <h2 style="font-size:30px" class="text-black text-xl font-semibold">Login</h2>
                                         <p class="text-black text-md mt-2 mb-2 font-norma">Faça login e explore esse mundo de conhecimento.</p>

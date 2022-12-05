@@ -443,7 +443,7 @@
                             </tr>
                         </table>
 
-                        <input class="hidden" type="text" id="stripeToken" class="field">
+                        <input class="hidden" type="text" id="stripeToken" >
 
                         <button type="submit" class='pay-btn'>ASSINAR <i class="fa fa-arrow-right"></i></button>
                     </form>
@@ -642,7 +642,7 @@
     // Callback to handle the response from stripe
     function stripeTokenHandler(token) {
         // Insert the token ID into the form so it gets submitted to the server
-        var hiddenInput = document.createElement('input');
+        var hiddenInput = document.createElement('hidden');
         hiddenInput.setAttribute('type', 'block');
         hiddenInput.setAttribute('name', 'stripeToken');
         hiddenInput.setAttribute('value', token.id);
