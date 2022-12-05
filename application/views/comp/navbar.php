@@ -3,15 +3,13 @@
 
     <div class="navbar">
         <!-- Desktop -->
-        <div class="xl:block hidden">
+        <div class="xl:block hidden mt-3">
 
             <nav class="grid xl:grid-cols-3  justify-content-between p-3">
 
                 <form action="<?= base_url() ?>busca" method="GET">
 
-                    <div class="xl:col-span-1  flex" style="
-        width: 90%;
-    ">
+                    <div class="xl:col-span-1  flex" style="width: 90%;">
                         <input style="margin-right:0px;width:80%" type="text" name="ebook_title" required value="" class="border border-gray-200 p-2" placeholder="O que está procurando?">
                         <button class="bg-greenDefault text-white px-2 ">
                             <i style="font-size:20px" class="fa fa-search ml-2 mr-2"></i>
@@ -36,9 +34,7 @@
 
                 <div class="grid xl:col-span-1 grid-cols-3">
                     <div class="col-span-1"></div>
-                    <div class="flex col-span-2 space-x-4" style="
-        margin-left: 90px;
-    ">
+                    <div class="flex col-span-2 space-x-4" style="margin-left: 90px;">
                         <div>
                             <a href="<?= base_url() ?>conta/perfil">
                                 <span><?= $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_name'] ?> <?= $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_surname'] ?></span>
