@@ -237,10 +237,10 @@
 
                         <input type="hidden" name="faq_category_id" id="add_faq_category_id" required class="mb-2 form-control">
 
-                        <input type="text" name="faq_title" id="add_faq_title" required class="mb-2 form-control">
+                        <input type="text" name="faq_title" id="add_faq_title" maxlength="200" required class="mb-2 form-control">
 
                         <label for="">CONTEÚDO</label><br>
-                        <textarea type="text" name="faq_content" maxlength="200 " id="add_faq_content" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_content" id="add_faq_content" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
