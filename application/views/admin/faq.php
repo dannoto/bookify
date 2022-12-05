@@ -206,7 +206,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-add-category">
+                    <form action="" method="POST" id="form-add-category">
                         <label for="">NOME DA CATEGORIA <span class="text-danger">*</span></label><br>
                         <input type="text" name="add_faq_category_title" id="add_faq_category_title" required class="mb-2 form-control">
 
