@@ -208,10 +208,10 @@
                 <div class="modal-body">
                     <form action="" method="POST" id="form-add-category">
                         <label for="">NOME DA CATEGORIA <span class="text-danger">*</span></label><br>
-                        <input type="text" name="add_faq_category_title" id="add_faq_category_title" required class="mb-2 form-control">
+                        <input type="text" name="faq_category_title" id="add_faq_category_title" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="add_faq_category_description" maxlength="200 " id="add_faq_category_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_category_description" maxlength="200 " id="add_faq_category_description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
