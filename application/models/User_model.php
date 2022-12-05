@@ -241,7 +241,7 @@ class user_model extends CI_Model
             if ($this->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == "0") {
 
                 redirect(base_url('planos/escolha'));
-            } else if ($this->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == "2") {
+            } else if ($this->getUserById($this->session->userdata('session_user')['id'])['user_status'] == "2") {
                 redirect(base_url('sair'));
 
             }
