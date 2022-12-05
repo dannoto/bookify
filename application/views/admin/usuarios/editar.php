@@ -153,7 +153,7 @@
                                 </div>
                                 <?php } else if ($this->user_model->getUserById($usuario['id'])['user_status'] == 2) { ?>
                                     <div class="">
-                                    <button type="button" id="<?=$usuario['id']?>" data-action="desbanir" class="btn btn-block btn-danger btn-banir toolbar-item py-3">DESBANIR USUÁRIOS</button>
+                                    <button type="button" id="<?=$usuario['id']?>" data-action="desbanir" class="btn btn-block btn-danger ml-3 btn-banir toolbar-item py-3">DESBANIR USUÁRIOS</button>
                                 </div>
                                 <?php } ?>
                                 <div class="">
