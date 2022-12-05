@@ -12,10 +12,11 @@ class Ajuda extends CI_Controller {
         $this->load->model('user_model');
 
         $this->load->model('email_model');
-        $this->load->model('admin_model');
         $this->load->model('category_model');
         $this->load->model('payments_model');
         $this->load->model('config_model');
+        $this->load->model('admin_model');
+        $this->load->model('faq_model');
 
         $this->load->model('audio_model');
         $this->load->model('ebook_model');
