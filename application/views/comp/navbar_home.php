@@ -205,11 +205,11 @@
                           </a>
                       </div>
                       <div class="col-span-1">
-                          <i id="btn-navbar" class="ml-12 mt-1 fa fa-bars"></i>
+                          <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
                       </div>
                   </div>
 
-                  <div id="div-navbar" style="display:none">
+                  <div id="div-navbar"  class="mt-3" style="display:none">
                       <ul class="block bg-greenDefault text-white space-y-3 mt-5">
                           <li class="menu_li pt-3 ">
                               <a href="<?= base_url() ?>login">
