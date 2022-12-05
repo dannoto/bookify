@@ -737,7 +737,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/actupdatefaq',
+                url: '<?= base_url() ?>painel/actUpdateFaq',
                 data: $(this).serialize(),
 
                 success: function(data) {
