@@ -1202,6 +1202,8 @@ public function actDeleteFaqCategory() {
 
     if ($this->faq_model->deleteFaqCategory($category_id)) {
 
+        $this->faq_model->deleteCategoryRelated($category_id);
+
         $response =  array('status' => 'true', 'message' => 'Categoria excluida com sucesso!');
     } else {
 
