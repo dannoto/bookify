@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url() ?>assets/img/apple-icon-57x57.png">
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/favicon-16x16.png" />
+
     <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url() ?>assets/img/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url() ?>assets/img/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url() ?>assets/img/apple-icon-76x76.png">
