@@ -69,7 +69,9 @@
             <nav class="p-3">
                 <div class="grid grid-cols-5" style="width: 100%;">
                     <div class="col-span-4  ">
-                        <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+                        <a href="<?= base_url() ?>">
+                            <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+                    </a>
                     </div>
                     <div class="col-span-1">
                         <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
@@ -141,25 +143,33 @@
                     </a>
                 </div>
 
-                <?php $actual_link = $_SERVER['REQUEST_URI']?>
+                <?php $actual_link = $_SERVER['REQUEST_URI'] ?>
                 <div class="flex xl:col-span-3 ">
                     <ul class="flex space-x-12">
-                        <li class="menu_li  <?php if (strpos($actual_link, '/home') !== false ) { echo "menu_li_active";}?>">
+                        <li class="menu_li  <?php if (strpos($actual_link, '/home') !== false) {
+                                                echo "menu_li_active";
+                                            } ?>">
                             <a href="<?= base_url() ?>home">
                                 <span>Home</span>
                             </a>
                         </li>
-                        <li class="menu_li <?php if (strpos($actual_link, '/catalogo') !== false ) { echo "menu_li_active";}?>">
+                        <li class="menu_li <?php if (strpos($actual_link, '/catalogo') !== false) {
+                                                echo "menu_li_active";
+                                            } ?>">
                             <a href="<?= base_url() ?>catalogo">
                                 <span>Catálogo</span>
                             </a>
                         </li>
-                        <li class="menu_li <?php if (strpos($actual_link, '/planos') !== false ) { echo "menu_li_active";}?>">
+                        <li class="menu_li <?php if (strpos($actual_link, '/planos') !== false) {
+                                                echo "menu_li_active";
+                                            } ?>">
                             <a href="<?= base_url() ?>planos">
                                 <span>Planos</span>
                             </a>
                         </li>
-                        <li class="menu_li <?php if (strpos($actual_link, '/ajuda') !== false ) { echo "menu_li_active";}?>">
+                        <li class="menu_li <?php if (strpos($actual_link, '/ajuda') !== false) {
+                                                echo "menu_li_active";
+                                            } ?>">
                             <a href="<?= base_url() ?>ajuda">
                                 <span>Ajuda</span>
                             </a>
@@ -191,14 +201,17 @@
             <nav class="p-3">
                 <div class="grid grid-cols-5" style="width: 100%;">
                     <div class="col-span-4  ">
-                        <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+                        <a href="<?= base_url() ?>">
+                            <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
+
+                        </a>
                     </div>
                     <div class="col-span-1">
                         <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
                     </div>
                 </div>
 
-                <div id="div-navbar" style="display:none">
+                <div id="div-navbar" class="mt-3" style="display:none">
                     <ul class="block bg-greenDefault text-white space-y-3">
                         <li class="menu_li pt-3">
                             <a href="<?= base_url() ?>login">
