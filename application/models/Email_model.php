@@ -27,7 +27,8 @@ class email_model extends CI_Model
     public function sendRecovery($user)
     {
         // ok
-        print_r($user);
+        // print_r($user);
+        echo $user['user_email'];
 
         //Create an instance; passing `true` enables exceptions
         // $mail = new PHPMailer(true);
