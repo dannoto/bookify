@@ -72,7 +72,7 @@
                         <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
                     </div>
                     <div class="col-span-1">
-                        <i id="btn-navbar" class="ml-12 mt-1 fa fa-bars"></i>
+                        <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
                     </div>
                 </div>
 
@@ -194,7 +194,7 @@
                         <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
                     </div>
                     <div class="col-span-1">
-                        <i id="btn-navbar" class="ml-12 mt-1 fa fa-bars"></i>
+                        <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
                     </div>
                 </div>
 
