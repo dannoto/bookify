@@ -401,7 +401,7 @@
         //Get chapter DOM
         function getChaptersDOM() {
 
-            // location.reload()
+            location.reload()
             // $.ajax({
             //   method: 'POST',
             //   url: '<?= base_url() ?>painel/actGetChapterDOM',
