@@ -41,7 +41,7 @@
                                 <div class="card-body">
                                     <form action="" id="form-add-suporte">
                                         <label for="">SCRIPT DO CHAT <span class="text-danger">*</span></label><br>
-                                        <textarea style="width:100% ;" name="support_code" ><?=$this->admin_model->getSupport['support_code']?></textarea>
+                                        <textarea style="width:100% ;" name="support_code" ><?=$this->admin_model->getSupport()?></textarea>
 
                  
                                 </div>
