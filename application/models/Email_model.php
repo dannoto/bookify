@@ -45,7 +45,9 @@ class email_model extends CI_Model
 
             //Recipients
             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
-            $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
+            // $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);   
+
+            $mail->addAddress('danrib2018@gmail.com',"Daniel Ribeiro");   
 
 
             //Content
