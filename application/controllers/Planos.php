@@ -51,18 +51,26 @@ class Planos extends CI_Controller {
 			'config' => $this->config_model->getConfigDesign(),
 		);
 
+		$user = $this->user_model->getUserById($this->input->session->userdata('session_user')['id']);
+		$this->email_model->paymentSuccess($user);
+		$this->email_model->newSubscription($user);
+
         $this->load->view('user/planos_sucesso',$data);
     }
 
 	public function falhou() {
 
 
+		
 
 		$data  = array(
 			'planos' => $this->plan_model->getPlans(),
 			'config' => $this->config_model->getConfigDesign(),
 			'message' => $this->input->get('message'),
 		);
+
+		$user = $this->user_model->getUserById($this->input->session->userdata('session_user')['id']);
+		$this->email_model->paymentFailed($user, $data['message']);
 
         $this->load->view('user/planos_falhou',$data);
     }

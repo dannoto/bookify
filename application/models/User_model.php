@@ -200,6 +200,38 @@ class user_model extends CI_Model
         }
     }
 
+    public function banUser($user_id) {
+
+        $this->db->where('id', $user_id);
+        $data = array(
+            'user_status' => 2
+        );
+        return $this->db->update('users',$data);
+    }
+
+    public function isBanned($user_id) {
+
+        $this->db->where('id', $user_id);
+        
+        $data= $this->db->get('users')->row_array();
+
+        if ($data['user_status'] == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function desbanUser($user_id) {
+
+        $this->db->where('id', $user_id);
+        $data = array(
+            'user_status' => 1
+        );
+        return $this->db->update('users',$data);
+    }
+
+
     public function authPlan()
     {
 

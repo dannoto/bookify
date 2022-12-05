@@ -23,4 +23,10 @@ class config_model extends CI_Model
     public function getConfigDesign(){
         return $this->db->get('config_design')->row_array();
     }
+
+
+    public function getConfigEmail(){
+        return $this->db->get('config_email')->row_array();
+
+    }
 }

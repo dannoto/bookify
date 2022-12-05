@@ -64,7 +64,7 @@
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
- 
+
                                         <div class="row mt-3">
                                             <div class="col-md-6">
                                                 <h4 class="card-title mb-1">NOME <small class="text-danger">*</small></h4>
@@ -82,7 +82,7 @@
                                         <input type="email" name="user_email" value="<?= $usuario['user_email'] ?>" id="user_email" maxlength="200" required class="form-control">
                                         <br><br>
 
-                                        <input type="hidden" id="user_id" value="<?=$usuario['id']?>">
+                                        <input type="hidden" id="user_id" value="<?= $usuario['id'] ?>">
 
                                         <div class="row mt-3">
                                             <div class="col-md-6">
@@ -147,6 +147,15 @@
                                 </div>
                             </div>
                             <div class="col-md-12  d-flex justify-content-end align-items-end">
+                                <?php if ($this->user_model->getUserById($usuario['id'])['user_status'] == 1) { ?>
+                                    <div class="">
+                                    <button type="submit" id="<?=$usuario['id']?>" data-action="banir" class="btn btn-block btn-danger toolbar-item py-3">BANIR USUÁRIOS</button>
+                                </div>
+                                <?php } else if ($this->user_model->getUserById($usuario['id'])['user_status'] == 2) { ?>
+                                    <div class="">
+                                    <button type="submit" id="<?=$usuario['id']?>" data-action="desbanir" class="btn btn-block btn-danger toolbar-item py-3">DESBANIR USUÁRIOS</button>
+                                </div>
+                                <?php } ?>
                                 <div class="">
                                     <button type="submit" class="btn btn-block btn-primary toolbar-item py-3">SALVAR ALTERAÇÕES</button>
                                 </div>
@@ -317,6 +326,47 @@
         })
     </script>
 
+    <script>
+        $('#banir').on('click', function(e) {
+
+            user_id = $(this).attr('id')
+            user_act = $(this).data('action')
+            $.ajax({
+                method: 'POST',
+                url: '<?= base_url() ?>painel/actBanirUser',
+                data: {
+                    user_id: user_id,
+                    user_act: user_act
+                },
+
+                success: function(data) {
+
+                    var resp = JSON.parse(data)
+
+                    if (resp.status = "true") {
+
+                        swal({
+                            title: "Feito!",
+                            text: resp.message,
+                            icon: "success",
+
+                        }).then(() => {
+                            location.reload()
+                        } )
+                    } else {
+                        swal('Ocorreu um erro temporário. ');
+
+                    }
+
+
+                },
+                error: function(data) {
+                    swal('Ocorreu um erro temporário. ');
+                },
+
+            });
+        })
+    </script>
 
 </body>
 

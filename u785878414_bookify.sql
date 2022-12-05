@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 21-Nov-2022 às 09:12
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 7.4.29
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 05-Dez-2022 às 15:17
+-- Versão do servidor: 10.5.16-MariaDB-cll-lve
+-- versão do PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `bookify`
+-- Banco de dados: `u785878414_bookify`
 --
 
 -- --------------------------------------------------------
@@ -48,6 +48,20 @@ INSERT INTO `config_design` (`id`, `design_logo_short`, `design_logo_large`, `de
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `config_email`
+--
+
+CREATE TABLE `config_email` (
+  `id` int(11) NOT NULL,
+  `email_host` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_user` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_port` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_password` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `config_gateway`
 --
 
@@ -63,6 +77,24 @@ CREATE TABLE `config_gateway` (
 
 INSERT INTO `config_gateway` (`id`, `gateway_public`, `gateway_secret`) VALUES
 (1, 'teste_public', 'teste_key');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `config_support`
+--
+
+CREATE TABLE `config_support` (
+  `id` int(11) NOT NULL,
+  `support_code` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `config_support`
+--
+
+INSERT INTO `config_support` (`id`, `support_code`) VALUES
+(1, 'var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\r\n(function(){\r\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\r\ns1.async=true;\r\ns1.src=\'https://embed.tawk.to/638d532ddaff0e1306dae723/1gjg0pqi3\';\r\ns1.charset=\'UTF-8\';\r\ns1.setAttribute(\'crossorigin\',\'*\');\r\ns0.parentNode.insertBefore(s1,s0);\r\n})();\r\n');
 
 -- --------------------------------------------------------
 
@@ -374,10 +406,8 @@ CREATE TABLE `faq_categories` (
 --
 
 INSERT INTO `faq_categories` (`id`, `faq_category_title`, `faq_category_description`) VALUES
-(1, 'CATEGORIAS EXEMPLO', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a'),
-(2, 'CATEGORIAS EXEMPLO', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.'),
-(3, 'CATEGORIAS EXEMPLO', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.'),
-(4, 'CATEGORIAS EXEMPLO', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.');
+(18, 'Categoria teste 1', 'Categoria teste 1Categoria teste 1Categoria teste 1Categoria teste 1Categoria teste 1Categoria teste 1'),
+(19, 'Categoria teste 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a');
 
 -- --------------------------------------------------------
 
@@ -397,14 +427,10 @@ CREATE TABLE `faq_content` (
 --
 
 INSERT INTO `faq_content` (`id`, `faq_category`, `faq_title`, `faq_description`) VALUES
-(1, 1, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(2, 1, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(3, 2, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(4, 2, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(5, 3, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(6, 3, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(7, 4, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(8, 4, 'Pergunta Exemplo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.');
+(21, 18, 'Lorem Ipsum is simply dummy text of the printing ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a'),
+(22, 18, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a'),
+(23, 19, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a'),
+(24, 19, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type a');
 
 -- --------------------------------------------------------
 
@@ -436,6 +462,7 @@ CREATE TABLE `users` (
   `user_date` varchar(200) NOT NULL,
   `user_time` varchar(200) NOT NULL,
   `user_plan` int(11) NOT NULL,
+  `user_subscription` varchar(200) NOT NULL,
   `user_refer` varchar(200) NOT NULL,
   `user_origin` varchar(200) DEFAULT NULL,
   `user_status` int(11) NOT NULL DEFAULT 1 COMMENT '1 - ativo - 2 banido',
@@ -445,20 +472,22 @@ CREATE TABLE `users` (
   `user_city` varchar(200) DEFAULT NULL,
   `user_district` varchar(200) DEFAULT NULL,
   `user_cep` varchar(200) DEFAULT NULL,
-  `user_token` varchar(200) NOT NULL
+  `user_token` varchar(200) NOT NULL,
+  `user_admin` varchar(11) NOT NULL DEFAULT '0' COMMENT '0 - nao / 1 sim'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `user_surname`, `user_email`, `user_password`, `user_date`, `user_time`, `user_plan`, `user_refer`, `user_origin`, `user_status`, `user_image`, `user_street`, `user_state`, `user_city`, `user_district`, `user_cep`, `user_token`) VALUES
-(2, 'Daniel', 'Ribeiro ', 'dantarserytrey@outlook.comx', '5e2b488f90ac6ba7c7896c8537dd93f8', '22-10-2022', '19:35:17', 1, '556561277', '', 1, '192967424download.jpeg', 'x', '', '', '', '', '0'),
-(3, '55', '55', '55@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '22-10-2022', '19:44:34', 3, '195354663', '556561277', 1, '397253561download.jpeg', '55', '55', '55', '55', '55', '0'),
-(6, 'Daniel', 'Ribeiro', 'dantars@outlook.com', '612553ddb25198fd3c2c90540df9a70a', '25-10-2022', '16:22:58', 1, '1833345040', '556561277', 1, 'avatar.png', NULL, NULL, NULL, NULL, NULL, '601390131'),
-(7, 'Vinicius', 'Souza', 'vinicius@gmail.com', '9169178f42af015d30bc9f7cf3255f1b', '28-10-2022', '09:06:00', 1, '1877786549', '556561277', 1, 'default.png', '', '', '', '', '', '823338027'),
-(9, 'Monnik', 'Silva', 'monnik@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '14-11-2022', '19:08:42', 0, '506016150', '556561277', 1, 'default.png', NULL, NULL, NULL, NULL, NULL, '1719645188'),
-(10, 'Julio', 'Cesar', 'julio@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '14-11-2022', '19:18:37', 3, '156409224', '556561277', 1, 'default.png', NULL, NULL, NULL, NULL, NULL, '1958954962');
+INSERT INTO `users` (`id`, `user_name`, `user_surname`, `user_email`, `user_password`, `user_date`, `user_time`, `user_plan`, `user_subscription`, `user_refer`, `user_origin`, `user_status`, `user_image`, `user_street`, `user_state`, `user_city`, `user_district`, `user_cep`, `user_token`, `user_admin`) VALUES
+(2, 'Daniel', 'Ribeiro ', 'dantarserytrey@outlook.comx', '5e2b488f90ac6ba7c7896c8537dd93f8', '22-10-2022', '19:35:17', 1, '0', '556561277', '', 1, '192967424download.jpeg', 'x', '', '', '', '', '0', '0'),
+(3, '55', '55', '55@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '22-10-2022', '19:44:34', 3, '0', '195354663', '556561277', 1, '397253561download.jpeg', '55', '55', '55', '55', '55', '0', '0'),
+(6, 'Daniel', 'Ribeiro', 'dantars@outlook.com', '612553ddb25198fd3c2c90540df9a70a', '25-10-2022', '16:22:58', 1, '0', '1833345040', '556561277', 1, 'avatar.png', NULL, NULL, NULL, NULL, NULL, '601390131', '0'),
+(7, 'Vinicius', 'Souza', 'vinicius@gmail.com', '9169178f42af015d30bc9f7cf3255f1b', '28-10-2022', '09:06:00', 1, '0', '1877786549', '556561277', 1, 'default.png', '', '', '', '', '', '823338027', '0'),
+(9, 'Monnik', 'Silva', 'monnik@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '14-11-2022', '19:08:42', 0, '0', '506016150', '556561277', 1, 'default.png', NULL, NULL, NULL, NULL, NULL, '1719645188', '0'),
+(10, 'Julio', 'Cesar', 'julio@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '14-11-2022', '19:18:37', 3, '0', '156409224', '556561277', 1, 'default.png', NULL, NULL, NULL, NULL, NULL, '1958954962', '0'),
+(11, 'Daniel', 'Ribeiro', 'danrib2018@gmail.com', '612553ddb25198fd3c2c90540df9a70a', '03-12-2022', '02:42:57', 2, '20', '29293696', '', 1, '134227423520221202_003531.jpg', NULL, NULL, NULL, NULL, NULL, '1723436643', '1');
 
 -- --------------------------------------------------------
 
@@ -487,7 +516,57 @@ INSERT INTO `users_library` (`id`, `library_ebook_id`, `library_user_id`, `libra
 (13, 16, 7, '2022-11-20', '23:50:27'),
 (14, 15, 7, '2022-11-20', '23:51:31'),
 (16, 23, 7, '2022-11-20', '23:53:55'),
-(17, 21, 7, '2022-11-20', '23:54:02');
+(17, 21, 7, '2022-11-20', '23:54:02'),
+(18, 18, 11, '2022-12-03', '04:21:53'),
+(19, 25, 11, '2022-12-05', '00:06:31');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users_payments`
+--
+
+CREATE TABLE `users_payments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `plan_id` int(11) NOT NULL,
+  `payment_method` enum('stripe') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'stripe',
+  `stripe_subscription_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `stripe_customer_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `stripe_plan_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_amount` float(10,2) NOT NULL,
+  `plan_amount_currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_interval` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_interval_count` tinyint(2) NOT NULL,
+  `plan_period_start` datetime NOT NULL,
+  `plan_period_end` datetime NOT NULL,
+  `payer_email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users_payments`
+--
+
+INSERT INTO `users_payments` (`id`, `user_id`, `plan_id`, `payment_method`, `stripe_subscription_id`, `stripe_customer_id`, `stripe_plan_id`, `plan_amount`, `plan_amount_currency`, `plan_interval`, `plan_interval_count`, `plan_period_start`, `plan_period_end`, `payer_email`, `created`, `status`) VALUES
+(3, 11, 3, 'stripe', '-', '-', '-', 0.00, 'brl', 'Mês', 0, '2022-12-03 02:49:35', '0000-00-00 00:00:00', 'danrib2018@gmail.com', '2022-12-03 02:49:35', 'active'),
+(4, 11, 1, 'stripe', 'sub_1MAmrpEXl0RLeMWbAHt4x0Iq', 'cus_Muc5uou8iyFtX6', 'plan_Muc6OBndNC1KeK', 299.00, 'brl', 'month', 1, '2022-12-03 03:58:21', '2023-01-03 03:58:21', 'dantarserytrey@outlook.com', '2022-12-03 03:58:21', 'active'),
+(5, 11, 3, 'stripe', '-', '-', '-', 0.00, 'brl', 'Mês', 0, '2022-12-03 04:08:34', '0000-00-00 00:00:00', 'danrib2018@gmail.com', '2022-12-03 04:08:34', 'active'),
+(6, 11, 2, 'stripe', 'sub_1MAn3lEXl0RLeMWbLcI04Q6u', 'cus_MucIRPv44ctGYv', 'plan_MucIebFPLAxBfK', 199.00, 'brl', 'month', 1, '2022-12-03 04:10:41', '2023-01-03 04:10:41', 'dantarserytrey@outlook.com', '2022-12-03 04:10:41', 'active'),
+(7, 11, 3, 'stripe', '-', '-', '-', 0.00, 'brl', 'Mês', 0, '2022-12-03 04:13:26', '0000-00-00 00:00:00', 'danrib2018@gmail.com', '2022-12-03 04:13:26', 'active'),
+(8, 11, 1, 'stripe', 'sub_1MAn8EEXl0RLeMWb0QcsmaOZ', 'cus_MucMP4PScXF5iD', 'plan_MucM54uhg3iSDK', 299.00, 'brl', 'month', 1, '2022-12-03 04:15:18', '2023-01-03 04:15:18', 'dantarserytrey@outlook.com', '2022-12-03 04:15:18', 'active'),
+(9, 11, 2, 'stripe', 'sub_1MAn9vEXl0RLeMWbCNbkaNqJ', 'cus_MucO6t6UrKvgKG', 'plan_MucOKdP6ppr6Wh', 199.00, 'brl', 'month', 1, '2022-12-03 04:17:03', '2023-01-03 04:17:03', 'dantarserytrey@outlook.com', '2022-12-03 04:17:03', 'active'),
+(10, 11, 1, 'stripe', 'sub_1MAoSZEXl0RLeMWbntpIFVoZ', 'cus_MudknCMdE22bMF', 'plan_MudkqLpElsxGFM', 299.00, 'brl', 'month', 1, '2022-12-03 05:40:23', '2023-01-03 05:40:23', 'dantarserytrey@outlook.com', '2022-12-03 05:40:23', 'active'),
+(11, 11, 2, 'stripe', 'sub_1MAoWKEXl0RLeMWbyLmZZecS', 'cus_MudnH3qLMOugvu', 'plan_MudnopfYvBJtZu', 199.00, 'brl', 'month', 1, '2022-12-03 02:44:15', '2023-01-03 02:44:15', 'dantarserytrey@outlook.com', '2022-12-03 02:44:15', 'active'),
+(12, 11, 1, 'stripe', 'sub_1MAyG4EXl0RLeMWbWcjXnQ5W', 'cus_MunrxGk5ncPYAi', 'plan_MunrJCucevYYaG', 299.00, 'brl', 'month', 1, '2022-12-03 13:08:08', '2023-01-03 13:08:08', 'danrib2018@gmail.com', '2022-12-03 13:08:08', 'active'),
+(13, 11, 2, 'stripe', 'sub_1MAyIUEXl0RLeMWb7rSuS0p5', 'cus_MunuFLKv4tKZFf', 'plan_MunuRH1kFnJfbe', 199.00, 'brl', 'month', 1, '2022-12-03 13:10:38', '2023-01-03 13:10:38', 'danrib2018@gmail.com', '2022-12-03 13:10:38', 'active'),
+(14, 11, 2, 'stripe', 'sub_1MAyMvEXl0RLeMWbQzGCSghF', 'cus_Munyrl8VQWH85a', 'plan_MunyqXzCV3ysQr', 199.00, 'brl', 'month', 1, '2022-12-03 13:15:13', '2023-01-03 13:15:13', 'danrib2018@gmail.com', '2022-12-03 13:15:13', 'active'),
+(15, 11, 1, 'stripe', 'sub_1MAyOJEXl0RLeMWb89VgrHj6', 'cus_Muo0ho3qnGE6fE', 'plan_Muo0deGwuM0ZGl', 299.00, 'brl', 'month', 1, '2022-12-03 13:16:39', '2023-01-03 13:16:39', 'danrib2018@gmail.com', '2022-12-03 13:16:39', 'active'),
+(16, 11, 3, 'stripe', '-', '-', '-', 0.00, 'brl', 'Mês', 0, '2022-12-03 13:22:11', '0000-00-00 00:00:00', 'danrib2018@gmail.com', '2022-12-03 13:22:11', 'active'),
+(17, 11, 2, 'stripe', 'sub_1MAzzcEXl0RLeMWb4OWLmvYq', 'cus_MupeYm1Z19GisO', 'plan_MupeARqbwmtabg', 199.00, 'brl', 'month', 1, '2022-12-03 14:59:16', '2023-01-03 14:59:16', 'danrib2018@gmail.com', '2022-12-03 14:59:16', 'active'),
+(18, 11, 1, 'stripe', 'sub_1MBA8yEXl0RLeMWbrv7b5fck', 'cus_Mv09hfOy0uIk3Z', 'plan_Mv09SI9nXdwpe5', 299.00, 'brl', 'month', 1, '2022-12-04 01:49:36', '2023-01-04 01:49:36', 'dantars@outlook.com', '2022-12-04 01:49:36', 'active'),
+(19, 11, 2, 'stripe', 'sub_1MBV8xEXl0RLeMWblVQpQP14', 'cus_MvLqpImMtoQSNF', 'plan_MvLqoDcvJgPttS', 199.00, 'brl', 'month', 1, '2022-12-05 00:14:59', '2023-01-05 00:14:59', 'daniel@ccoanaltica.com', '2022-12-05 00:14:59', 'active');
 
 -- --------------------------------------------------------
 
@@ -521,6 +600,44 @@ INSERT INTO `users_plans` (`id`, `plan_name`, `plan_description`, `plan_price`, 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `users_subscriptions`
+--
+
+CREATE TABLE `users_subscriptions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `plan_id` int(11) NOT NULL,
+  `payment_method` enum('stripe') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'stripe',
+  `stripe_subscription_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `stripe_customer_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `stripe_plan_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_amount` float(10,2) NOT NULL,
+  `plan_amount_currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_interval` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_interval_count` tinyint(2) NOT NULL,
+  `plan_period_start` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `plan_period_end` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `payer_email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users_subscriptions`
+--
+
+INSERT INTO `users_subscriptions` (`id`, `user_id`, `plan_id`, `payment_method`, `stripe_subscription_id`, `stripe_customer_id`, `stripe_plan_id`, `plan_amount`, `plan_amount_currency`, `plan_interval`, `plan_interval_count`, `plan_period_start`, `plan_period_end`, `payer_email`, `created`, `status`) VALUES
+(14, 11, 2, 'stripe', 'sub_1MAyIUEXl0RLeMWb7rSuS0p5', 'cus_MunuFLKv4tKZFf', 'plan_MunuRH1kFnJfbe', 199.00, 'brl', 'month', 1, '2022-12-03 13:10:38', '2023-01-03 13:10:38', 'danrib2018@gmail.com', '2022-12-03 13:10:38', 'active'),
+(15, 11, 2, 'stripe', 'sub_1MAyMvEXl0RLeMWbQzGCSghF', 'cus_Munyrl8VQWH85a', 'plan_MunyqXzCV3ysQr', 199.00, 'brl', 'month', 1, '2022-12-03 13:15:13', '2023-01-03 13:15:13', 'danrib2018@gmail.com', '2022-12-03 13:15:13', 'canceled'),
+(16, 11, 1, 'stripe', 'sub_1MAyOJEXl0RLeMWb89VgrHj6', 'cus_Muo0ho3qnGE6fE', 'plan_Muo0deGwuM0ZGl', 299.00, 'brl', 'month', 1, '2022-12-03 13:16:39', '2022-12-02 13:16:39', 'danrib2018@gmail.com', '2022-12-03 13:16:39', 'canceled'),
+(17, 11, 3, 'stripe', '-', '-', '-', 0.00, 'brl', 'Mês', 0, '2022-12-03 13:22:11', '-', 'danrib2018@gmail.com', '2022-12-03 13:22:11', 'active'),
+(18, 11, 2, 'stripe', 'sub_1MAzzcEXl0RLeMWb4OWLmvYq', 'cus_MupeYm1Z19GisO', 'plan_MupeARqbwmtabg', 199.00, 'brl', 'month', 1, '2022-12-03 14:59:16', '2023-12-01 14:59:16', 'danrib2018@gmail.com', '2022-12-03 14:59:16', 'canceled'),
+(19, 11, 1, 'stripe', 'sub_1MBA8yEXl0RLeMWbrv7b5fck', 'cus_Mv09hfOy0uIk3Z', 'plan_Mv09SI9nXdwpe5', 299.00, 'brl', 'month', 1, '2022-12-04 01:49:36', '2023-01-04 01:49:36', 'dantars@outlook.com', '2022-12-04 01:49:36', 'canceled'),
+(20, 11, 2, 'stripe', 'sub_1MBV8xEXl0RLeMWblVQpQP14', 'cus_MvLqpImMtoQSNF', 'plan_MvLqoDcvJgPttS', 199.00, 'brl', 'month', 1, '2022-12-05 00:14:59', '2023-01-05 00:14:59', 'daniel@ccoanaltica.com', '2022-12-05 00:14:59', 'active');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users_watch`
 --
 
@@ -542,7 +659,10 @@ INSERT INTO `users_watch` (`id`, `watch_user`, `watch_ebook`, `watch_date`) VALU
 (26, 7, 18, '2022-11-20 22:48:20'),
 (27, 7, 17, '2022-11-20 22:48:25'),
 (28, 7, 15, '2022-11-20 23:53:09'),
-(29, 7, 21, '2022-11-20 23:59:26');
+(29, 7, 21, '2022-11-20 23:59:26'),
+(30, 11, 18, '2022-12-03 04:21:59'),
+(31, 11, 17, '2022-12-03 13:22:45'),
+(32, 11, 25, '2022-12-05 00:05:54');
 
 --
 -- Índices para tabelas despejadas
@@ -555,9 +675,21 @@ ALTER TABLE `config_design`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `config_email`
+--
+ALTER TABLE `config_email`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `config_gateway`
 --
 ALTER TABLE `config_gateway`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `config_support`
+--
+ALTER TABLE `config_support`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -633,9 +765,21 @@ ALTER TABLE `users_library`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `users_payments`
+--
+ALTER TABLE `users_payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `users_plans`
 --
 ALTER TABLE `users_plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `users_subscriptions`
+--
+ALTER TABLE `users_subscriptions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -655,9 +799,21 @@ ALTER TABLE `config_design`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `config_email`
+--
+ALTER TABLE `config_email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `config_gateway`
 --
 ALTER TABLE `config_gateway`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `config_support`
+--
+ALTER TABLE `config_support`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -706,13 +862,13 @@ ALTER TABLE `ebooks_features`
 -- AUTO_INCREMENT de tabela `faq_categories`
 --
 ALTER TABLE `faq_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `faq_content`
 --
 ALTER TABLE `faq_content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `plans`
@@ -724,13 +880,19 @@ ALTER TABLE `plans`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `users_library`
 --
 ALTER TABLE `users_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de tabela `users_payments`
+--
+ALTER TABLE `users_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `users_plans`
@@ -739,10 +901,16 @@ ALTER TABLE `users_plans`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de tabela `users_subscriptions`
+--
+ALTER TABLE `users_subscriptions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT de tabela `users_watch`
 --
 ALTER TABLE `users_watch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

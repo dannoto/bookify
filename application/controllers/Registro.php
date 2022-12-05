@@ -51,6 +51,9 @@ class Registro extends CI_Controller {
 
 						$this->session->set_userdata('session_user', $auth);
 
+						$this->email_model->welcome($auth);
+						$this->email_model->register($auth);
+
 						// $response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
 
 					} else {

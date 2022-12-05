@@ -1235,4 +1235,40 @@ class Painel extends CI_Controller
 
         print_r(json_encode($response));
     }
+
+
+    public function  actBanirUser()
+    {
+
+        $response = array();
+
+        $user_id = htmlspecialchars($this->input->post('user_id'));
+        $user_act =  htmlspecialchars($this->input->post('user_act'));
+
+        if ($user_act == "banir") {
+
+            if ($this->user_model->banUser($user_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Banido com sucesso!');
+            } else {
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+        } else if ($user_act == "desbanir") {
+
+            if ($this->user_model->desbanUser($user_id)) {
+
+                $response =  array('status' => 'true', 'message' => 'Desbanido com sucesso!');
+            } else {
+                $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            }
+
+        } else {
+
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
+    }
 }
