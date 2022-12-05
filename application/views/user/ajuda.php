@@ -21,7 +21,7 @@
             <div class="grid place-items-center mb-5">
                 <h1 class="ebook-title ">AJUDA E SUPORTE</h1>
             </div>
-            <div class=" xl:ml-48 ml-5 mr-5 xl:mr-48 header ">
+            <!-- <div class=" xl:ml-48 ml-5 mr-5 xl:mr-48 header ">
                 <p class="text-center">Encontre uma resposta ou contate-nos pelo chat de suporte.</p>
                 <form action="">
                     <div class="flex xl:mt-5 xl:mb-5 mt-8">
@@ -31,7 +31,7 @@
 
                     </div>
                 </form>
-            </div>
+            </div> -->
             <?php foreach ($this->faq_model->getFaqsCategory() as $g) { ?>
 
                 <div class=" xl:ml-48 ml-5 mr-5 mt-5 xl:mr-48">
