@@ -1100,7 +1100,7 @@ public function actAddFaq() {
 
     $faq_title =  htmlspecialchars($this->input->post('faq_title'));
     $faq_content =  htmlspecialchars($this->input->post('faq_content'));
-    $faq_category =  htmlspecialchars($this->input->post('faq_category'));
+    $faq_category =  htmlspecialchars($this->input->post('faq_category_id'));
 
     if ($this->faq_model->addFaq($faq_title, $faq_content, $faq_category)) {
 

@@ -229,27 +229,21 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NOVO AÚDIO</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">NOVO CONTEÚDO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-add-audio">
-                        <label for="">NOME DO AÚDIO <span class="text-danger">*</span></label><br>
-                        <input type="hidden" name="audio_id" id="add_audio_id" required class="mb-2 form-control">
+                    <form action="" id="form-add-faq">
+                        <label for="">TÍTULO <span class="text-danger">*</span></label><br>
 
-                        <input type="text" name="audio_title" id="add_audio_title" required class="mb-2 form-control">
+                        <input type="hidden" name="faq_category_id" id="add_faq_category_id" required class="mb-2 form-control">
 
-                        <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="audio_description" maxlength="200 " id="add_audio_description" class="mb-2 form-control"></textarea>
+                        <input type="text" name="faq_title" id="add_faq_title" required class="mb-2 form-control">
 
-                        <label for="">DURAÇÃO <span class="text-danger">*</span></label>
-                        <small>[minutos:segundos]</small><br>
-                        <input type="text" name="audio_duration" id="add_audio_duration" data-mask="99:99" required class="mb-2 form-control">
-
-                        <label for="">ARQUIVO DO AUDIO <span class="text-danger">*</span></label><br>
-                        <input type="file" name="audio_file" id="add_audio_file" accept="video/mp4" required class="mb-2 form-control">
+                        <label for="">CONTEÚDO</label><br>
+                        <textarea type="text" name="faq_description" maxlength="200 " id="add_faq_description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -762,174 +756,27 @@
 
         
 
-        $('#form-add-audio').submit(function(e) {
+        $('#form-add-faq').submit(function(e) {
 
             e.preventDefault()
 
-
-            var extPermitidas = ['mp4', 'MP4', 'mp3', 'MP4'];
-            var extArquivo = $('#add_audio_file').val().split('.').pop();
-            var file = $('#add_audio_file').prop('files')[0];
-
-            var formdata = new FormData();
-
-            formdata.append("audio_chapter", $('#add_audio_id').val());
-            formdata.append("audio_title", $('#add_audio_title').val());
-            formdata.append("audio_description", $('#add_audio_description').val());
-            formdata.append("audio_duration", $('#add_audio_duration').val());
-
-            if (file) {
-                formdata.append("audio_file", file);
-            } else {
-                formdata.append("audio_file", "");
-            }
-
-
-
-
-
-            if (typeof extPermitidas.find(function(ext) {
-                    return extArquivo == ext;
-                }) == 'undefined') {
-                swal('O arquivo precisa ser um audio. Formatos permitidos [MP3 E MP4]')
-
-            } else {
-
-
-                if (file.size > 20000000) {
-                    swal('Arquivo muito grande, máximo permitido 20MB.')
-
-                } else {
-
-                    if ($('#add_audio_duration').val().length == 5) {
-
-                        $.ajax({
-                            method: 'POST',
-                            url: '<?= base_url() ?>painel/addAudio',
-                            data: formdata,
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            success: function(data) {
-
-                                var resp = JSON.parse(data)
-
-                                if (resp.status == "true") {
-                                    getChaptersDOM()
-                                } else {
-                                    swal(resp.message);
-
-                                }
-
-                            },
-                            error: function(data) {
-                                swal('Ocorreu um erro temporário. ');
-                            },
-
-                        });
-
-
-                    } else {
-                        swal("Insira a duração corretamente [minutos:segundos] [00:00].")
-                    }
-
-                }
-
-            }
-
-        })
-
-        $('#form-add-image').submit(function(e) {
-
-            e.preventDefault()
-
-
-            var extPermitidas = ['png', 'jpeg', 'jpg', 'gif', 'PNG', 'JPEG', 'JPG', 'GIF'];
-            var extArquivo = $('#add_image_file').val().split('.').pop();
-            var file = $('#add_image_file').prop('files')[0];
-
-            var chapter = $('#add_image_chapter').val();
-            var audio = $('#add_image_audio').val();
-            var title = $('#add_image_title').val();
-
-            var formdata = new FormData();
-            formdata.append("image_title", title);
-
-            formdata.append("image_chapter", chapter);
-            formdata.append("image_ebook", ebook);
-            formdata.append("image_audio", audio);
-
-
-            if (file) {
-                formdata.append("image_file", file);
-            } else {
-                swal('Selecine uma imagem para enviar.')
-            }
-
-
-            if (typeof extPermitidas.find(function(ext) {
-                    return extArquivo == ext;
-                }) == 'undefined') {
-
-                swal('O arquivo precisa ser uma imagem. Formatos permitidos [PNG, JPEG, JPG E GIF]')
-
-            } else {
-
-
-                if (file.size > 5000000) {
-                    swal('Arquivo muito grande, máximo permitido 5MB.')
-
-                } else {
-
-
-                    $.ajax({
-                        method: 'POST',
-                        url: '<?= base_url() ?>painel/addImage',
-                        data: formdata,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function(data) {
-
-                            var resp = JSON.parse(data)
-
-                            if (resp.status == "true") {
-
-                                $('#add_image_title').val("")
-                                $('#add_image_file').val("")
-
-                                getImagesDOM(audio)
-                            } else {
-                                swal(resp.message);
-
-                            }
-
-                        },
-                        error: function(data) {
-                            swal('Ocorreu um erro temporário. ');
-                        },
-
-                    });
-
-
-
-                }
-
-            }
-
-        })
-
-        function getImagesDOM(audio_id) {
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/getImages',
-                data: {
-                    audio_id: audio_id
-                },
+                url: '<?= base_url() ?>painel/actaddfaq',
+                data: $(this).serialize(),
+
                 success: function(data) {
 
-                    $('#div-image').html(data)
+                    var resp = JSON.parse(data)
+
+                    if (resp.status == "true") {
+
+                        getChaptersDOM();
+
+                    } else {
+                        swal(resp.message)
+                    }
 
                 },
                 error: function(data) {
@@ -939,7 +786,14 @@
             });
 
 
-        }
+        
+
+
+
+        })
+
+
+        
     </script>
 
 </body>
