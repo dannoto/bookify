@@ -271,20 +271,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">EDITAR CAPÍTULO</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">EDITAR CATEGORIA</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-update-capitulo">
+                    <form action="" id="form-update-category">
                         <label for="">NOME DO CAPÍTULO <span class="text-danger">*</span></label><br>
-                        <input type="hidden" name="chapter_id" id="update_chapter_id" required class="mb-2 form-control">
+                        <input type="hidden" name="faq_category_id" id="update_faq_category_id" required class="mb-2 form-control">
 
-                        <input type="text" name="chapter_title" id="update_chapter_title" required class="mb-2 form-control">
+                        <input type="text" name="faq_category_title" id="update_faq_category_title" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="chapter_description" maxlength="200 " id="update_chapter_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_category_description" maxlength="200 " id="update_faq_category_description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -554,11 +554,11 @@
 
         $('.delete-category').on('click', function(e) {
 
-            var chapter_id = $(this).data('id')
+            var faq_category_id = $(this).data('id')
 
             swal({
                 title: "Atenção!",
-                text: "Tem certeza que deseja excluir este capítulo?",
+                text: "Tem certeza que deseja excluir esta categoria?",
                 icon: "warning",
                 buttons: [
                     'Não',
@@ -572,9 +572,9 @@
 
                     $.ajax({
                         method: 'POST',
-                        url: '<?= base_url() ?>painel/deleteChapter',
+                        url: '<?= base_url() ?>painel/actdeleteFaqCategory',
                         data: {
-                            chapter_id: chapter_id
+                            faq_category_id: faq_category_id
                         },
                         success: function(data) {
 
@@ -608,9 +608,9 @@
             var chapter_title = $(this).data('title')
             var chapter_description = $(this).data('description')
 
-            $('#update_chapter_id').val(chapter_id)
-            $('#update_chapter_title').val(chapter_title)
-            $('#update_chapter_description').val(chapter_description)
+            $('#update_faq_category_id').val(chapter_id)
+            $('#update_faq_category_title').val(chapter_title)
+            $('#update_faq_category_description').val(chapter_description)
 
             $('#btn-open-update-category').click();
 
@@ -734,14 +734,14 @@
             });
         })
 
-        $('#form-update-capitulo').submit(function(e) {
+        $('#form-update-category').submit(function(e) {
 
             e.preventDefault()
 
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/updateChapter',
+                url: '<?= base_url() ?>painel/actupdatefaqcategory',
                 data: $(this).serialize(),
 
                 success: function(data) {

@@ -1158,8 +1158,8 @@ public function actAddFaqCategory() {
 
     $response = array();
 
-    $faq_title =  htmlspecialchars($this->input->post('category_title'));
-    $faq_content =  htmlspecialchars($this->input->post('category_content'));
+    $faq_title =  htmlspecialchars($this->input->post('faq_category_tile'));
+    $faq_content =  htmlspecialchars($this->input->post('faq_category_content'));
 
     if ($this->faq_model->addFaqCategory( $faq_title, $faq_content)) {
 
@@ -1177,9 +1177,9 @@ public function actUpdateFaqCategory() {
 
     $response = array();
 
-    $category_id =  htmlspecialchars($this->input->post('category_id'));
-    $category_title =  htmlspecialchars($this->input->post('category_title'));
-    $category_content =  htmlspecialchars($this->input->post('category_content'));
+    $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
+    $category_title =  htmlspecialchars($this->input->post('faq_category_title'));
+    $category_content =  htmlspecialchars($this->input->post('faq_category_description'));
 
     if ($this->faq_model->updateFaqCategory($category_id, $category_title, $category_content)) {
 
@@ -1197,7 +1197,7 @@ public function actUpdateFaqCategory() {
 public function actDeleteFaqCategory() {
     $response = array();
 
-    $category_id =  htmlspecialchars($this->input->post('category_id'));
+    $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
 
 
     if ($this->faq_model->deleteFaqCategory($category_id)) {
