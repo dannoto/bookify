@@ -100,7 +100,7 @@
                                                                         </a>
                                                                         <i title="ADICIONAR CONTEUDO" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->faq_title ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
                                                                         <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>"  style="color:#222;font-size:25px;cursor:pointer"></i>
-                                                                        <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-audio" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
+                                                                        <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-faq" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -494,13 +494,13 @@
         })
 
 
-        $('.delete-audio').on('click', function(e) {
+        $('.delete-faq').on('click', function(e) {
 
-            var audio_id = $(this).data('id')
+            var faq_id = $(this).data('id')
 
             swal({
                 title: "Atenção!",
-                text: "Tem certeza que deseja excluir este audio?",
+                text: "Tem certeza que deseja excluir este conteudo?",
                 icon: "warning",
                 buttons: [
                     'Não',
@@ -514,9 +514,9 @@
 
                     $.ajax({
                         method: 'POST',
-                        url: '<?= base_url() ?>painel/deleteAudio',
+                        url: '<?= base_url() ?>painel/actDeleteFaq',
                         data: {
-                            audio_id: audio_id
+                            faq_id: faq_id
                         },
                         success: function(data) {
 
@@ -772,7 +772,7 @@
 
                     if (resp.status == "true") {
 
-                        // getChaptersDOM();
+                        getChaptersDOM();
 
                     } else {
                         swal(resp.message)
