@@ -51,23 +51,23 @@
                     </ul>
 
                     <ul class="grid xl:col-span-1 pt-5 xl:pt-12 xl:hidden submenu_mobile">
-                        <li class=" submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
-                                                                        echo " catalogo-active";
-                                                                    } ?>">
+                        <li class=" submenu_mobile_item  xl:ml-12 <?php if (strlen($this->input->get('precificacao')) == 0) {
+                                                    echo " catalogo-active";
+                                                } ?>">
                             <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>">
                                 TODOS
                             </a>
                         </li>
-                        <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('pagos') == "pagos") {
-                                                                        echo " catalogo-active";
-                                                                    } ?>">
+                        <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('precificacao') == "1") {
+                                                    echo " catalogo-active";
+                                                } ?>">
                             <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=1">
                                 PAGOS
                             </a>
                         </li>
-                        <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "gratuitos") {
-                                                                        echo " catalogo-active";
-                                                                    } ?>">
+                        <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('precificacao') == "0") {
+                                                    echo " catalogo-active";
+                                                } ?>">
                             <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=0">
                                 GRATUITOS
                             </a>
