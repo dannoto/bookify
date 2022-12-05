@@ -257,7 +257,7 @@
                             <?php if ($previous != "-1") { ?>
                                 <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $previous ?>">
                                     <button>
-                                        <img src="<?=basE_url()?>assets/img/icons/btn-previous.png" width="30" height="30" alt="">
+                                        <img src="<?= basE_url() ?>assets/img/icons/btn-previous.png" width="30" height="30" alt="">
                                     </button>
                                 </a>
                             <?php } ?>
@@ -270,12 +270,12 @@
                                 <div class="playback-icon">
                                     <use id="button-play">
                                         <!-- <i style="font-size:25px;color:#FFF;" class="fa fa-pause"></i> -->
-                                        <img src="<?=basE_url()?>assets/img/icons/btn-pause.png" width="45" height="50" alt="">
+                                        <img src="<?= basE_url() ?>assets/img/icons/btn-pause.png" width="45" height="50" alt="">
 
                                     </use>
                                     <use id="button-pause" style="display:none ;">
                                         <!-- <i style="font-size:25px;color:#FFF;" class="fa fa-play"></i> -->
-                                        <img src="<?=basE_url()?>assets/img/icons/btn-play.png" width="45" height="50" alt="">
+                                        <img src="<?= basE_url() ?>assets/img/icons/btn-play.png" width="45" height="50" alt="">
 
                                     </use>
                                 </div>
@@ -284,7 +284,7 @@
                             <?php if ($next != "-1") { ?>
                                 <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $next ?>">
                                     <button>
-                                    <img src="<?=basE_url()?>assets/img/icons/btn-next.png" width="30" height="30" alt="">
+                                        <img src="<?= basE_url() ?>assets/img/icons/btn-next.png" width="30" height="30" alt="">
                                     </button>
                                 </a>
                             <?php } ?>
@@ -372,10 +372,18 @@
                                                 <!-- <div class="d-block align-items-left p-2 ">
                                                 <i class="fa fa-play pt-5"></i>
                                             </div> -->
-                                                <div class="d-block align-items-left p-2 ">
-                                                    <small style="font-size: 10px"> AÚDIO - <?= $this->chapter_model->convertMinutes(round($f->audio_duration, 2)) ?> minutos</small>
-                                                    <h5 title="<?= ucfirst($f->audio_title) ?>" class="line-clamp-1"><?= ucfirst($f->audio_title) ?></h5>
+                                                <div class="flex p-2 ">
+                                                    <div>
+                                                        <i class="fa  mt-3 ml-2 text-greenDefault fa-play mr-5" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div>
+                                                        <small style="font-size: 10px"> AÚDIO - <?= $this->chapter_model->convertMinutes(round($f->audio_duration, 2)) ?> minutos</small>
+                                                        <h5 title="<?= ucfirst($f->audio_title) ?>" class="line-clamp-1"><?= ucfirst($f->audio_title) ?></h5>
+                                                    </div>
                                                 </div>
+
+
+
                                             </div>
                                         </a>
 
@@ -420,14 +428,14 @@
     <script src="<?= base_url() ?>assets/js/owl.carousel.min.js"></script>
 
     <script>
-  $(document).ready( function() {
+        $(document).ready(function() {
 
-    $('main').css('display','block')
-    // $('loading').css('display','none')
+            $('main').css('display', 'block')
+            // $('loading').css('display','none')
 
-    // $('#loadingMask').fadeOut();
-});
-</script>
+            // $('#loadingMask').fadeOut();
+        });
+    </script>
     <!-- Modal -->
     <script>
         // Get the modal
@@ -621,7 +629,7 @@
                         progress_ebook: "<?= $ebook['id'] ?>",
                         progress_chapter: "<?= $chapter['id'] ?>",
                         progress_audio: "<?= $audio['id'] ?>",
-                        progress_user: "<?=$this->session->userdata('session_user')['id']?>"
+                        progress_user: "<?= $this->session->userdata('session_user')['id'] ?>"
                     },
                     success: function(data) {
                         console.log(data)
