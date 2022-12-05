@@ -189,7 +189,7 @@
 
 
 .menu_li:hover {
-    border-bottom:5px solid #00B467 ;
+    /* border-bottom:5px solid #00B467 ; */
 }
 .menu_li {
     margin-left: 20px;
