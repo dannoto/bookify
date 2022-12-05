@@ -148,12 +148,12 @@
                             </div>
                             <div class="col-md-12  d-flex justify-content-end align-items-end">
                                 <?php if ($this->user_model->getUserById($usuario['id'])['user_status'] == 1) { ?>
-                                    <div class="">
-                                    <button type="button" id="<?=$usuario['id']?>" data-action="banir" class="btn btn-block btn-danger mr-5 btn-banir toolbar-item py-3">BANIR USUÁRIOS</button>
+                                    <div class="mr-3">
+                                    <button type="button" id="<?=$usuario['id']?>" data-action="banir" class="btn btn-block btn-danger btn-banir toolbar-item py-3">BANIR USUÁRIOS</button>
                                 </div>
                                 <?php } else if ($this->user_model->getUserById($usuario['id'])['user_status'] == 2) { ?>
-                                    <div class="">
-                                    <button type="button" id="<?=$usuario['id']?>" data-action="desbanir" class="btn btn-block btn-danger ml-3 btn-banir toolbar-item py-3">DESBANIR USUÁRIOS</button>
+                                    <div class="mr-3">
+                                    <button type="button" id="<?=$usuario['id']?>" data-action="desbanir" class="btn btn-block btn-danger  btn-banir toolbar-item py-3">DESBANIR USUÁRIOS</button>
                                 </div>
                                 <?php } ?>
                                 <div class="">
