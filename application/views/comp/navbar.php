@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <div id="div-navbar" style="display:none">
+                <div id="div-navbar" class="mt-3" style="display:none">
                     <ul class="block bg-greenDefault text-white space-y-3">
                         <li class="menu_li pt-3">
                             <a href="<?= base_url() ?>catalogo">
