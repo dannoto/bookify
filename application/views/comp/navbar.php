@@ -142,7 +142,6 @@
                 </div>
 
                 <?php $actual_link = $_SERVER['REQUEST_URI']?>
-                <?= $actual_link?>
                 <div class="flex xl:col-span-3 ">
                     <ul class="flex space-x-12">
                         <li class="menu_li  <?php if (strpos($actual_link, '/home') !== false ) { echo "menu_li_active";}?>">
