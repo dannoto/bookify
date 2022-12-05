@@ -43,7 +43,7 @@ class email_model extends CI_Model
             $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+            $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
             $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
 
 
@@ -82,7 +82,7 @@ class email_model extends CI_Model
              $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
  
              //Recipients
-             $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
              $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
  
  
@@ -122,7 +122,7 @@ class email_model extends CI_Model
              $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
  
              //Recipients
-             $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
              $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
  
  
@@ -161,7 +161,7 @@ class email_model extends CI_Model
              $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
  
              //Recipients
-             $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
              $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
  
  
@@ -199,7 +199,7 @@ class email_model extends CI_Model
             $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+            $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
             $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
 
 
@@ -238,7 +238,7 @@ class email_model extends CI_Model
              $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
  
              //Recipients
-             $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
              $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
  
  
@@ -276,7 +276,7 @@ class email_model extends CI_Model
              $mail->Port       = $this->config_model->getConfigEmail()['email_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
  
              //Recipients
-             $mail->setFrom($this->config_model->getConfigEmail()['email_email'], 'Bookify');
+             $mail->setFrom($this->config_model->getConfigEmail()['user_email'], 'Bookify');
              $mail->addAddress($user['user_email'], $user['user_name']." ".$user['user_surname']);     //Add a recipient
  
  
