@@ -243,7 +243,7 @@
                         <input type="text" name="faq_title" id="add_faq_title" required class="mb-2 form-control">
 
                         <label for="">CONTEÚDO</label><br>
-                        <textarea type="text" name="faq_content" maxlength="200 " id="add_faq_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_content" maxlength="200 " id="add_faq_content" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -422,8 +422,8 @@
         //Open Modal add audio
         $('.add-audio').on('click', function(e) {
 
-            var audio_id = $(this).data('id')
-            $('#add_faq_category_id').val(audio_id)
+            var category_id = $(this).data('id')
+            $('#add_faq_category_id').val(category_id)
             $('#btn-open-modal-add-faq').click()
 
         })
@@ -772,7 +772,7 @@
 
                     if (resp.status == "true") {
 
-                        getChaptersDOM();
+                        // getChaptersDOM();
 
                     } else {
                         swal(resp.message)
