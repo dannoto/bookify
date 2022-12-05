@@ -57,7 +57,7 @@
 
                                             <h4 class="card-title mb-0">CONTEÚDO </h4>
                                             <div class="d-flex align-items-center justify-content-between w-100">
-                                                <p class="mb-0">Adicione categorias para as FAQ.</p>
+                                                <p class="mb-0">Adicione conteúdo para sua FAQ.</p>
 
                                             </div>
 
