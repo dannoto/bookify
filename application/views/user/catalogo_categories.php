@@ -54,21 +54,21 @@
                         <li class=" submenu_mobile_item  xl:ml-12 <?php if ($this->input->get('classificacao') == "todos" || !$this->input->get('classificacao')) {
                                                                         echo " catalogo-active";
                                                                     } ?>">
-                            <a href="<?= base_url() ?>busca?classificacao=todos">
+                            <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>">
                                 TODOS
                             </a>
                         </li>
                         <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('pagos') == "pagos") {
                                                                         echo " catalogo-active";
                                                                     } ?>">
-                            <a href="<?= base_url() ?>busca?classificacao=pagos">
+                            <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=1">
                                 PAGOS
                             </a>
                         </li>
                         <li class=" submenu_mobile_item xl:ml-12 <?php if ($this->input->get('classificacao') == "gratuitos") {
                                                                         echo " catalogo-active";
                                                                     } ?>">
-                            <a href="<?= base_url() ?>busca?classificacao=gratuitos">
+                            <a href="<?= base_url() ?>catalogo/c/<?= $category['category_slug'] ?>?precificacao=0">
                                 GRATUITOS
                             </a>
                         </li>
