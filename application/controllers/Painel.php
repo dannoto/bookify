@@ -215,7 +215,7 @@ class Painel extends CI_Controller
     public function actUpdateSuporte()
     {
 
-        $support_code = htmlspecialchars($this->input->post('support_code'));
+        $support_code = $this->input->post('support_code');
 
         if ($this->admin_model->updateSupport($support_code)) {
             $response =  array('status' => 'true', 'message' => 'Script atualizado com sucesso!');
