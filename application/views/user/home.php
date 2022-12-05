@@ -26,7 +26,7 @@
                     <!-- </div> -->
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's .</p>
                     <form action="<?= base_url() ?>registro" method="GET">
-                        <div class="flex xl:mt-5 xl:mb-5 mt-8">
+                        <div class="flex xl:mt-5 xl:mb-5 mt-8 w-full">
 
                             <input type="email" type="email" required name="user_email" placeholder="Seu e-mail">
                             <button type="submit"> <i class="fa fa-arrow-right"></i></button>
