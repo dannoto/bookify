@@ -141,7 +141,7 @@
                     </a>
                 </div>
 
-                <?php $url = $_SERVER['REQUEST_URI']?>
+                <?php $actual_link = $_SERVER['REQUEST_URI']?>
 
                 <div class="flex xl:col-span-3 ">
                     <ul class="flex space-x-12">
