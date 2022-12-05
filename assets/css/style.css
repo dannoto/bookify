@@ -200,12 +200,12 @@
 }
 
 @media(max-width:900px) {
-    .menu_li {
-        /* margin-left: 20px; */
+    .menu_li:hover {
+        border-bottom:0px solid #00B467 ;
     }
     
     .menu_li_active {
-        /* border-bottom:5px solid #00B467 ; */
+        border-bottom:0px solid #00B467 ;
     }
 }
 
