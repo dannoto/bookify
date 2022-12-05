@@ -71,7 +71,6 @@
                                                         <div class="border border-primary  bg-yellow-500 row">
                                                             <div class="col-md-9">
                                                                 <div class="d-block align-items-left p-2 ">
-                                                                    <small style="font-size: 10px"></small>
                                                                     <h5 title="<?= ucfirst($e->faq_category_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_category_title) ?></h5>
                                                                 </div>
                                                             </div>
