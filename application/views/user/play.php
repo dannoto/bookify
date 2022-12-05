@@ -269,11 +269,13 @@
                         </svg> -->
                                 <div class="playback-icon">
                                     <use id="button-play">
-                                        <i style="font-size:25px;color:#FFF;" class="fa fa-pause"></i>
+                                        <!-- <i style="font-size:25px;color:#FFF;" class="fa fa-pause"></i> -->
+                                        <img src="<?=basE_url()?>assets/img/icons/btn-pause.png" width="30" height="30" alt="">
 
                                     </use>
                                     <use id="button-pause" style="display:none ;">
-                                        <i style="font-size:25px;color:#FFF;" class="fa fa-play"></i>
+                                        <!-- <i style="font-size:25px;color:#FFF;" class="fa fa-play"></i> -->
+                                        <img src="<?=basE_url()?>assets/img/icons/btn-play.png" width="30" height="30" alt="">
 
                                     </use>
                                 </div>
