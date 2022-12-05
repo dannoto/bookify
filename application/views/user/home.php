@@ -164,6 +164,9 @@
                     <h1 class="faq-title bmb-5 line-clamp-1" title="<?= $g->faq_category_title ?>" style="font-size:20px !important"><?= $g->faq_category_title ?></h1>
                     <div class="faq-container">
 
+
+
+                    
                         <?php foreach ($this->faq_model->getFaqsContentByCategory($g->id) as $f) { ?>
 
                             <div class="faq-one">

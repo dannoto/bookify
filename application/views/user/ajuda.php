@@ -32,162 +32,32 @@
                     </div>
                 </form>
             </div>
-            <div class=" xl:ml-48 ml-5 mr-5 xl:mr-48">
-                <h1 class="faq-title bmb-5 ">Assinaturas</h1>
-                <div class="faq-container">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
+            <?php foreach ($this->faq_model->getFaqsCategory() as $g) { ?>
+
+                <div class=" xl:ml-56 ml-5 mr-5 mt-5 xl:mr-56">
+                    <h1 class="faq-title bmb-5 line-clamp-1" title="<?= $g->faq_category_title ?>" style="font-size:20px !important"><?= $g->faq_category_title ?></h1>
+                    <div class="faq-container">
+
+
+
+
+                        <?php foreach ($this->faq_model->getFaqsContentByCategory($g->id) as $f) { ?>
+
+                            <div class="faq-one">
+                                <!-- faq question -->
+                                <h1 class="faq-page text-white font-normal uppercase line-clamp-1"><?= $f->faq_title ?></h1>
+                                <!-- faq answer -->
+                                <div class="faq-body">
+                                    <p><?= $f->faq_description ?></p>
+                                </div>
+                            </div>
+                            <hr class="hr-line">
+                        <?php } ?>
+
+
                     </div>
                 </div>
-            </div>
-            <div class=" xl:ml-48 ml-5 mr-5 xl:mr-48">
-                <h1 class="faq-title mb-5 ">Pagamentos</h1>
-                <div class="faq-container">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" xl:ml-48 ml-5 mr-5 xl:mr-48">
-                <h1 class="faq-title mb-5">Usabilidade</h1>
-                <div class="faq-container">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase line-clamp-1">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                    <hr class="hr-line">
-                    <div class="faq-one">
-                        <!-- faq question -->
-                        <h1 class="faq-page text-white font-normal uppercase">What is an FAQ Page?</h1>
-                        <!-- faq answer -->
-                        <div class="faq-body">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                aperiam.
-                                Perspiciatis, porro!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
 
 
         </section>
