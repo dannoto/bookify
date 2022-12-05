@@ -70,7 +70,7 @@
                                                     <div class="mt-3">
                                                         <div class="border border-primary  bg-yellow-500 row">
                                                             <div class="col-md-9">
-                                                                <div class="d-block align-items-left p-2 ">
+                                                                <div class="d-block align-items-left p-2 mt-3 ">
                                                                     <h5 title="<?= ucfirst($e->faq_category_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_category_title) ?></h5>
                                                                 </div>
                                                             </div>
