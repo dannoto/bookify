@@ -141,24 +141,26 @@
                     </a>
                 </div>
 
+                <?php $url = $_SERVER['REQUEST_URI']?>
+
                 <div class="flex xl:col-span-3 ">
                     <ul class="flex space-x-12">
-                        <li class="menu_li menu_li_active">
+                        <li class="menu_li  <?php if (strpos($actual_link, '/home') !== false ) { echo "menu_li_active";}?>">
                             <a href="<?= base_url() ?>home">
                                 <span>Home</span>
                             </a>
                         </li>
-                        <li class="menu_li">
+                        <li class="menu_li <?php if (strpos($actual_link, '/catalogo') !== false ) { echo "menu_li_active";}?>">
                             <a href="<?= base_url() ?>catalogo">
                                 <span>Catálogo</span>
                             </a>
                         </li>
-                        <li class="menu_li">
+                        <li class="menu_li <?php if (strpos($actual_link, '/planos') !== false ) { echo "menu_li_active";}?>">
                             <a href="<?= base_url() ?>planos">
                                 <span>Planos</span>
                             </a>
                         </li>
-                        <li class="menu_li">
+                        <li class="menu_li <?php if (strpos($actual_link, '/ajuda') !== false ) { echo "menu_li_active";}?>">
                             <a href="<?= base_url() ?>ajuda">
                                 <span>Ajuda</span>
                             </a>
