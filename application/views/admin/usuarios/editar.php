@@ -149,7 +149,7 @@
                             <div class="col-md-12  d-flex justify-content-end align-items-end">
                                 <?php if ($this->user_model->getUserById($usuario['id'])['user_status'] == 1) { ?>
                                     <div class="">
-                                    <button type="button" id="<?=$usuario['id']?>" data-action="banir" class="btn btn-block btn-danger btn-banir toolbar-item py-3">BANIR USUÁRIOS</button>
+                                    <button type="button" id="<?=$usuario['id']?>" data-action="banir" class="btn btn-block btn-danger mr-5 btn-banir toolbar-item py-3">BANIR USUÁRIOS</button>
                                 </div>
                                 <?php } else if ($this->user_model->getUserById($usuario['id'])['user_status'] == 2) { ?>
                                     <div class="">
