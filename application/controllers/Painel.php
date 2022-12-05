@@ -1115,7 +1115,7 @@ public function actAddFaq() {
 
 }
 
-public function acUpdateFaq() {
+public function actUpdateFaq() {
     
     $response = array();
 
