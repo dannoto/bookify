@@ -1121,10 +1121,9 @@ public function acUpdateFaq() {
 
     $faq_id =  htmlspecialchars($this->input->post('faq_id'));
     $faq_title =  htmlspecialchars($this->input->post('faq_title'));
-    $faq_content =  htmlspecialchars($this->input->post('faq_content'));
-    $faq_category =  htmlspecialchars($this->input->post('faq_category'));
+    $faq_description =  htmlspecialchars($this->input->post('faq_description'));
 
-    if ($this->faq_model->updateFaq($faq_id, $faq_title, $faq_content, $faq_category)) {
+    if ($this->faq_model->updateFaq($faq_id, $faq_title, $faq_description)) {
 
         $response =  array('status' => 'true', 'message' => 'Faq atualizada com sucesso!');
     } else {

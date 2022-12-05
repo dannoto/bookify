@@ -76,7 +76,7 @@
                                                             </div>
                                                             <div class="col-md-3 align-items-center">
                                                                 <div class="d-flex mt-3">
-                                                                    <i title="ADICIONAR CONTEÚDO"  class="ml-3 mdi mdi-plus add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
+                                                                    <i title="ADICIONAR CONTEÚDO" class="ml-3 mdi mdi-plus add-audio" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
                                                                     <i title="EDITAR CATEGORIA" class="ml-3 mdi  mdi-pencil update-category" data-id="<?= $e->id ?>" data-title="<?= $e->faq_category_title ?>" data-description="<?= $e->faq_category_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
                                                                     <i title="EXCLUIR CATEGORIA" class="ml-3 mdi mdi-delete delete-category" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                 </div>
@@ -95,11 +95,8 @@
                                                                 </div>
                                                                 <div class="col-md-3 align-items-center">
                                                                     <div class="d-flex mt-4">
-                                                                        <a target="_blank" href="">
-                                                                            <i title="OUVIR AUDIO" class="ml-3 mdi  mdi-play-circle-outline " style="color:green;font-size:25px;cursor:pointer"></i>
-                                                                        </a>
-                                                                        <i title="ADICIONAR CONTEUDO" class="ml-3 mdi mdi-image-filter add-image" data-chapter="<?= $e->faq_title ?>" data-audio="<?= $e->id ?>" data-toggle="modal" data-target="#modal-add-image" data-id="<?= $e->id ?>" style="color:#2196f3;font-size:25px;cursor:pointer"></i>
-                                                                        <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>"  style="color:#222;font-size:25px;cursor:pointer"></i>
+
+                                                                        <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
                                                                         <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-faq" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
                                                                     </div>
                                                                 </div>
@@ -138,20 +135,20 @@
                                             <div class="row">
                                                 <div class="col-5 col-md-5">
                                                     <div class="wrapper border-bottom mb-2 pb-2">
-                                                        <h4 class="font-weight-semibold mb-0"><?=count( $this->faq_model->getFaqsCategory() ) ?></h4>
+                                                        <h4 class="font-weight-semibold mb-0"><?= count($this->faq_model->getFaqsCategory()) ?></h4>
                                                         <div class="d-flex align-items-center">
                                                             <p class="mb-0"><small>CATEGORIAS </small></p>
                                                             <div class="dot-indicator bg-secondary ml-auto"></div>
                                                         </div>
                                                     </div>
                                                     <div class="wrapper border-bottom mb-2 pb-2">
-                                                        <h4 class="font-weight-semibold mb-0"><?=count( $this->faq_model->countFaq() ) ?></h4>
+                                                        <h4 class="font-weight-semibold mb-0"><?= count($this->faq_model->countFaq()) ?></h4>
                                                         <div class="d-flex align-items-center">
                                                             <p class="mb-0"><small>PUBLICAÇÕES </small></p>
                                                             <div class="dot-indicator bg-secondary ml-auto"></div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="col-5 col-md-7 d-flex pl-4">
                                                     <div class="ml-auto">
@@ -304,22 +301,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-update-audio">
+                    <form action="" id="form-update-faq">
                         <label for="">NOME DO AÚDIO <span class="text-danger">*</span></label><br>
-                        <input type="hidden" name="audio_id" id="update_audio_id" required class="mb-2 form-control">
-                        <input type="hidden" name="audio_chapter" id="update_audio_chapter" required class="mb-2 form-control">
+                        <input type="hidden" name="faq_id" id="update_faq_id" required class="mb-2 form-control">
 
-                        <input type="text" name="audio_title" id="update_audio_title" required class="mb-2 form-control">
+                        <input type="text" name="faq_title" id="update_faq_title" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="audio_description" maxlength="200 " id="update_audio_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_description" maxlength="200 " id="update_faq_description" class="mb-2 form-control"></textarea>
 
-                        <label for="">DURAÇÃO <span class="text-danger">*</span></label>
-                        <small>[minutos:segundos]</small><br>
-                        <input type="text" name="audio_duration" id="update_audio_duration" data-mask="99:99" required class="mb-2 form-control">
 
-                        <label for="">ARQUIVO DO AUDIO </label><br>
-                        <input type="file" name="audio_file" id="update_audio_file" accept="video/mp4" class="mb-2 form-control">
 
 
 
@@ -465,8 +456,7 @@
                     $.ajax({
                         method: 'POST',
                         url: '<?= base_url() ?>painel/deleteEbook',
-                        data: {
-                        },
+                        data: {},
                         success: function(data) {
 
                             window.location.href = "<?= base_url() ?>painel/ebooks_lista"
@@ -612,29 +602,15 @@
         $('.update-audio').on('click', function(e) {
 
 
-            var audio_id = $(this).data('id')
-            var audio_title = $(this).data('title')
-            var audio_description = $(this).data('description')
-            var audio_duration = $(this).data('duration')
-            var audio_file = $(this).data('file')
-            var audio_chapter = $(this).data('chapter')
-
-            $('#update_audio_id').val(audio_id)
-            $('#update_audio_title').val(audio_title)
-            $('#update_audio_description').val(audio_description)
-            $('#update_audio_chapter').val(audio_chapter)
+            var faq_id = $(this).data('id')
+            var faq_title = $(this).data('title')
+            var faq_description = $(this).data('description')
 
 
-            var audio_duration = audio_duration.toString().split(".")
-            var value = ((audio_duration[1] / 100) * 60)
+            $('#update_faq_id').val(faq_id)
+            $('#update_faq_title').val(faq_title)
+            $('#update_faq_description').val(faq_description)
 
-            if (isNaN(value)) {
-                $('#update_audio_duration').val(audio_duration[0] + ":00")
-            } else {
-                $('#update_audio_duration').val(audio_duration[0] + ":" + value.toFixed(0))
-
-            }
-            // $('#audio_file_link').attr("src", "<?= base_url() ?>"+audio_file)
 
             $('#btn-open-update-audio').click();
 
@@ -754,7 +730,37 @@
             });
         })
 
-        
+        $('#form-update-faq').submit(function(e) {
+
+            e.preventDefault()
+
+
+            $.ajax({
+                method: 'POST',
+                url: '<?= base_url() ?>painel/actupdatefaq',
+                data: $(this).serialize(),
+
+                success: function(data) {
+
+                    var resp = JSON.parse(data)
+
+                    if (resp.status == "true") {
+
+                        getChaptersDOM();
+
+                    } else {
+                        swal(resp.message)
+                    }
+
+                },
+                error: function(data) {
+                    swal('Ocorreu um erro temporário. ');
+                },
+
+            });
+        })
+
+
 
         $('#form-add-faq').submit(function(e) {
 
@@ -786,14 +792,11 @@
             });
 
 
-        
+
 
 
 
         })
-
-
-        
     </script>
 
 </body>

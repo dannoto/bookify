@@ -37,13 +37,12 @@ class faq_model extends CI_Model
 
     }
 
-    public function updateFaq($faq_id, $faq_title, $faq_description, $faq_category) {
+    public function updateFaq($faq_id, $faq_title, $faq_description) {
 
         $this->db->where('id', $faq_id);
          $data = array(
             'faq_title' => $faq_title,
             'faq_description' => $faq_description,
-            'faq_category' => $faq_category
         );
         
         return $this->db->update('faq_content', $data);
