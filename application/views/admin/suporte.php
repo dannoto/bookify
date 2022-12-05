@@ -41,12 +41,12 @@
                                 <div class="card-body">
                                     <form action="" id="form-add-suporte">
                                         <label for="">SCRIPT DO CHAT <span class="text-danger">*</span></label><br>
-                                        <textarea name="support_code" ><?=$this->admin_model->getSupport['support_code']?></textarea>
+                                        <textarea style="width:100% ;" name="support_code" ><?=$this->admin_model->getSupport['support_code']?></textarea>
 
                  
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary py-3">ADICIONAR</button>
+                                    <button type="submit" class="btn btn-primary py-3">ATUALIZAR</button>
                                 </div>
                                 </form>
 
