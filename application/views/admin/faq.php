@@ -223,7 +223,7 @@
     </div>
     <!-- Modal Add Capitulo -->
 
-    <button id="btn-open-modal-add-audio" data-toggle="modal" style="display:none ;" data-target="#modal-add-audio"></button>
+    <button id="btn-open-modal-add-faq" data-toggle="modal" style="display:none ;" data-target="#modal-add-audio"></button>
     <!-- Modal Add Audio -->
     <div class="modal fade" id="modal-add-audio" tabindex="-1" role="dialog" aria-labelledby="modal-add-audio" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -243,7 +243,7 @@
                         <input type="text" name="faq_title" id="add_faq_title" required class="mb-2 form-control">
 
                         <label for="">CONTEÚDO</label><br>
-                        <textarea type="text" name="faq_description" maxlength="200 " id="add_faq_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="faq_content" maxlength="200 " id="add_faq_description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -423,8 +423,8 @@
         $('.add-audio').on('click', function(e) {
 
             var audio_id = $(this).data('id')
-            $('#add_audio_id').val(audio_id)
-            $('#btn-open-modal-add-audio').click()
+            $('#add_faq_category_id').val(audio_id)
+            $('#btn-open-modal-add-faq').click()
 
         })
 
