@@ -211,7 +211,7 @@
                         <input type="text" name="add_faq_category_title" id="add_faq_category_title" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="add_faq_category__description" maxlength="200 " id="add_faq_category__description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="add_faq_category_description" maxlength="200 " id="add_faq_category_description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -691,7 +691,7 @@
             e.preventDefault()
 
             var faq_category_title = $('#add_faq_category_title').val()
-            var faq_category_description = $('#add_faq_category__description').val()
+            var faq_category_description = $('#add_faq_category_description').val()
 
             $.ajax({
                 method: 'POST',
