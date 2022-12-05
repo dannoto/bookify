@@ -34,7 +34,7 @@
             </div>
             <?php foreach ($this->faq_model->getFaqsCategory() as $g) { ?>
 
-                <div class=" xl:ml-56 ml-5 mr-5 mt-5 xl:mr-56">
+                <div class=" xl:ml-48 ml-5 mr-5 mt-5 xl:mr-48">
                     <h1 class="faq-title bmb-5 line-clamp-1" title="<?= $g->faq_category_title ?>" style="font-size:20px !important"><?= $g->faq_category_title ?></h1>
                     <div class="faq-container">
 
