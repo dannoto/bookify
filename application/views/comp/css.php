@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
  
-    <link rel="icon" type="image/png"  href="<?= base_url() ?>assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon-16x16.png">
 
-    <!-- <link rel="manifest" href="<?= base_url() ?>assets/img/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?= base_url() ?>assets//ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff"> -->
+  
 
     <style>
         /* ===== Scrollbar CSS ===== */
