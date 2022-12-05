@@ -166,7 +166,7 @@
 
 
 
-                    
+
                         <?php foreach ($this->faq_model->getFaqsContentByCategory($g->id) as $f) { ?>
 
                             <div class="faq-one">
@@ -197,7 +197,27 @@
 
     <?php $this->load->view('comp/js'); ?>
 
-    <script  type="text/javascript"><?=$this->admin_model->getSupport()['support_code']?></script>
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/638d532ddaff0e1306dae723/1gjg0pqi3';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script type="text/javascript">
+        <?=// $this->admin_model->getSupport()['support_code'] ?>
+    </script>
 
     <script>
         $('.ebook-add-biblioteca').on('click', function(e) {
