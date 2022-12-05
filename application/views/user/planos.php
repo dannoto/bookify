@@ -89,7 +89,7 @@
                                     <span class="home-plano-currency">R$ <span class="home-plano-preco"><?= str_replace(".", ",", $p->plan_price) ?></span><span class="home-plano-currency">/ <?= $type ?></span></span>
                                 </div>
                             </div>
-                            <?php if ($this->session->userdata('session_user') AND $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == $p->id) { ?>
+                            <?php if ($this->session->userdata('session_user') and $this->user_model->getUserById($this->session->userdata('session_user')['id'])['user_plan'] == $p->id) { ?>
                                 <div class="home-plano-assinar-btn">
                                     <button class="bg-red-600 border border-red-600">PLANO ATUAL <i class="fa ml-1 fa-check"></i></button>
                                 </div>
@@ -147,7 +147,11 @@
     </div>
 
     <?php $this->load->view('comp/js'); ?>
-
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        <?=$this->admin_model->getSupport()['support_code']?>
+    </script>
+    <!--End of Tawk.to Script-->
 
     <script>
         $('.ebook-add-biblioteca').on('click', function(e) {

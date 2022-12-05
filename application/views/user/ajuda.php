@@ -73,7 +73,11 @@
 
 
     <?php $this->load->view('comp/js'); ?>
-
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        <?=$this->admin_model->getSupport()['support_code']?>
+    </script>
+    <!--End of Tawk.to Script-->
 
     <script>
         $('.ebook-add-biblioteca').on('click', function(e) {
