@@ -289,7 +289,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-primary">ADICIONAR</button>
+                    <button type="submit" class="btn btn-primary">ATUALIZAR</button>
                 </div>
                 </form>
             </div>
