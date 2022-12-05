@@ -257,7 +257,7 @@
                             <?php if ($previous != "-1") { ?>
                                 <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $previous ?>">
                                     <button>
-                                        <img src="<?=basE_url()?>assets/img/icons/btn-previous.png" width="40" height="40" alt="">
+                                        <img src="<?=basE_url()?>assets/img/icons/btn-previous.png" width="30" height="30" alt="">
                                     </button>
                                 </a>
                             <?php } ?>
@@ -282,7 +282,7 @@
                             <?php if ($next != "-1") { ?>
                                 <a href="<?= base_url() ?>play/u/<?= $ebook['id'] ?>?s=<?= $next ?>">
                                     <button>
-                                    <img src="<?=basE_url()?>assets/img/icons/btn-next.png" width="40" height="40" alt="">
+                                    <img src="<?=basE_url()?>assets/img/icons/btn-next.png" width="30" height="30" alt="">
                                     </button>
                                 </a>
                             <?php } ?>
