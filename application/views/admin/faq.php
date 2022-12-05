@@ -473,7 +473,6 @@
                         method: 'POST',
                         url: '<?= base_url() ?>painel/deleteEbook',
                         data: {
-                            ebook_id: <?= $ebook['id'] ?>
                         },
                         success: function(data) {
 
@@ -762,155 +761,7 @@
             });
         })
 
-        $('#form-update-audio').submit(function(e) {
-
-            e.preventDefault()
-
-
-            var extPermitidas = ['mp4', 'MP4', 'mp3', 'MP4'];
-            var extArquivo = $('#update_audio_file').val().split('.').pop();
-            var file = $('#update_audio_file').prop('files')[0];
-
-            var formdata = new FormData();
-
-            formdata.append("audio_id", $('#update_audio_id').val());
-            formdata.append("audio_chapter", $('#update_audio_chapter').val());
-
-            formdata.append("audio_ebook", <?= $ebook['id'] ?>);
-            formdata.append("audio_title", $('#update_audio_title').val());
-            formdata.append("audio_description", $('#update_audio_description').val());
-            formdata.append("audio_duration", $('#update_audio_duration').val());
-
-            if (file) {
-                formdata.append("audio_file", file);
-            } else {
-                formdata.append("audio_file", "");
-            }
-
-
-
-
-
-            // if (typeof extPermitidas.find(function(ext) {
-            //     return extArquivo == ext;
-            //   }) == 'undefined') {
-            //   swal('O arquivo precisa ser um audio. Formatos permitidos [MP3 E MP4]')
-
-            // } else {
-
-
-            //   if (file.size > 20000000) {
-            //     swal('Arquivo muito grande, máximo permitido 20MB.')
-
-            //   } else {
-
-            console.log($('#update_audio_duration').val())
-
-            if ($('#update_audio_duration').val().length == 5) {
-
-                $.ajax({
-                    method: 'POST',
-                    url: '<?= base_url() ?>painel/updateAudio',
-                    data: formdata,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-
-                        var resp = JSON.parse(data)
-
-                        if (resp.status == "true") {
-                            getChaptersDOM()
-                        } else {
-                            swal(resp.message);
-
-                        }
-
-                    },
-                    error: function(data) {
-                        swal('Ocorreu um erro temporário. ');
-                    },
-
-                });
-
-
-            } else {
-                swal("Insira a duração corretamente [minutos:segundos] [00:00].")
-            }
-
-            //   }
-
-            // }
-        })
-
-
-        $('#form-update-ebook').submit(function(e) {
-
-            e.preventDefault()
-
-
-            var extPermitidas = ['jpg', 'png', 'jpeg', 'JPEG', 'JPG', 'PNG'];
-            var extArquivo = $('input[type=file]').val().split('.').pop();
-            var file = $('#input_ebook_image').prop('files')[0];
-
-            //1. validacao do tamanho
-
-
-
-            var formdata = new FormData();
-
-            formdata.append("ebook_title", $('#ebook_title').val());
-            formdata.append("ebook_description", $('#ebook_description').val());
-
-            if (file) {
-                formdata.append("ebook_image", file);
-            } else {
-                formdata.append("ebook_image", "");
-            }
-
-            formdata.append("ebook_id", $('#ebook_id').val());
-            formdata.append("ebook_tags", $('#ebook_tags').val());
-            formdata.append("ebook_status", $('#ebook_status').val());
-            formdata.append("ebook_precificacao", $('#ebook_precificacao').val());
-            formdata.append("ebook_category", $('#ebook_category').val());
-            formdata.append("ebook_featured", $('#ebook_featured').val());
-            formdata.append("ebook_publisher", $('#ebook_publisher').val());
-            formdata.append("ebook_author", $('#ebook_author').val());
-
-
-            $.ajax({
-                method: 'POST',
-                url: '<?= base_url() ?>painel/actupdateEbook',
-                data: formdata,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-
-                    var resp = JSON.parse(data)
-
-                    swal({
-                        title: "Feito!",
-                        text: resp.message,
-                        icon: "success",
-
-                    }).then(function(isConfirm) {
-
-                        //
-
-                    });
-
-                },
-                error: function(data) {
-                    swal('Ocorreu um erro temporário. ');
-                },
-
-            });
-
-
-
-
-        })
+        
 
         $('#form-add-audio').submit(function(e) {
 
@@ -924,7 +775,6 @@
             var formdata = new FormData();
 
             formdata.append("audio_chapter", $('#add_audio_id').val());
-            formdata.append("audio_ebook", <?= $ebook['id'] ?>);
             formdata.append("audio_title", $('#add_audio_title').val());
             formdata.append("audio_description", $('#add_audio_description').val());
             formdata.append("audio_duration", $('#add_audio_duration').val());
@@ -1000,7 +850,6 @@
             var file = $('#add_image_file').prop('files')[0];
 
             var chapter = $('#add_image_chapter').val();
-            var ebook = "<?= $ebook['id'] ?>";
             var audio = $('#add_image_audio').val();
             var title = $('#add_image_title').val();
 
