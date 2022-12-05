@@ -33,7 +33,7 @@
                                         <div class="card-body pb-0">
                                             <div class="d-block justify-content-between">
                                                 <h4 class="card-title mb-0">CRIE CATEGORIAS</h4>
-                                                <button class="btn btn-primary mt-2 mb-3 px-2" id="btn-modal-add" data-toggle="modal" data-target="#modal-add-capitulo">
+                                                <button class="btn btn-primary mt-2 mb-3 px-2" id="btn-modal-add" data-toggle="modal" data-target="#modal-add-categoria">
                                                     <i class="fa fa-plus"></i>
                                                     NOVO CATEGORIA
                                                 </button>
@@ -196,22 +196,22 @@
 
 
     <!-- Modal Add Capitulo -->
-    <div class="modal fade" id="modal-add-capitulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-add-categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NOVO CAPÍTULO</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">NOVA CATEGORIA</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-add-capitulo">
-                        <label for="">NOME DO CAPÍTULO <span class="text-danger">*</span></label><br>
-                        <input type="text" name="add_chapter_title" id="add_chapter_title" required class="mb-2 form-control">
+                    <form action="" id="form-add-category">
+                        <label for="">NOME DA CATEGORIA <span class="text-danger">*</span></label><br>
+                        <input type="text" name="add_faq_category_title" id="add_faq_category_title" required class="mb-2 form-control">
 
                         <label for="">DESCRIÇÃO</label><br>
-                        <textarea type="text" name="add_chapter_description" maxlength="200 " id="add_chapter_description" class="mb-2 form-control"></textarea>
+                        <textarea type="text" name="add_faq_category__description" maxlength="200 " id="add_faq_category__description" class="mb-2 form-control"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -686,21 +686,19 @@
 
     <script>
         //Add Capitulo
-        $('#form-add-capitulo').submit(function(e) {
+        $('#form-add-category').submit(function(e) {
 
             e.preventDefault()
 
-            var chapter_ebook = "<?= $ebook['id'] ?>"
-            var chapter_title = $('#add_chapter_title').val()
-            var chapter_description = $('#add_chapter_description').val()
+            var faq_category_title = $('#add_faq_category_title').val()
+            var faq_category_description = $('#add_faq_category__description').val()
 
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url() ?>painel/addChaper',
+                url: '<?= base_url() ?>painel/actaddfaqcategory',
                 data: {
-                    chapter_ebook: chapter_ebook,
-                    chapter_title: chapter_title,
-                    chapter_description: chapter_description
+                    faq_category_title: faq_category_title,
+                    faq_category_description: faq_category_description
                 },
 
                 success: function(data) {
@@ -712,8 +710,8 @@
 
 
                     //Clean Form
-                    $('#add_chapter_title').value = ""
-                    $('#add_chapter_description').value = ""
+                    $('#add_faq_category_title').value = ""
+                    $('#add_faq_category__description').value = ""
 
 
                     if (resp.status == "true") {
