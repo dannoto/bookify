@@ -197,6 +197,8 @@
 
     <?php $this->load->view('comp/js'); ?>
 
+    <?=$this->admin_model->getSupport()['support_code']?>
+
 
     <script>
         $('.ebook-add-biblioteca').on('click', function(e) {
