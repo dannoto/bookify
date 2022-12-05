@@ -603,13 +603,13 @@
 
         $('.update-category').on('click', function(e) {
 
-            var chapter_id = $(this).data('id')
-            var chapter_title = $(this).data('title')
-            var chapter_description = $(this).data('description')
+            var faq_category_id = $(this).data('id')
+            var faq_category_title = $(this).data('title')
+            var faq_category_description = $(this).data('description')
 
-            $('#update_faq_category_id').val(chapter_id)
-            $('#update_faq_category_title').val(chapter_title)
-            $('#update_faq_category_description').val(chapter_description)
+            $('#update_faq_category_id').val(faq_category_id)
+            $('#update_faq_category_title').val(faq_category_title)
+            $('#update_faq_category_description').val(faq_category_description)
 
             $('#btn-open-update-category').click();
 

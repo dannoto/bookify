@@ -1159,7 +1159,7 @@ public function actAddFaqCategory() {
     $response = array();
 
     $faq_title =  htmlspecialchars($this->input->post('faq_category_title'));
-    $faq_content =  htmlspecialchars($this->input->post('faq_category_content'));
+    $faq_content =  htmlspecialchars($this->input->post('faq_category_description'));
 
     if ($this->faq_model->addFaqCategory( $faq_title, $faq_content)) {
 
