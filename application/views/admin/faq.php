@@ -115,7 +115,7 @@
                                                 <div class="mt-3">
                                                     <div class="border border-primary  bg-yellow-500 row">
                                                         <div class="col-md-12">
-                                                            <p class="text-center center mt-3">NENHUM CAPÍTULO CRIADO.</p>
+                                                            <p class="text-center center mt-3">NENHUM CONTEÚDO CRIADO.</p>
 
                                                         </div>
                                                     </div>
