@@ -20,6 +20,23 @@ class admin_model extends CI_Model
 
     }
 
+    public function getSupport() {
+       
+ 
+    return $this->db->get('config_support')->row_array();
+
+}
+
+    public function updateSupport($support_code) {
+       
+            $data = array(
+                'support_code' => $support_code,
+            );
+
+        return $this->db->update('config_support', $data);
+
+    }
+
     public function authLogin() {
 
         $actual_link = $_SERVER['REQUEST_URI'];

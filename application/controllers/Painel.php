@@ -34,57 +34,56 @@ class Painel extends CI_Controller
         $this->load->view('admin/dashboard');
     }
 
-    public function login() {
+    public function login()
+    {
 
 
         $this->load->view('admin/login');
-
     }
 
-    public function sair() {
+    public function sair()
+    {
 
         $this->session->unset_userdata('session_admin');
         redirect(base_url('painel/login'));
     }
 
 
-    public function faq() {
+    public function faq()
+    {
 
-      
+
         $this->load->view('admin/faq');
-
     }
-    public function auth() {
-        
-		if ($this->input->post() ) {
+    public function auth()
+    {
 
-			$response = array();
-			
-			$user_email = htmlspecialchars($this->input->post('user_email'));
-			$user_password = htmlspecialchars($this->input->post('user_password'));
+        if ($this->input->post()) {
 
-			$auth = $this->admin_model->Auth($user_email, $user_password);
+            $response = array();
 
-			if ($auth) {
+            $user_email = htmlspecialchars($this->input->post('user_email'));
+            $user_password = htmlspecialchars($this->input->post('user_password'));
 
-				$this->session->set_userdata('session_admin', $auth);
+            $auth = $this->admin_model->Auth($user_email, $user_password);
 
-				$response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
+            if ($auth) {
 
-			} else {
+                $this->session->set_userdata('session_admin', $auth);
 
-				$response =  array('status' => 'false', 'message' => 'Suas credenciais estão incorretas.');
+                $response =  array('status' => 'true', 'message' => 'Logado com sucesso!');
+            } else {
 
-			}
+                $response =  array('status' => 'false', 'message' => 'Suas credenciais estão incorretas.');
+            }
 
-			print_r(json_encode($response));
-
-		}
-	}
+            print_r(json_encode($response));
+        }
+    }
 
     // Paginas
 
-    
+
 
     public function updateGateway()
     {
@@ -207,6 +206,27 @@ class Painel extends CI_Controller
             print_r(json_encode($response));
         }
     }
+
+    public function suporte()
+    {
+        $this->load->view('admin/suporte');
+    }
+
+    public function actUpdateSuporte()
+    {
+
+        $support_code = htmlspecialchars($this->input->post('support_code'));
+
+        if ($this->admin_model->updateSupport($support_code)) {
+            $response =  array('status' => 'true', 'message' => 'Script atualizado com sucesso!');
+        } else {
+
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
+    }
     public function ebooks_publicar()
     {
 
@@ -317,7 +337,7 @@ class Painel extends CI_Controller
 
         $response = array();
 
-        if ($this->audio_model->addAudioImage($image_title, $image_description , $image_audio, $image_chapter, $image_ebook, $image_file)) {
+        if ($this->audio_model->addAudioImage($image_title, $image_description, $image_audio, $image_chapter, $image_ebook, $image_file)) {
             $response =  array('status' => 'true', 'message' => 'Imagem adicionada com sucesso.');
         } else {
             $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
@@ -327,7 +347,7 @@ class Painel extends CI_Controller
         print_r(json_encode($response));
     }
 
-    public function deleteImage() 
+    public function deleteImage()
     {
 
         $image_id = htmlspecialchars($this->input->post('image_id'));
@@ -342,7 +362,6 @@ class Painel extends CI_Controller
 
 
         print_r(json_encode($response));
-
     }
 
 
@@ -354,8 +373,8 @@ class Painel extends CI_Controller
 
 
         if (count($images) > 0) {
-            
-                echo '
+
+            echo '
                     <div class="container">
                     <h4>Lista de Imagens</h4>
                     <hr>
@@ -363,22 +382,22 @@ class Painel extends CI_Controller
                 ';
 
 
-                foreach ($images as $i) {
+            foreach ($images as $i) {
 
 
-                    echo '
+                echo '
                         <div class="row container mb-3">
                         <div class="col-md-9">
-                            <img title="'.$i->image_title.'" src="' . base_url() . '' . $i->image_file . '" style="max-width: 100%;width:100%;height:80px;max-height:80px;object-fit:cover" >
+                            <img title="' . $i->image_title . '" src="' . base_url() . '' . $i->image_file . '" style="max-width: 100%;width:100%;height:80px;max-height:80px;object-fit:cover" >
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-danger delete_image" data-audio="'.$i->image_audio.'" id="' . $i->id . '" type="button" style="height: 80px;font-size:16px;">X</button>
+                            <button class="btn btn-danger delete_image" data-audio="' . $i->image_audio . '" id="' . $i->id . '" type="button" style="height: 80px;font-size:16px;">X</button>
                         </div>
                         </div>
                     ';
-                }
+            }
 
-                echo "
+            echo "
                 <script>
               
                   $('.delete_image').on('click', function(e) {
@@ -389,7 +408,7 @@ class Painel extends CI_Controller
               
                     $.ajax({
                       method: 'POST',
-                      url: '".base_url()."painel/deleteImage',
+                      url: '" . base_url() . "painel/deleteImage',
                       data: {
                         image_id: image_id
                       },
@@ -1091,138 +1110,129 @@ class Painel extends CI_Controller
 
 
 
-// Faq aCtions
+    // Faq aCtions
 
 
-public function actAddFaq() {
+    public function actAddFaq()
+    {
 
-    $response = array();
+        $response = array();
 
-    $faq_title =  htmlspecialchars($this->input->post('faq_title'));
-    $faq_content =  htmlspecialchars($this->input->post('faq_content'));
-    $faq_category =  htmlspecialchars($this->input->post('faq_category_id'));
+        $faq_title =  htmlspecialchars($this->input->post('faq_title'));
+        $faq_content =  htmlspecialchars($this->input->post('faq_content'));
+        $faq_category =  htmlspecialchars($this->input->post('faq_category_id'));
 
-    if ($this->faq_model->addFaq($faq_title, $faq_content, $faq_category)) {
+        if ($this->faq_model->addFaq($faq_title, $faq_content, $faq_category)) {
 
-        $response =  array('status' => 'true', 'message' => 'Faq criada com sucesso!');
-    } else {
+            $response =  array('status' => 'true', 'message' => 'Faq criada com sucesso!');
+        } else {
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
     }
 
+    public function actUpdateFaq()
+    {
 
-    print_r(json_encode($response));
+        $response = array();
 
-}
+        $faq_id =  htmlspecialchars($this->input->post('faq_id'));
+        $faq_title =  htmlspecialchars($this->input->post('faq_title'));
+        $faq_description =  htmlspecialchars($this->input->post('faq_description'));
 
-public function actUpdateFaq() {
-    
-    $response = array();
+        if ($this->faq_model->updateFaq($faq_id, $faq_title, $faq_description)) {
 
-    $faq_id =  htmlspecialchars($this->input->post('faq_id'));
-    $faq_title =  htmlspecialchars($this->input->post('faq_title'));
-    $faq_description =  htmlspecialchars($this->input->post('faq_description'));
+            $response =  array('status' => 'true', 'message' => 'Faq atualizada com sucesso!');
+        } else {
 
-    if ($this->faq_model->updateFaq($faq_id, $faq_title, $faq_description)) {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
 
-        $response =  array('status' => 'true', 'message' => 'Faq atualizada com sucesso!');
-    } else {
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        print_r(json_encode($response));
     }
 
+    public function actDeleteFaq()
+    {
+        $response = array();
 
-    print_r(json_encode($response));
-}
+        $faq_id =  htmlspecialchars($this->input->post('faq_id'));
 
-public function actDeleteFaq() {
-    $response = array();
 
-    $faq_id =  htmlspecialchars($this->input->post('faq_id'));
-   
+        if ($this->faq_model->deleteFaq($faq_id)) {
 
-    if ($this->faq_model->deleteFaq($faq_id)) {
+            $response =  array('status' => 'true', 'message' => 'Faq excluída com sucesso!');
+        } else {
 
-        $response =  array('status' => 'true', 'message' => 'Faq excluída com sucesso!');
-    } else {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+
+        print_r(json_encode($response));
     }
 
+    public function actAddFaqCategory()
+    {
 
-    print_r(json_encode($response));
-}
+        $response = array();
 
-public function actAddFaqCategory() {
+        $faq_title =  htmlspecialchars($this->input->post('faq_category_title'));
+        $faq_content =  htmlspecialchars($this->input->post('faq_category_description'));
 
-    $response = array();
+        if ($this->faq_model->addFaqCategory($faq_title, $faq_content)) {
 
-    $faq_title =  htmlspecialchars($this->input->post('faq_category_title'));
-    $faq_content =  htmlspecialchars($this->input->post('faq_category_description'));
+            $response =  array('status' => 'true', 'message' => 'Categoria criada com sucesso!');
+        } else {
 
-    if ($this->faq_model->addFaqCategory( $faq_title, $faq_content)) {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
 
-        $response =  array('status' => 'true', 'message' => 'Categoria criada com sucesso!');
-    } else {
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        print_r(json_encode($response));
     }
 
+    public function actUpdateFaqCategory()
+    {
 
-    print_r(json_encode($response));
-}
+        $response = array();
 
-public function actUpdateFaqCategory() {
+        $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
+        $category_title =  htmlspecialchars($this->input->post('faq_category_title'));
+        $category_content =  htmlspecialchars($this->input->post('faq_category_description'));
 
-    $response = array();
+        if ($this->faq_model->updateFaqCategory($category_id, $category_title, $category_content)) {
 
-    $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
-    $category_title =  htmlspecialchars($this->input->post('faq_category_title'));
-    $category_content =  htmlspecialchars($this->input->post('faq_category_description'));
+            $response =  array('status' => 'true', 'message' => 'Categoria atualizada com sucesso!');
+        } else {
 
-    if ($this->faq_model->updateFaqCategory($category_id, $category_title, $category_content)) {
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
 
-        $response =  array('status' => 'true', 'message' => 'Categoria atualizada com sucesso!');
-    } else {
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        print_r(json_encode($response));
     }
 
+    public function actDeleteFaqCategory()
+    {
+        $response = array();
 
-    print_r(json_encode($response));
-    
-}
-
-public function actDeleteFaqCategory() {
-    $response = array();
-
-    $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
+        $category_id =  htmlspecialchars($this->input->post('faq_category_id'));
 
 
-    if ($this->faq_model->deleteFaqCategory($category_id)) {
+        if ($this->faq_model->deleteFaqCategory($category_id)) {
 
-        $this->faq_model->deleteCategoryRelated($category_id);
+            $this->faq_model->deleteCategoryRelated($category_id);
 
-        $response =  array('status' => 'true', 'message' => 'Categoria excluida com sucesso!');
-    } else {
+            $response =  array('status' => 'true', 'message' => 'Categoria excluida com sucesso!');
+        } else {
 
-        $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+            $response =  array('status' => 'false', 'message' => 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+
+
+        print_r(json_encode($response));
     }
-
-
-    print_r(json_encode($response));
-}
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }
