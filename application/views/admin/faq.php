@@ -88,13 +88,13 @@
                                                         <div class="mt-3 ml-5">
                                                             <div class="border border-primary  bg-yellow-500 row">
                                                                 <div class="col-md-8">
-                                                                    <div class="d-block align-items-left p-2 ">
+                                                                    <div class="d-block align-items-left mt-3 p-2 ">
                                                                         <small style="font-size: 10px"> </small>
                                                                         <h5 title="<?= ucfirst($e->faq_title) ?>" class="line-clamp-1"><?= ucfirst($e->faq_title) ?></h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3 align-items-center">
-                                                                    <div class="d-flex mt-4">
+                                                                    <div class="d-flex mt-3">
 
                                                                         <i title="EDITAR CONTEUDO" class="ml-3 mdi  mdi-pencil update-audio" data-id="<?= $e->id ?>" data-title="<?= $e->faq_title ?>" data-description="<?= $e->faq_description ?>" style="color:#222;font-size:25px;cursor:pointer"></i>
                                                                         <i title="EXCLUIR CONTEUDO" class="ml-3 mdi mdi-delete delete-faq" data-id="<?= $e->id ?>" style="color:#ff0017;font-size:25px;cursor:pointer"></i>
