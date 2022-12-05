@@ -75,11 +75,11 @@
                           <img style="height: 40px;max-height: 40px;width:150px;max-width:150px;object-fit:contain" src="<?= base_url() ?>assets/img/design/logo.png" alt="">
                       </div>
                       <div class="col-span-1">
-                          <i id="btn-navbar" class="ml-12 mt-1 fa fa-bars"></i>
+                          <i id="btn-navbar" class="ml-8 mt-1 fa fa-bars"></i>
                       </div>
                   </div>
 
-                  <div id="div-navbar" style="display:none">
+                  <div id="div-navbar" class="mt-3" style="display:none">
                       <ul class="block bg-greenDefault text-white space-y-3">
                           <li class="menu_li pt-3">
                               <a href="<?= base_url() ?>catalogo">
