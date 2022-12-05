@@ -4,6 +4,7 @@ class faq_model extends CI_Model
 
     public function getFaqsCategory() {
 
+        $this->db->order_by('id','desc');
         return $this->db->get('faq_categories')->result();
 
     }
@@ -14,6 +15,7 @@ class faq_model extends CI_Model
 
     }
     public function getFaqsContentByCategory($faq_category) {
+        $this->db->order_by('id','desc');
 
         $this->db->where('faq_category', $faq_category);
         return $this->db->get('faq_content')->result();
