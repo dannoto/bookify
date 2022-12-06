@@ -171,19 +171,19 @@ class user_model extends CI_Model
 
                 if ($today > $expiration_date ) {
 
-                    echo "Cancelado e plano resetado.";
+                    // echo "Cancelado e plano resetado.";
 
                     //Reset Plan
                     // $this->plan_model->updateUserPlan($user_data['id'], '0');
                 } else {
-                    echo "Cancelado, mas ainda esta valido";
+                    // echo "Cancelado, mas ainda esta valido";
                 }
 
             } else if ($user_current_subscription['status'] == 'active') {
 
                 if ($today_limit > $expiration_date  ) {
 
-                    echo "Não pagou, cancelando a pe plano resetado.";
+                    // echo "Não pagou, cancelando a pe plano resetado.";
 
                     //CancelSubscription
                     // $this->plan_model->cancelSubscription($user_data['user_subscription']);
@@ -191,7 +191,7 @@ class user_model extends CI_Model
                     //Reset Plan
                     // $this->plan_model->updateUserPlan($user_data['id'], '0');
                 } else {
-                    echo "Plano ainda nao venceu, esta valido";
+                    // echo "Plano ainda nao venceu, esta valido";
                 }
             }
         } else {

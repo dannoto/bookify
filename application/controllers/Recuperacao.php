@@ -16,7 +16,6 @@ class Recuperacao extends CI_Controller {
 
 	public function index()
 	{
-		echo "xxx";
 		$this->load->view('user/recuperacao');
 	}
 
